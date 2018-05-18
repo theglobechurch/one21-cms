@@ -1,0 +1,3 @@
+<h1><%= t('gateway.welcome', first_name: current_user.first_name) %></h1>
+
+<h2><%= link_to current_user.church.church_name, church_path(current_user.church) %></h2>

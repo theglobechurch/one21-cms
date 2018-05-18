@@ -1,0 +1,36 @@
+<%= form_for(@church) do |f| %>
+
+  <%= render('shared/form_errors', m: @church) %>
+
+  <div class="form__field">
+    <!-- TODO: Add in checking on church name -->
+    <%= f.label :church_name, class: 'form__label' %>
+    <%= f.text_field :church_name, class: 'form__input' %>
+  </div>
+
+  <div class="form__field">
+    <%= f.label :email, class: 'form__label' %>
+    <%= f.email_field :email, class: 'form__input' %>
+  </div>
+
+  <div class="form__field">
+    <%= f.label :phone, class: 'form__label' %>
+    <%= f.text_field :phone, class: 'form__input' %>
+  </div>
+
+  <div class="form__field">
+    <%= f.label :url, class: 'form__label' %>
+    <%= f.text_field :url, class: 'form__input' %>
+  </div>
+
+  <div class="form__field">
+    <%= f.label :city, class: 'form__label' %>
+    <%= f.text_field :city, class: 'form__input' %>
+  </div>
+
+  <!-- TODO: include city here -->
+
+  <%= f.submit 'Save', class: 'form__submit' %>
+
+
+<% end %>

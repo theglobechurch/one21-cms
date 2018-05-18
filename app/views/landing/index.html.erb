@@ -1,0 +1,74 @@
+<h1>One21</h1>
+
+<section id="signup">
+  <h2>Sign in</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end -%>
+
+    <div class="actions">
+      <%= f.submit "Log in" %>
+    </div>
+  <% end %>
+
+  <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+  <% end %>
+</section>
+
+<section id="introduction">
+
+  <h2>One21 is a tool to help your church run one-to-ones</h2>
+
+  <p>Introduction</p>
+
+  <% if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+  <% end %>
+
+</section>
+
+<section id="churches">
+  Four / five church logos who are using it…
+</section>
+
+<section id="feature-one">
+  <h2>Reflect and discuss the sermon you heard on Sunday</h2>
+</section>
+
+<section id="feature-two">
+  <h2>Draw from pre-written one-to-one studies</h2>
+</section>
+
+<section id="testimonials">
+  <h2>What other people are saying</h2>
+  <p>Steve said he liked it…</p>
+
+  <% if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+  <% end %>
+</section>
+
+<section id="feature-three">
+  <h2>Built by a church for a church</h2>
+  <p>This is scratching an itch we had…</p>
+</section>
+
+<footer>
+  All the links
+</footer>

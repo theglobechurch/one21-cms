@@ -1,0 +1,14 @@
+en:
+  general:
+    sign_out: "Sign out"
+    sign_in: "Sign in"
+  gateway:
+    welcome: "Hello %{first_name}"
+  helpers:
+    label:
+      church:
+        church_name: "Church name"
+        email: "Primary church email address"
+        url: "Church website"
+        phone: "Church office telephone number"
+        city: "Town / City"

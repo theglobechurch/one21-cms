@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>One21 Admin</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+  </head>
+
+  <body>
+    <%= yield %>
+
+    <% if notice %>
+    <p class="notice"><%= notice %></p>
+    <% end %>
+
+    <% if alert %>
+    <p class="alert"><%= alert %></p>
+    <% end %>
+
+    <footer>
+      <% if user_signed_in? %>
+        <%= button_to t('general.sign_out'), destroy_user_session_path, method: :delete %>
+      <% end %>
+    </footer>
+  </body>
+</html>
