@@ -1,6 +1,6 @@
 class ChurchesController < ApplicationController
 
-  ## Lock down to login only
+  before_action :authenticate_user!
 
   def index
     # if super admin list all the church
