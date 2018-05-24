@@ -1,0 +1,18 @@
+<h1><%= @guide.guide_name %></h1>
+
+<p>This is a guide produced by <%= @guide.churches.first.church_name %></p>
+
+<hr />
+<%= @guide.inspect %>
+<hr />
+
+<% if @guide.studies.present? %>
+  <ul>
+    <% for study in @guide.studies do %>
+      <li><%= study.study_name %></li>
+    <% end %>
+  </ul>
+<hr />
+<% end %>
+
+<%= link_to('Add new study', new_guide_study_path(@guide))%>

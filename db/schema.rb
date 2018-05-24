@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_24_102018) do
+ActiveRecord::Schema.define(version: 2018_05_24_110005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "church_guides", id: false, force: :cascade do |t|
+    t.bigint "guide_id", null: false
+    t.bigint "church_id", null: false
+    t.boolean "promoted", default: false, null: false
+    t.boolean "owner", default: false, null: false
+    t.index ["church_id"], name: "index_church_guides_on_church_id"
+    t.index ["guide_id"], name: "index_church_guides_on_guide_id"
+    t.index ["promoted"], name: "index_church_guides_on_promoted"
+  end
 
   create_table "churches", force: :cascade do |t|
     t.string "church_name", default: "", null: false
@@ -28,6 +38,34 @@ ActiveRecord::Schema.define(version: 2018_05_24_102018) do
     t.index ["email"], name: "index_churches_on_email", unique: true
     t.index ["slug"], name: "index_churches_on_slug", unique: true
     t.index ["verified"], name: "index_churches_on_verified"
+  end
+
+  create_table "guides", force: :cascade do |t|
+    t.string "guide_name", default: "", null: false
+    t.string "slug", default: "", null: false
+    t.string "teaser"
+    t.string "description"
+    t.string "copyright"
+    t.boolean "highlight_first", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "studies", force: :cascade do |t|
+    t.bigint "guides_id"
+    t.datetime "published_dt", precision: 6
+    t.integer "status"
+    t.string "study_name", default: "", null: false
+    t.string "slug", default: "", null: false
+    t.string "description"
+    t.integer "sort_order", default: 0, null: false
+    t.string "recording_url"
+    t.string "website_url"
+    t.jsonb "passage_ref"
+    t.jsonb "questions", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guides_id"], name: "index_studies_on_guides_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,4 +90,5 @@ ActiveRecord::Schema.define(version: 2018_05_24_102018) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "studies", "guides", column: "guides_id"
 end

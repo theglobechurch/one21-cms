@@ -1,6 +1,8 @@
 class Church < ApplicationRecord
 
   has_many :users
+  has_many :church_guides
+  has_many :guides, through: :church_guides
 
   validates :church_name, :email, :url, :city, :slug, presence: true
   validates :email, :slug,  uniqueness: true

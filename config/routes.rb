@@ -24,4 +24,7 @@ Rails.application.routes.draw do
   
   resources :admin, only: [:index] 
   resources :churches
+  resources :guides do
+    resources :studies
+  end
 end

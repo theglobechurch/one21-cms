@@ -1,0 +1,28 @@
+<%= form_for(@guide) do |f| %>
+
+  <%= render('shared/form_errors', m: @guide) %>
+
+  <div class="form__field">
+    <%= f.label :guide_name, class: 'form__label' %>
+    <%= f.text_field :guide_name, class: 'form__input' %>
+  </div>
+
+  <div class="form__field">
+    <%= f.label :teaser, class: 'form__label' %>
+    <%= f.text_area :teaser, class: 'form__input' %>
+  </div>
+
+  <div class="form__field">
+    <%= f.label :description, class: 'form__label' %>
+    <%= f.text_area :description, class: 'form__input' %>
+  </div>
+
+  <div class="form__field">
+    <%= f.label :copyright, class: 'form__label' %>
+    <%= f.text_field :copyright, class: 'form__input' %>
+  </div>
+
+  <%= f.submit 'Save', class: 'form__submit' %>
+
+
+<% end %>

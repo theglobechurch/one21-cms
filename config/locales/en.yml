@@ -7,6 +7,9 @@ en:
     unverified_msg:
       headline: "%{church_name} has not be verified yet"
       description: "Your church will not show up in One21 until is has been approved by an administrator. This process should take no longer that two working days."
+  guides:
+    new: "Create new guide"
+    guide_list: "Guides from %{church_name}:"
   helpers:
     label:
       church:

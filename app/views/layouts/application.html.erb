@@ -8,6 +8,14 @@
   </head>
 
   <body>
+    <header>
+      <ul>
+        <li><%= link_to('Home', root_path) %></li>
+        <li><%= link_to('Church', churches_path) %></li>
+        <li><%= link_to('Guides', guides_path) %></li>
+      </ul>
+    </header>
+
     <%= yield %>
 
     <% if notice %>

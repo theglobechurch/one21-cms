@@ -35,6 +35,7 @@ class ChurchesController < ApplicationController
     if @church.save
       flash[:notice] = "Church saved"
 
+      # TODO: Move this into after_create of Church model
       # Link user and church
       current_user.churches_id = @church.id
       current_user.save
