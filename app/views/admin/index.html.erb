@@ -1,3 +1,14 @@
 <h1><%= t('gateway.welcome', first_name: current_user.first_name) %></h1>
 
-<h2><%= link_to current_user.church.church_name, church_path(current_user.church) %></h2>
+<% if current_user.church %>
+
+  <h2><%= link_to current_user.church.church_name, church_path(current_user.church) %></h2>
+
+  <% if !current_user.church.verified %>
+    <div class="message message--alert">
+      <p class="message__headline"><%= t('gateway.unverified_msg.headline', church_name: current_user.church.church_name) %></p>
+      <p><%= t('gateway.unverified_msg.description') %></p>
+    </div>
+  <% end %>
+
+<% end %>

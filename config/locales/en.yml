@@ -4,6 +4,9 @@ en:
     sign_in: "Sign in"
   gateway:
     welcome: "Hello %{first_name}"
+    unverified_msg:
+      headline: "%{church_name} has not be verified yet"
+      description: "Your church will not show up in One21 until is has been approved by an administrator. This process should take no longer that two working days."
   helpers:
     label:
       church:

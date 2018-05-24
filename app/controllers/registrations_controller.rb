@@ -5,7 +5,7 @@ protected
   # Redirect after signup…
   def after_sign_up_path_for(resource)
     # Redirect new users to create a church
-    church_index_path
+    churches_path
   end
 
 private

@@ -22,7 +22,7 @@ class ChurchesController < ApplicationController
 
   def new
     # create new church
-    @church = Church.new
+    @church = Church.unscoped.new
   end
 
   def edit
@@ -31,7 +31,7 @@ class ChurchesController < ApplicationController
   end
 
   def create
-    @church = Church.new(church_params)
+    @church = Church.unscoped.new(church_params)
     if @church.save
       flash[:notice] = "Church saved"
 
