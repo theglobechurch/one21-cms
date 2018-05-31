@@ -18,7 +18,10 @@ Rails.application.routes.draw do
       resources :churches, only: [:index]
     end
     scope module: :v1, constraints: ApiVersion.new('v1', true) do
-      resources :churches, only: [:index]
+      get 'church', to: 'churches#index'
+      get 'church/(:church_slug)', to: 'churches#show'
+      get 'church/(:church_slug)/guides', to: 'guides#index'
+      get 'church/(:church_slug)/guides/(:guide_slug)', to: 'guides#show'
     end
   end
   

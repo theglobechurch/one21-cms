@@ -8,4 +8,19 @@ class Api::V1::ChurchesController < ApiController
     json_response(@churches)
   end
 
+  def show
+    @church = church
+    json_response(@church, :ok, FullChurchSerializer)
+  end
+
+private
+
+  def churches
+    @churches ||= Church.verified
+  end
+
+  def church
+    @church ||= churches.find_by_slug(params[:church_slug])
+  end
+
 end
