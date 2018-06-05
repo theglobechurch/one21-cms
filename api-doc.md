@@ -38,9 +38,9 @@ Returns specific details about a specific church
 `sermons`: Boolean - does the church produce sermon questions to accompany their services?   
 `guides`: Boolean - has the church opted in to provide other guides through One21?
 
-## GET `/church/{slug}/guide`
+## GET `/church/{slug}/guides`
 
-Status: planned
+Status: partial implementation
 
 ```
 [

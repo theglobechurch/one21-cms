@@ -26,6 +26,19 @@ class StudiesController < ApplicationController
     @study = study
   end
 
+  def edit
+    @guide = guide
+    @study = study
+  end
+
+  def update
+    study.attributes = study_params
+    if study.save
+      flash[:notice] = 'Study updated'
+      redirect_to guide_path(guide)
+    end
+  end
+
 private
 
   def studies

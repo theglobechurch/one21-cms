@@ -9,7 +9,8 @@ class Api::V1::GuidesController < ApiController
   end
 
   def show
-    json_response({'response': 'nothing to see here', 'yet': true})
+    @guide = guide
+    json_response(@guide, :ok, FullGuideSerializer)
   end
 
 private
@@ -19,6 +20,10 @@ private
                       where(churches: {
                         slug: params[:church_slug]
                       })
+  end
+
+  def guide
+    @guide ||= guides.find_by_slug!(params[:guide_slug])
   end
 
 end

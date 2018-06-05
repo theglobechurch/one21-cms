@@ -9,7 +9,7 @@
 <% if @guide.studies.present? %>
   <ul>
     <% for study in @guide.studies do %>
-      <li><%= study.study_name %></li>
+      <li><%= link_to(study.study_name, edit_guide_study_path(@guide, study)) %></li>
     <% end %>
   </ul>
 <hr />
