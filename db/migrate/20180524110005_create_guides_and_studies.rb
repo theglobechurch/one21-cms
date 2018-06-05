@@ -7,6 +7,7 @@ class CreateGuidesAndStudies < ActiveRecord::Migration[5.2]
       t.string :description
       t.string :copyright
       t.boolean :highlight_first, null: false, default: false
+      t.integer :status
 
       t.timestamps null: false
     end

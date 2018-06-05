@@ -1,14 +1,57 @@
-<h1><%= t('gateway.welcome', first_name: current_user.first_name) %></h1>
+<% if @church %>
 
-<% if current_user.church %>
+  <section class="panel">
 
-  <h2><%= link_to current_user.church.church_name, church_path(current_user.church) %></h2>
+    <h2><%= @church.church_name %></h2>
+    
+    <% if !@church.verified %>
+      <div class="message message--alert">
+        <p class="message__headline"><%= t('gateway.unverified_msg.headline', church_name: @church.church_name) %></p>
+        <p><%= t('gateway.unverified_msg.description') %></p>
+      </div>
+    <% end %>
 
-  <% if !current_user.church.verified %>
-    <div class="message message--alert">
-      <p class="message__headline"><%= t('gateway.unverified_msg.headline', church_name: current_user.church.church_name) %></p>
-      <p><%= t('gateway.unverified_msg.description') %></p>
-    </div>
-  <% end %>
+    <ul>
+      <% if @church.email.present? %>
+        <li>Email: <%= @church.email %></li>
+      <% end %>
+
+      <% if @church.url.present? %>
+        <li>URL: <%= @church.url %></li>
+      <% end %>
+      
+      <% if @church.phone.present? %>
+        <li>Phone: <%= @church.phone %></li>
+      <% end %>
+
+      <% if @church.city.present? %>
+        <li>Location: <%= @church.city %></li>
+      <% end %>
+    </ul>
+
+    <%= link_to('Update church details', edit_church_path(@church)) %>
+
+  </section>
+
+  <section>
+    <h2>Guides</h2>
+
+    <% if @guides.present? %>
+      <ul>
+      <% for guide in @guides do %>
+        <li>
+          <%= link_to(guide) do %>
+            <h3><%= guide.guide_name %></h3>
+            <p><%= guide.teaser %></p>
+            <p>Status: <%= guide.status %></p>
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
+    <p>
+      <%= link_to('Create new guide', new_guide_path) %>
+    </p>
+  </section>
 
 <% end %>

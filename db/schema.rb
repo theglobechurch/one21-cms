@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2018_05_24_110005) do
     t.string "description"
     t.string "copyright"
     t.boolean "highlight_first", default: false, null: false
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

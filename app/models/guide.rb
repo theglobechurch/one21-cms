@@ -9,6 +9,9 @@ class Guide < ApplicationRecord
 
   acts_as_url :guide_name, sync_url: true, force_downcase: true, url_attribute: :slug, only_when_blank: true
 
+  enum status: [:draft, :published, :archived, :deleted]
+  after_initialize :set_default_status, :if => :new_record?
+
   after_create :link_church
 
   def to_param
@@ -28,6 +31,10 @@ private
       promoted: false,
       owner: true
     }])
+  end
+
+  def set_default_status
+    self.status ||= :draft
   end
 
 end

@@ -1,18 +1,19 @@
 <h1><%= @guide.guide_name %></h1>
 
+<p><%= @guide.teaser %>
+
 <p>This is a guide produced by <%= @guide.churches.first.church_name %></p>
 
-<hr />
-<%= @guide.inspect %>
-<hr />
-
 <% if @guide.studies.present? %>
-  <ul>
+  <ul class="m-reorderable js-reorderable">
     <% for study in @guide.studies do %>
-      <li><%= link_to(study.study_name, edit_guide_study_path(@guide, study)) %></li>
+      <li class="m-reorderable__item"><%= link_to(study.study_name, edit_guide_study_path(@guide, study)) %></li>
     <% end %>
   </ul>
 <hr />
 <% end %>
 
-<%= link_to('Add new study', new_guide_study_path(@guide))%>
+<div class="btn-block">
+<%= link_to('Add new study', new_guide_study_path(@guide), class: 'btn')%>
+</div>
+

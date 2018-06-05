@@ -7,6 +7,9 @@ class AdminController < ApplicationController
     if !current_user.church
       redirect_to new_church_url, notice: "You must create your church before proceeding"
     end
+
+    @church = current_user.church
+    @guides = @church.guides
   end
 
 end

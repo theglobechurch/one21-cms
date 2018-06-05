@@ -1,0 +1,29 @@
+.form {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.form_field {
+  margin-bottom: 20px;
+}
+
+.form__label {
+  font-size: 65%;
+  line-height: 65%;
+}
+
+.form__input {
+  border: 0;
+  border-bottom: 2px solid #ccc;
+  display: block;
+  transition: border-color .5s;
+  width: 100%;
+  padding: 10px 0 5px;
+  font-size: 100%;
+
+  &:focus {
+    border-color: #C3684F;
+  }
+}

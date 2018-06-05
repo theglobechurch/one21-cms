@@ -1,5 +1,4 @@
-<%#= form_with(model: [@guide, @guide.studies.build], local: true) do |f| %>
-<%= form_with( model: [@guide, @study], local: true) do |f| %>
+<%= form_with( model: [@guide, @study], local: true, class: 'form') do |f| %>
 
   <%= render('shared/form_errors', m: @study) %>
 
@@ -33,7 +32,7 @@
     <%= f.text_area :questions, class: 'form__input' %>
   </div>
 
-  <%= f.submit 'Save', class: 'form__submit' %>
+  <%= f.submit 'Save', class: 'btn btn--primary' %>
 
 
 <% end %>

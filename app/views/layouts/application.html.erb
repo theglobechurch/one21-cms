@@ -2,17 +2,20 @@
 <html>
   <head>
     <title>One21 Admin</title>
+
+    <%= stylesheet_link_tag "/assets/css/main.css" %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
   </head>
 
   <body>
-    <header>
-      <ul>
-        <li><%= link_to('Home', root_path) %></li>
-        <li><%= link_to('Church', churches_path) %></li>
-        <li><%= link_to('Guides', guides_path) %></li>
+    <header class="header">
+      <ul class="header__navigation">
+        <li class="header__navigation__item"><%= link_to('Home', root_path) %></li>
+        <li class="header__navigation__item"><%= link_to('Church', churches_path) %></li>
+        <li class="header__navigation__item"><%= link_to('Guides', guides_path) %></li>
       </ul>
     </header>
 
