@@ -18,6 +18,8 @@
 
     <%= yield %>
 
+    <div id="root"></div>
+
     <% if notice %>
     <p class="notice"><%= notice %></p>
     <% end %>
@@ -31,5 +33,11 @@
         <%= button_to t('general.sign_out'), destroy_user_session_path, method: :delete %>
       <% end %>
     </footer>
+
+  
+  <% if user_signed_in? %>
+    <%= javascript_include_tag "/assets/js/bundle.js" %>
+  <% end %>
+
   </body>
 </html>
