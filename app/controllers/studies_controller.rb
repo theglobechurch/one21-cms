@@ -23,12 +23,12 @@ class StudiesController < ApplicationController
   end
 
   def show
-    @study = study
+    @study = study.decorate
   end
 
   def edit
     @guide = guide
-    @study = study
+    @study = study.decorate
   end
 
   def update

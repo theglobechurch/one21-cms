@@ -36,6 +36,8 @@
   padding: 10px;
   flex: auto;
   transition: border .5s;
+  max-width: 80%;
+  overflow: hidden;
 }
 
 .form__input:focus {

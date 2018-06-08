@@ -25,7 +25,12 @@
 
     <p>👇 replace me with clever bit of react…</p>
     <div class="form__field">
-      <%= f.text_field :passage_ref, class: 'form__input' %>
+      <%= f.hidden_field :passage_ref, class: 'form__input' %>
+      <div class="form__input js-scripturePicker"
+           data-inputId="study_passage_ref"
+           data-refText="<%= @study.bibleRefText %>"
+           data-refJson='<%= @study.passage_ref %>'>
+      </div>
       <%= f.label :passage_ref, class: 'form__label' %>
     </div>
   </section>

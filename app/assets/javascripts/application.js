@@ -1,5 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Greeter from './react/test';
+import renderScripturePicker from './react/scripture_picker';
 
-render(<Greeter />, document.getElementById('root'));
+renderScripturePicker('.js-scripturePicker');

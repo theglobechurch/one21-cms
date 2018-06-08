@@ -1,0 +1,36 @@
+.scripturePicker {
+
+}
+
+.scripturePicker__preview {
+  min-height: 27px;
+}
+
+.scripturePicker__popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: coreColor(darkestGrey);
+  z-index: 1;
+  color: coreColor(white);
+}
+
+.scripturePickerFade-enter {
+  opacity: 0.01;
+}
+
+.scripturePickerFade-enter.scripturePickerFade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+
+.scripturePickerFade-leave {
+  opacity: 1;
+}
+
+.scripturePickerFade-leave.scripturePickerFade-leave-active {
+  opacity: 0.01;
+  transition: opacity 250ms ease-in;
+}

@@ -1,0 +1,15 @@
+$core_colors: (
+  white: #ffffff,
+  orange: #c56b53,
+  green: #92b966,
+  primaryBlue: #72a6bf,
+  secondaryBlue: #8fc8e2,
+  dangerRed: #b96666,
+  darkestGrey: #3a3838,
+  middleGrey: #a6a6a6,
+  lightGrey: #c8c8c8
+);
+
+@function coreColor($c) {
+  @return map-get($core_colors, $c);
+}
