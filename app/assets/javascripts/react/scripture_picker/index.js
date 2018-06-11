@@ -10,7 +10,7 @@ class ScripturePicker extends Component {
     super(props);
     this.state = {
       popupOpen: false,
-      refJson: props.refJson,
+      refJson: props.refJson[0],
       refText: props.refText,
       selectedBookData: null,
       suggestBooks: []
@@ -225,7 +225,7 @@ class ScripturePicker extends Component {
 }
 
 ScripturePicker.propTypes = {
-  refJson: PropTypes.object,
+  refJson: PropTypes.array,
   refText: PropTypes.string,
   onConfirm: PropTypes.func.isRequired
 }
@@ -235,14 +235,17 @@ export default function(selector) {
 
   if (!container) { return; }
 
-  function callback(refJson, refText) {
-    document.getElementById(container.dataset.inputid).value = JSON.stringify(refJson);
+  function callback(refJSON) {
+    // Temp hack… go back to edit to allow multiple passages
+    const references = [];
+    references.push(refJSON);
+    document.getElementById(container.dataset.inputid).value = JSON.stringify(references);
   }
 
   let refJson = container.dataset.refjson;
   try { refJson = JSON.parse(refJson); }
   catch(error) {
-    refJson = {};
+    refJson = [];
   }
 
   ReactDOM.render(
