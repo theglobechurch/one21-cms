@@ -237,16 +237,15 @@ export default function(selector) {
 
   function callback(refJSON) {
     // Temp hack… go back to edit to allow multiple passages
+    const field = document.getElementById(container.dataset.inputid);
     const references = [];
     references.push(refJSON);
-    document.getElementById(container.dataset.inputid).value = JSON.stringify(references);
+    field.value = JSON.stringify(references);
   }
 
   let refJson = container.dataset.refjson;
-  try { refJson = JSON.parse(refJson); }
-  catch(error) {
-    refJson = [];
-  }
+  try        { refJson = JSON.parse(refJson); }
+  catch(err) { refJson = []; }
 
   ReactDOM.render(
     <ScripturePicker

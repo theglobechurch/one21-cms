@@ -36,9 +36,10 @@
   </section>
   
   <section class="form__section">
-    <div class="form__field">
-      <%= f.text_area :questions, class: 'form__input' %>
-      <%= f.label :questions, class: 'form__label' %>
+    <%= f.hidden_field :questions, class: 'form__input' %>
+    <div class="js-one21QuestionForm"
+         data-inputId="study_questions"
+         data-questionsJSON='<%= @study.questions %>'>
     </div>
   </section>
 
