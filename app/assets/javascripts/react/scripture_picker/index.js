@@ -4,13 +4,28 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import PropTypes from 'prop-types';
 import books from './books.json';
 
+const scriptureRefTemplate = {
+  "reference_book": "",
+  "reference_book_start_ch": "",
+  "reference_book_start_v": "",
+  "reference_book_end_ch": "",
+  "reference_book_end_v": ""
+}
+
 class ScripturePicker extends Component {
 
   constructor(props) {
     super(props);
+
+    let ref;
+    const refClone = JSON.parse(JSON.stringify(scriptureRefTemplate));
+
+    if (props.refJson.length === 0) { ref = refClone }
+    else                            { ref = props.refJson[0]; }
+
     this.state = {
       popupOpen: false,
-      refJson: props.refJson[0],
+      refJson: ref,
       refText: props.refText,
       selectedBookData: null,
       suggestBooks: []
