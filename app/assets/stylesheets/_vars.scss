@@ -10,6 +10,17 @@ $core_colors: (
   lightGrey: #c8c8c8
 );
 
+$breakpoints: (
+  x-small: 460px,
+  small: 768px,
+  medium: 1024px,
+  large: 1200px
+);
+
 @function coreColor($c) {
   @return map-get($core_colors, $c);
+}
+
+@function breakpoint($size) {
+  @return map-get($breakpoints, $size);
 }

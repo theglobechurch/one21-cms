@@ -2,45 +2,49 @@
 
   <%= render('shared/form_errors', m: @study) %>
 
-  <section class="form__section">
-    <div class="form__field">
-      <%= f.text_field :study_name, class: 'form__input' %>
-      <%= f.label :study_name, class: 'form__label' %>
-    </div>
-
-    <div class="form__field">
-      <%= f.text_area :description, class: 'form__input' %>
-      <%= f.label :description, class: 'form__label' %>
-    </div>
-
-    <div class="form__field">
-      <%= f.text_field :recording_url, class: 'form__input' %>
-      <%= f.label :recording_url, class: 'form__label' %>
-    </div>
-
-    <div class="form__field">
-      <%= f.text_field :website_url, class: 'form__input' %>
-      <%= f.label :website_url, class: 'form__label' %>
-    </div>
-
-    <div class="form__field">
-      <%= f.hidden_field :passage_ref, class: 'form__input' %>
-      <div class="form__input js-scripturePicker"
-           data-inputId="study_passage_ref"
-           data-refText="<%= @study.bibleRefText %>"
-           data-refJson='<%= @study.passage_ref %>'>
-      </div>
-      <%= f.label :passage_ref, class: 'form__label' %>
-    </div>
-  </section>
+  <div class="form__body">
   
-  <section class="form__section">
-    <%= f.hidden_field :questions, class: 'form__input' %>
-    <div class="js-one21QuestionForm"
-         data-inputId="study_questions"
-         data-questionsJSON='<%= @study.questions %>'>
-    </div>
-  </section>
+    <section class="form__section">
+      <div class="form__field">
+        <%= f.text_field :study_name, class: 'form__input' %>
+        <%= f.label :study_name, class: 'form__label' %>
+      </div>
+
+      <div class="form__field">
+        <%= f.text_area :description, class: 'form__input' %>
+        <%= f.label :description, class: 'form__label' %>
+      </div>
+
+      <div class="form__field">
+        <%= f.text_field :recording_url, class: 'form__input' %>
+        <%= f.label :recording_url, class: 'form__label' %>
+      </div>
+
+      <div class="form__field">
+        <%= f.text_field :website_url, class: 'form__input' %>
+        <%= f.label :website_url, class: 'form__label' %>
+      </div>
+
+      <div class="form__field">
+        <%= f.hidden_field :passage_ref, class: 'form__input' %>
+        <div class="form__input js-scripturePicker"
+            data-inputId="study_passage_ref"
+            data-refText="<%= @study.bibleRefText %>"
+            data-refJson='<%= @study.passage_ref %>'>
+        </div>
+        <%= f.label :passage_ref, class: 'form__label' %>
+      </div>
+    </section>
+    
+    <section class="form__section">
+      <%= f.hidden_field :questions, class: 'form__input' %>
+      <div class="js-one21QuestionForm"
+          data-inputId="study_questions"
+          data-questionsJSON='<%= @study.questions %>'>
+      </div>
+    </section>
+
+  </div>
 
   <%= f.submit 'Save', class: 'btn btn--primary' %>
 

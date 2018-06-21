@@ -28,7 +28,7 @@ class ScripturePicker extends Component {
       refJson: ref,
       refText: props.refText,
       selectedBookData: null,
-      suggestBooks: []
+      suggestedBooks: []
     }
   }
 
@@ -159,74 +159,77 @@ class ScripturePicker extends Component {
           { this.state.popupOpen &&
             <div className="scripturePicker__popup">
 
-              Bible reference:
+              <h1 className="scripturePicker__title">
+                Bible reference:
+              </h1>
 
-              <div>
+              <div className="scripturePicker__bookSelector">
                 <input
                   type="text"
-                  className="js-sp-book-name"
+                  className="js-sp-book-name scripturePicker__input"
                   autoFocus
                   onKeyDown={this.onBookLookup.bind(this)}
                   defaultValue={this.state.refJson.reference_book}
                 />
-              </div>
 
-              { this.state.suggestedBooks &&
-                <div>
-                  <ul>
-                    { this.state.suggestedBooks.map((book, i) => (
+                {this.state.suggestedBooks.length !== 0 &&
+                  <ul className="scripturePicker__autocomplete">
+                    {this.state.suggestedBooks.map((book, i) => (
                       <li
                         key={i}
                         onClick={this.onSelectBook.bind(this, book)}
                       >
-                        { book.fullName }
+                        {book.fullName}
                       </li>
                     ))}
                   </ul>
-                </div>
-              }
-
-              <div>
-                <input
-                  type="number"
-                  className="scripturePicker__numberInput js-sp-start-ch"
-                  min="1"
-                  defaultValue={this.state.refJson.reference_book_start_ch}
-                  onChange={this.onSelectStartChapter.bind(this)}
-                />
-                v
-                <input
-                  type="number"
-                  min="1"
-                  className="scripturePicker__numberInput js-sp-start-v"
-                  defaultValue={this.state.refJson.reference_book_start_v}
-                />
+                }
               </div>
+              
+              <div className="scripturePicker__refSelector">
+                <div className="scripturePicker__refSelector__chv">
+                  <input
+                    type="number"
+                    className="scripturePicker__input  scripturePicker__input--number js-sp-start-ch"
+                    min="1"
+                    defaultValue={this.state.refJson.reference_book_start_ch}
+                    onChange={this.onSelectStartChapter.bind(this)}
+                  />
+                  v
+                  <input
+                    type="number"
+                    min="1"
+                    className="scripturePicker__input  scripturePicker__input--number js-sp-start-v"
+                    defaultValue={this.state.refJson.reference_book_start_v}
+                  />
+                </div>
 
-              <div>
-                <input
-                  type="number"
-                  min="1"
-                  className="scripturePicker__numberInput js-sp-end-ch"
-                  defaultValue={this.state.refJson.reference_book_end_ch}
-                />
-                v
-                <input
-                  type="number"
-                  min="1"
-                  className="scripturePicker__numberInput js-sp-end-v"
-                  defaultValue={this.state.refJson.reference_book_end_v}
-                />
+                <div className="scripturePicker__refSelector__chv">
+                  <input
+                    type="number"
+                    min="1"
+                    className="scripturePicker__input  scripturePicker__input--number js-sp-end-ch"
+                    defaultValue={this.state.refJson.reference_book_end_ch}
+                  />
+                  v
+                  <input
+                    type="number"
+                    min="1"
+                    className="scripturePicker__input  scripturePicker__input--number js-sp-end-v"
+                    defaultValue={this.state.refJson.reference_book_end_v}
+                  />
+                </div>
               </div>
 
               <button
                 onClick={this.onSaveReference.bind(this)}
-                className="btn btn--primary"
+                className="btn btn--primary scripturePicker__btn--confirm"
               >
                 Select
               </button>
 
               <button
+                className="scripturePicker__btn--close"
                 onClick={this.onTogglePopup.bind(this)}
               >
                 Cancel

@@ -3,6 +3,20 @@
   width: 100%;
   margin: 0 auto;
   padding: 0 10px;
+
+  @include bpMinLarge {
+    max-width: 1600px;
+  }
+}
+
+@include bpMinLarge {
+  .form__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 50px;
+    justify-items: stretch;
+    align-items: start;
+  }
 }
 
 .form__field {
@@ -44,7 +58,7 @@
   border-color: #c4674f;
 
   & + .form__label {
-    background-color: #c4674f;
-    border-color: #c4674f
+    background-color: coreColor(orange);;
+    border-color: coreColor(orange);
   }
 }
