@@ -1,13 +1,11 @@
 class StudySerializer < ActiveModel::Serializer
-  attributes :study_name, :slug, :description, :recording_url, :website_url, :passage_ref, :questions
+  attributes :name, :slug, :description, :recording_url, :website_url, :passage_ref, :passage, :questions
 
-  def questions
-    object.questions.map do |q|
-      {
-        type: 'question',
-        lead: q[:lead],
-        followup: q[:followup],
-      }
-    end
+  def name
+    object.study_name
+  end
+
+  def passage
+    object.passage_str
   end
 end

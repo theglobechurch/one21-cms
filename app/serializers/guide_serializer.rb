@@ -1,5 +1,9 @@
 class GuideSerializer < ActiveModel::Serializer
   
-  attributes :guide_name, :slug, :teaser, :description, :copyright, :highlight_first
+  attributes :name, :slug, :teaser, :description, :copyright, :highlight_first
+
+  def name
+    object.guide_name
+  end
 
 end

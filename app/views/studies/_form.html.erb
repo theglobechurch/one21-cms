@@ -29,7 +29,7 @@
         <%= f.hidden_field :passage_ref_json, class: 'form__input' %>
         <div class="form__input js-scripturePicker"
             data-inputId="study_passage_ref_json"
-            data-refText="<%= @study.bibleRefText %>"
+            data-refText="<%= @study.passage_str %>"
             data-refJson="<%= @study.passage_ref_json %>">
         </div>
         <%= f.label :passage_ref, class: 'form__label' %>

@@ -7,7 +7,7 @@ class StudiesController < ApplicationController
   end
 
   def show
-    @study = study.decorate
+    @study = study
   end
 
   def new
@@ -28,7 +28,7 @@ class StudiesController < ApplicationController
 
   def edit
     @guide = guide
-    @study = study.decorate
+    @study = study
   end
 
   def update
