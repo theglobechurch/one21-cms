@@ -23,12 +23,10 @@
 
     <div id="root"></div>
 
-    <% if notice %>
-    <p class="notice"><%= notice %></p>
-    <% end %>
-
-    <% if alert %>
-    <p class="alert"><%= alert %></p>
+    <% if notice || alert %>
+    <div class="toast toast--bottom">
+      <p><%= notice if notice %><%= alert if alert %></p>
+    </div>
     <% end %>
 
     <footer>
