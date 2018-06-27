@@ -6,7 +6,7 @@
 
 <p>This is a guide produced by <%= @guide.churches.first.church_name %></p>
 
-<% if @guide.studies.present? %>
+<% if @studies.present? %>
   <ul class="m-reorderable js-reorderable">
     <% for study in @studies do %>
       <li class="m-reorderable__item">

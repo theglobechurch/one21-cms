@@ -42,7 +42,7 @@ class StudiesController < ApplicationController
 private
 
   def studies
-    @studies ||= Study.all
+    @studies ||= Study.unscoped.all
   end
 
   def study

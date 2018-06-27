@@ -53,7 +53,7 @@ private
   end
 
   def studies
-    @studies ||= guide.studies.where(status: [:draft, :published])
+    @studies ||= guide.studies.unscoped.where(status: [:draft, :published])
   end
 
   def guide_params
