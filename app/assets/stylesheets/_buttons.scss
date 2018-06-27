@@ -24,8 +24,17 @@
   text-transform: uppercase;
   vertical-align: middle;
   
+
+  &:hover {
+    color: black;  
+  }
+
   &--primary {
     background-color: #C3684F;
     color: #fff;
+
+    &:hover {
+      color: #fff;  
+    }
   }
 }

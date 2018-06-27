@@ -6,6 +6,8 @@
 
 <p>This is a guide produced by <%= @guide.churches.first.church_name %></p>
 
+<%= link_to("Edit " + @guide.guide_name, edit_guide_path(@guide), class: 'btn') %>
+
 <% if @studies.present? %>
   <ul class="m-reorderable js-reorderable">
     <% for study in @studies do %>
@@ -19,6 +21,6 @@
 <% end %>
 
 <div class="btn-block">
-<%= link_to('Add new study', new_guide_study_path(@guide), class: 'btn')%>
+<%= link_to('Add new study', new_guide_study_path(@guide), class: 'btn btn--primary')%>
 </div>
 
