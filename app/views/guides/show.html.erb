@@ -1,13 +1,15 @@
 <h1><%= @guide.guide_name %></h1>
 
+<%= render partial: "shared/state_switcher", locals: { record: @guide } %>
+
 <p><%= @guide.teaser %>
 
 <p>This is a guide produced by <%= @guide.churches.first.church_name %></p>
 
 <% if @guide.studies.present? %>
   <ul class="m-reorderable js-reorderable">
-    <% for study in @guide.studies do %>
-      <li class="m-reorderable__item"><%= link_to(study.study_name, edit_guide_study_path(@guide, study)) %></li>
+    <% for study in @studies do %>
+      <li class="m-reorderable__item"><%= link_to(study.study_name, edit_guide_study_path(@guide, study)) %> (<%=study.status %>)</li>
     <% end %>
   </ul>
 <hr />

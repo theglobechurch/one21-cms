@@ -6,6 +6,10 @@ class StudiesController < ApplicationController
     @studies = studies
   end
 
+  def show
+    @study = study.decorate
+  end
+
   def new
     @guide = guide
     @study = @guide.studies.build
@@ -20,10 +24,6 @@ class StudiesController < ApplicationController
     else
       render 'new'
     end
-  end
-
-  def show
-    @study = study.decorate
   end
 
   def edit

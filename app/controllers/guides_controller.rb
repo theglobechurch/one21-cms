@@ -9,6 +9,7 @@ class GuidesController < ApplicationController
 
   def show
     @guide = guide
+    @studies = studies
   end
 
   def new
@@ -22,6 +23,18 @@ class GuidesController < ApplicationController
       redirect_to @guide
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @guide = guide
+  end
+
+  def update
+    guide.attributes = guide_params
+    if guide.save
+      flash[:notice] = 'Guide updated'
+      redirect_to guide_path(guide)
     end
   end
 
@@ -39,11 +52,16 @@ private
     @guide ||= guides.find_by_slug!(params[:id])
   end
 
+  def studies
+    @studies ||= guide.studies.where(status: [:draft, :published])
+  end
+
   def guide_params
     params.require(:guide).permit(:guide_name,
                                   :teaser,
                                   :description,
-                                  :copyright)
+                                  :copyright,
+                                  :status)
   end
 
 end

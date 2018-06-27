@@ -1,0 +1,6 @@
+<div class="state_switcher">
+  Status: <%= record.status %>
+  <%= status_change_button('Unpublish', record, :draft) if record.status != "draft" %>
+  <%= status_change_button('Publish', record, :published) if record.status != "published" %>
+  <%= status_change_button('Delete', record, :deleted) if record.status != "deleted" %>
+</div>
