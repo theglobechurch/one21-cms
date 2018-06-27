@@ -2,7 +2,7 @@ class Study < ApplicationRecord
 
   belongs_to :guide, foreign_key: "guides_id"
 
-  validates :study_name, :slug, :questions, presence: true
+  validates :study_name, :slug, :questions_json, presence: true
   validates :slug, uniqueness: true
   validates :sort_order, numericality: { only_integer: true }
 
@@ -19,6 +19,22 @@ class Study < ApplicationRecord
 
   def self.find_by_slug(s)
     find_by slug: s
+  end
+
+  def questions
+    @questions ||= if questions_json.present?
+                     MultiJson.load(questions_json, symbolize_keys: true)
+                   else
+                     []
+                   end
+  end
+
+  def passage_ref
+    @passage_ref ||= if passage_ref_json.present?
+                       MultiJson.load(passage_ref_json, symbolize_keys: true)
+                     else
+                       []
+                     end
   end
 
 private

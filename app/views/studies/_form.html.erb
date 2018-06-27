@@ -26,21 +26,21 @@
       </div>
 
       <div class="form__field">
-        <%= f.hidden_field :passage_ref, class: 'form__input' %>
+        <%= f.hidden_field :passage_ref_json, class: 'form__input' %>
         <div class="form__input js-scripturePicker"
-            data-inputId="study_passage_ref"
+            data-inputId="study_passage_ref_json"
             data-refText="<%= @study.bibleRefText %>"
-            data-refJson='<%= @study.passage_ref %>'>
+            data-refJson="<%= @study.passage_ref_json %>">
         </div>
         <%= f.label :passage_ref, class: 'form__label' %>
       </div>
     </section>
     
     <section class="form__section">
-      <%= f.hidden_field :questions, class: 'form__input' %>
+      <%= f.hidden_field :questions_json, class: 'form__input' %>
       <div class="js-one21QuestionForm"
-          data-inputId="study_questions"
-          data-questionsJSON='<%= @study.questions %>'>
+          data-inputId="study_questions_json"
+          data-questionsJSON='<%= @study.questions_json %>'>
       </div>
     </section>
 

@@ -63,8 +63,8 @@ private
                                   :sort_order,
                                   :recording_url,
                                   :website_url,
-                                  :passage_ref,
-                                  :questions,
+                                  :passage_ref_json,
+                                  :questions_json,
                                   :status)
   end
 

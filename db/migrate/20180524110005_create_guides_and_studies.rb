@@ -35,8 +35,8 @@ class CreateGuidesAndStudies < ActiveRecord::Migration[5.2]
       t.string :recording_url
       t.string :website_url
 
-      t.jsonb :passage_ref
-      t.jsonb :questions, null: false, default: ""
+      t.jsonb :passage_ref_json
+      t.jsonb :questions_json, null: false, default: ""
 
       t.timestamps null: false
     end

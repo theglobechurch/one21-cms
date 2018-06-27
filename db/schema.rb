@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 2018_05_24_110005) do
     t.integer "sort_order", default: 0, null: false
     t.string "recording_url"
     t.string "website_url"
-    t.jsonb "passage_ref"
-    t.jsonb "questions", default: "", null: false
+    t.jsonb "passage_ref_json"
+    t.jsonb "questions_json", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["guides_id"], name: "index_studies_on_guides_id"
