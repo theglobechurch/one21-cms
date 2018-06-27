@@ -64,7 +64,8 @@ private
                                   :recording_url,
                                   :website_url,
                                   :passage_ref,
-                                  :questions)
+                                  :questions,
+                                  :status)
   end
 
 end

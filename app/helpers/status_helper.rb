@@ -1,7 +1,11 @@
 module StatusHelper
   def status_change_button(name, record, status, options = {},
                           html_options = {})
-    model_name = record.class.name.underscore
+
+    m = record
+    m = m.last if m.kind_of?(Array)
+
+    model_name = m.class.name.underscore
     button_to name,
               record,
               method: :patch,

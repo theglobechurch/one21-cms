@@ -1,6 +1,12 @@
+<% if record.kind_of?(Array)
+  status = record.last.status
+else
+  status = record.status
+end %>
+
 <div class="state_switcher">
-  Status: <%= record.status %>
-  <%= status_change_button('Unpublish', record, :draft) if record.status != "draft" %>
-  <%= status_change_button('Publish', record, :published) if record.status != "published" %>
-  <%= status_change_button('Delete', record, :deleted) if record.status != "deleted" %>
+  Status: <%= status %>
+  <%= status_change_button('Unpublish', record, :draft) if status != "draft" %>
+  <%= status_change_button('Publish', record, :published) if status != "published" %>
+  <%= status_change_button('Delete', record, :deleted) if status != "deleted" %>
 </div>

@@ -9,7 +9,10 @@
 <% if @guide.studies.present? %>
   <ul class="m-reorderable js-reorderable">
     <% for study in @studies do %>
-      <li class="m-reorderable__item"><%= link_to(study.study_name, edit_guide_study_path(@guide, study)) %> (<%=study.status %>)</li>
+      <li class="m-reorderable__item">
+        <%= link_to(study.study_name, edit_guide_study_path(@guide, study)) %>
+          <%= render partial: "shared/state_switcher", locals: { record: [@guide, study] } %>
+      </li>
     <% end %>
   </ul>
 <hr />
