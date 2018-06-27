@@ -16,7 +16,8 @@ class Api::V1::GuidesController < ApiController
 private
 
   def guides
-    @guides ||= Guide.joins(:churches).
+    @guides ||= Guide.published.
+                      joins(:churches).
                       where(churches: {
                         slug: params[:church_slug]
                       })
