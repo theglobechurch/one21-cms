@@ -22,7 +22,15 @@
     <%= f.label :copyright, class: 'form__label' %>
   </div>
 
-  <%= f.submit 'Save', class: 'form__submit btn btn--primary' %>
+  <%= f.hidden_field :graphics_id %>
+  <div
+    class="js-imageUploader"
+    data-inputId="guide_graphics_id"
+    data-fieldLabel="Lead image"
+    data-churchGraphicEndpoint="/graphics/<%= @current_user.church.slug %>"
+    data-previewURL="<%= @guide.graphic.try(:graphic_960).try('remote_url') %>">
+  </div>
 
+  <%= f.submit 'Save', class: 'form__submit btn btn--primary' %>
 
 <% end %>

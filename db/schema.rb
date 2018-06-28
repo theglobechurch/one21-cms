@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_24_110005) do
+ActiveRecord::Schema.define(version: 2018_07_01_102130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,23 @@ ActiveRecord::Schema.define(version: 2018_05_24_110005) do
     t.index ["verified"], name: "index_churches_on_verified"
   end
 
+  create_table "graphics", force: :cascade do |t|
+    t.bigint "churches_id"
+    t.string "graphic_name"
+    t.string "graphic_uid"
+    t.string "graphic_thumbnail_uid"
+    t.string "graphic_thumbnail_2x_uid"
+    t.string "graphic_320_uid"
+    t.string "graphic_640_uid"
+    t.string "graphic_960_uid"
+    t.string "graphic_1280_uid"
+    t.string "graphic_1920_uid"
+    t.string "graphic_2560_uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["churches_id"], name: "index_graphics_on_churches_id"
+  end
+
   create_table "guides", force: :cascade do |t|
     t.string "guide_name", default: "", null: false
     t.string "slug", default: "", null: false
@@ -50,6 +67,8 @@ ActiveRecord::Schema.define(version: 2018_05_24_110005) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "graphics_id"
+    t.index ["graphics_id"], name: "index_guides_on_graphics_id"
   end
 
   create_table "studies", force: :cascade do |t|
@@ -66,6 +85,8 @@ ActiveRecord::Schema.define(version: 2018_05_24_110005) do
     t.jsonb "questions_json", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "graphics_id"
+    t.index ["graphics_id"], name: "index_studies_on_graphics_id"
     t.index ["guides_id"], name: "index_studies_on_guides_id"
   end
 

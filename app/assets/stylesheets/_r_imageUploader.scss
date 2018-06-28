@@ -1,0 +1,93 @@
+.imageUpload {
+
+}
+
+.imageUpload__dropzone {
+  background: coreColor(white);
+  border: 1px solid coreColor(lightGrey);
+  min-height: 250px;
+  padding: 10px;
+  position: relative;
+  transition: background-color .5s, border-color .5s;
+  width: 100%;
+
+  &.is-hovering {
+    background-color: coreColor(orange);
+    border-color: coreColor(orange);
+    
+    &:after {
+      color: white;
+      content: "Drop your image to upload";
+      position: absolute;
+      width: 100%;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+
+    & * {
+      visibility: hidden;
+    }
+  }
+}
+
+.imageUpload__btn_pad {
+  margin: 0 10px;
+}
+
+.imageUpload__imagePreview {
+  display: block;
+  margin-bottom: 10px;
+  max-height: 200px;
+  max-width: 100%;
+}
+
+.imageUpload__uploadField {
+  @include visuallyHidden();
+}
+
+// In the popup
+.imageUpload__preview {
+
+}
+
+.imageUpload__preview__image {
+  background: coreColor(middleGrey) no-repeat center center;
+  background-size: contain;
+  border: 1px solid coreColor(lightGrey);
+  height: 300px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.imageUpload__gallery {
+  height: 80vh;
+  overflow-x: scroll;
+  width: 100%;
+
+  &__item{
+    align-items: center;
+    background-color: transparent;
+    border-bottom: 1px solid coreColor(orange);
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    transition: background-color .5s;
+    width: 100%;
+
+    &:hover {
+      background-color: coreColor(middleGrey);
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    & img {
+      height: 75px;
+      margin-right: 10px;
+      width: 75px;
+    }
+  }
+}

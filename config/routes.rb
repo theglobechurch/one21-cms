@@ -26,6 +26,11 @@ Rails.application.routes.draw do
   end
   
   resources :admin, only: [:index] 
+  resources :graphics, only: [:index, :create] do
+    member do
+      get '(:church_slug)', to: 'graphics#church_graphic'
+    end
+  end
   resources :churches
   resources :guides do
     resources :studies

@@ -1,6 +1,9 @@
 class Study < ApplicationRecord
 
-  belongs_to :guide, foreign_key: "guides_id"
+  belongs_to :guide,
+             foreign_key: :guides_id
+  belongs_to :graphic,
+             foreign_key: :graphics_id
 
   validates :study_name, :slug, :questions_json, presence: true
   validates :slug, uniqueness: true

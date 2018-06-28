@@ -153,11 +153,11 @@ class ScripturePicker extends Component {
         </div>
 
         <ReactCSSTransitionGroup
-          transitionName="scripturePickerFade"
+          transitionName="r_popupFade"
           transitionEnterTimeout={250}
           transitionLeaveTimeout={250}>
           { this.state.popupOpen &&
-            <div className="scripturePicker__popup">
+            <div className="r_popup">
 
               <h1 className="scripturePicker__title">
                 Bible reference:
@@ -229,7 +229,7 @@ class ScripturePicker extends Component {
               </button>
 
               <button
-                className="scripturePicker__btn--close"
+                className="r_popup__btn--close"
                 onClick={this.onTogglePopup.bind(this)}
               >
                 Cancel

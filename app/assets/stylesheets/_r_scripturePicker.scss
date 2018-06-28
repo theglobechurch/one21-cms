@@ -6,26 +6,6 @@
   min-height: 27px;
 }
 
-.scripturePicker__popup {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: coreColor(darkestGrey);
-  z-index: 1;
-  color: coreColor(white);
-
-  display: flex;
-  flex-direction: column;
-  padding: 50px 25px;
-  justify-content: center;
-
-  @include bpMinXSmall() {
-    padding: 0px 40% 0 10%;
-  }
-}
-
 .scripturePicker__title {
   font-size: 100%;
   font-weight: 100;
@@ -82,18 +62,6 @@
       max-width: 200px;
     }
   }
-
-  &--close {
-    background: none;
-    border-radius: 50%;
-    border: 1px solid coreColor(white);
-    color: coreColor(white);
-    height: 50px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    width: 50px;
-  }
 }
 
 .scripturePicker__autocomplete {
@@ -117,22 +85,4 @@
       margin-bottom: 0;
     }
   }
-}
-
-.scripturePickerFade-enter {
-  opacity: 0.01;
-}
-
-.scripturePickerFade-enter.scripturePickerFade-enter-active {
-  opacity: 1;
-  transition: opacity 250ms ease-in;
-}
-
-.scripturePickerFade-leave {
-  opacity: 1;
-}
-
-.scripturePickerFade-leave.scripturePickerFade-leave-active {
-  opacity: 0.01;
-  transition: opacity 250ms ease-in;
 }

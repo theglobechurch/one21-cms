@@ -61,7 +61,8 @@ private
                                   :teaser,
                                   :description,
                                   :copyright,
-                                  :status)
+                                  :status,
+                                  :graphics_id)
   end
 
 end

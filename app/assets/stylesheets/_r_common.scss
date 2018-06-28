@@ -1,0 +1,50 @@
+.r_popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: coreColor(darkestGrey);
+  z-index: 1;
+  color: coreColor(white);
+
+  display: flex;
+  flex-direction: column;
+  padding: 50px 25px;
+  justify-content: center;
+
+  @include bpMinXSmall() {
+    padding: 0px 40% 0 10%;
+  }
+}
+
+.r_popup__btn--close {
+  background: none;
+  border-radius: 50%;
+  border: 1px solid coreColor(white);
+  color: coreColor(white);
+  height: 50px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 50px;
+}
+
+
+.r_popupFade-enter {
+  opacity: 0.01;
+}
+
+.r_popupFade-enter.r_popupFade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+
+.r_popupFade-leave {
+  opacity: 1;
+}
+
+.r_popupFade-leave.r_popupFade-leave-active {
+  opacity: 0.01;
+  transition: opacity 250ms ease-in;
+}

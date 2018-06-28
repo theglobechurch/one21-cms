@@ -4,6 +4,9 @@ class Guide < ApplicationRecord
   has_many :church_guides
   has_many :churches, through: :church_guides
 
+  belongs_to :graphic,
+             foreign_key: :graphics_id
+
   validates :guide_name, :slug, presence: true
   validates :slug,  uniqueness: true
 
