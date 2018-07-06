@@ -180,6 +180,15 @@ class ImageUploader extends Component {
     this.props.onConfirm(id);
   }
 
+  clearSelectedImage() {
+    this.setState({
+      errors: ["Image cleared"],
+      popup: null,
+      previewURL: null
+    });
+    this.props.onConfirm(null);
+  }
+
   selectExisting(e) {
     e.preventDefault();
     this.setState({ popup: 'gallery' });
@@ -272,6 +281,13 @@ class ImageUploader extends Component {
               className="btn"
             >
               Upload
+            </label>
+
+            <label
+              className="btn"
+              onClick={this.clearSelectedImage.bind(this)}
+            >
+              Clear selected
             </label>
 
           </div>
