@@ -65,7 +65,8 @@ private
                                   :website_url,
                                   :passage_ref_json,
                                   :questions_json,
-                                  :status)
+                                  :status,
+                                  :graphics_id)
   end
 
 end

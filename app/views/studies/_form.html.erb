@@ -34,6 +34,15 @@
         </div>
         <%= f.label :passage_ref, class: 'form__label' %>
       </div>
+
+      <%= f.hidden_field :graphics_id %>
+      <div
+        class="js-imageUploader"
+        data-inputId="study_graphics_id"
+        data-fieldLabel="Lead image (optional)"
+        data-churchGraphicEndpoint="/graphics/<%= @current_user.church.slug %>"
+        data-previewURL="<%= @study.graphic.try(:graphic_960).try('remote_url') %>">
+      </div>
     </section>
     
     <section class="form__section">
