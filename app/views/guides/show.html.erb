@@ -1,5 +1,7 @@
-<%= image_tag @guide.graphic.try(:graphic_640).try(:remote_url) %>
 
+<% if @guide.graphic %>
+  <%= image_tag @guide.graphic.try(:graphic_640).try(:remote_url) %>
+<% end %>
 <h1><%= @guide.guide_name %></h1>
 
 <%= render partial: "shared/state_switcher", locals: { record: @guide } %>
