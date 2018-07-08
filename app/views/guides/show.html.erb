@@ -17,7 +17,8 @@
     <% for study in @studies do %>
       <li class="m-reorderable__item">
         <%= link_to(study.study_name, edit_guide_study_path(@guide, study)) %>
-          <%= render partial: "shared/state_switcher", locals: { record: [@guide, study] } %>
+        <%= markdown(study.study_start) %>
+        <%= render partial: "shared/state_switcher", locals: { record: [@guide, study] } %>
       </li>
     <% end %>
   </ul>

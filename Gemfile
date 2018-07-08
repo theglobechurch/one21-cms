@@ -13,6 +13,7 @@ gem 'devise'
 gem 'stringex', '~> 2.8', '>= 2.8.4'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'draper', '~> 3.0.1'
+gem 'redcarpet', '~> 3.4.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

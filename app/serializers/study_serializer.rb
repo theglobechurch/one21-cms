@@ -1,11 +1,19 @@
 class StudySerializer < ActiveModel::Serializer
   attributes :name, :slug, :description, :recording_url, :website_url,
-             :passage_ref, :passage, :questions
+             :passage_ref, :passage, :questions, :start, :end
   attribute :image, if: :has_graphic?
   attribute :images, if: :has_graphic?
 
   def name
     object.study_name
+  end
+
+  def start
+    object.study_start
+  end
+
+  def end
+    object.study_end
   end
 
   def passage

@@ -35,14 +35,6 @@
         <%= f.label :passage_ref, class: 'form__label' %>
       </div>
 
-      <%= f.hidden_field :graphics_id %>
-      <div
-        class="js-imageUploader"
-        data-inputId="study_graphics_id"
-        data-fieldLabel="Lead image (optional)"
-        data-churchGraphicEndpoint="/graphics/<%= @current_user.church.slug %>"
-        data-previewURL="<%= @study.graphic.try(:graphic_960).try('remote_url') %>">
-      </div>
     </section>
     
     <section class="form__section">
@@ -51,6 +43,28 @@
           data-inputId="study_questions_json"
           data-questionsJSON='<%= @study.questions_json %>'>
       </div>
+    </section>
+
+    <section class="form__section form__section--addtional js-toggleable">
+      <%= f.hidden_field :graphics_id %>
+      <div
+        class="js-imageUploader"
+        data-inputId="study_graphics_id"
+        data-fieldLabel="Lead image (optional)"
+        data-churchGraphicEndpoint="/graphics/<%= @current_user.church.slug %>"
+        data-previewURL="<%= @study.graphic.try(:graphic_960).try('remote_url') %>">
+      </div>
+
+      <div class="form__field">
+        <%= f.text_area :study_start, class: 'form__input' %>
+        <%= f.label :study_start, class: 'form__label' %>
+      </div>
+
+      <div class="form__field">
+        <%= f.text_area :study_end, class: 'form__input' %>
+        <%= f.label :study_end, class: 'form__label' %>
+      </div>
+
     </section>
 
   </div>

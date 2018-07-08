@@ -65,7 +65,9 @@ private
                                   :passage_ref_json,
                                   :questions_json,
                                   :status,
-                                  :graphics_id)
+                                  :graphics_id,
+                                  :study_start,
+                                  :study_end)
   end
 
 end

@@ -18,3 +18,6 @@ en:
         url: "Church website"
         phone: "Church office telephone number"
         city: "Town / City"
+      study:
+        study_start: "Study introduction"
+        study_end: "Study conclusion"
