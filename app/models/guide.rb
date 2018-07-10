@@ -13,7 +13,8 @@ class Guide < ApplicationRecord
 
   acts_as_url :guide_name, sync_url: true, force_downcase: true, url_attribute: :slug, only_when_blank: true
 
-  enum status: [:draft, :published, :archived, :deleted]
+  enum status:  [:draft, :published, :archived, :deleted]
+  enum sorting: [:date_desc, :date_asc, :ordered]
   after_initialize :set_default_status, :if => :new_record?
 
   after_create :link_church

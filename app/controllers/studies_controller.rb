@@ -20,7 +20,7 @@ class StudiesController < ApplicationController
     @study = @guide.studies.new(study_params)
     if @study.save
       flash[:notice] = 'Study created'
-      redirect_to guide_study_path(@guide, @study)
+      redirect_to guide_path(@guide)
     else
       render 'new'
     end

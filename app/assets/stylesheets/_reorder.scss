@@ -1,12 +1,22 @@
-.m-reorderable {
+.sortableList {
   margin: 0;
   padding: 0;
+}
 
-  &__item {
-    display: block;
-    border: 1px solid red;
-    padding: 10px;
-    margin: 10px 0;
-    width: 200px;
+.sortable {
+  display: block;
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px 0;
+  width: 200px;
+  transition: all .5s;
+
+  &__handle {
+    float: left;
+    cursor: move;
+  }
+
+  &--placeholder {
+    border: 1px solid #ccc;
   }
 }

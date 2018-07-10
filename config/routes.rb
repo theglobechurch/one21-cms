@@ -34,5 +34,8 @@ Rails.application.routes.draw do
   resources :churches
   resources :guides do
     resources :studies
+    member do
+      post '/reorder', to: 'guides#reorder'
+    end
   end
 end

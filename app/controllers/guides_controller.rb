@@ -38,6 +38,21 @@ class GuidesController < ApplicationController
     end
   end
 
+  def reorder
+    if (@orders = params[:studyIds]) && (@orders.present?)
+      @orders = JSON.parse(params[:studyIds])
+      if @orders.kind_of?(Array) && @orders.size > 0
+        data = {}
+        @orders.each_with_index do |id, index|
+          data[id] = { sort_order: index }
+        end
+        Study.all.update(data.keys, data.values)
+      end
+    end
+
+    render json: ['win']
+  end
+
 private
 
   def guides
@@ -53,7 +68,19 @@ private
   end
 
   def studies
-    @studies ||= guide.studies.unscoped.where(status: [:draft, :published])
+    if @studies
+      @studies
+    else
+      @studies = guide.studies.unscoped.where(status: [:draft, :published])
+      if @guide.sorting == "date_desc"
+        @studies.order(created_at: :desc)
+      elsif @guide.sorting == "date_asc"
+        @studies.order(created_at: :asc)
+      else
+        @studies.order(sort_order: :asc)
+      end
+      
+    end
   end
 
   def guide_params
@@ -62,7 +89,8 @@ private
                                   :description,
                                   :copyright,
                                   :status,
-                                  :graphics_id)
+                                  :graphics_id,
+                                  :sorting)
   end
 
 end

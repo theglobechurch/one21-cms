@@ -10,6 +10,7 @@
     "prod:css": "node-sass --follow --output-style expanded app/assets/stylesheets/application.scss | node_modules/.bin/postcss -u autoprefixer -u cssnano -o public/assets/css/main.css"
   },
   "dependencies": {
+    "html5sortable": "^0.9.3",
     "npm": "^6.1.0",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",

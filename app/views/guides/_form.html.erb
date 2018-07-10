@@ -31,6 +31,14 @@
     data-previewURL="<%= @guide.graphic.try(:graphic_960).try('remote_url') %>">
   </div>
 
+  <div class="form__field">
+    <span class="form__input">
+      <%= f.collection_radio_buttons :sorting, Guide.sortings.keys.map { |w| [w.humanize, w] }, :second, :first %>
+    </span>
+    <%= f.label :sorting, class: 'form__label' %>
+  </div>
+
+
   <%= f.submit 'Save', class: 'form__submit btn btn--primary' %>
 
 <% end %>
