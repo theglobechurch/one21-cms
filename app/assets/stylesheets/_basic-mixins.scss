@@ -1,4 +1,4 @@
-@mixin visuallyHidden {
+@mixin visuallyHidden() {
   border: none;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -55,4 +55,23 @@
   @media (max-width: breakpoint(large)) {
     @content;
   }
+}
+
+@mixin unbulleted-list() { 
+  padding: 0;
+  list-style-type: none;
+}
+
+@mixin unstyled-input() { 
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font: inherit;
+}
+
+@mixin unstyled-list() { 
+  @include unbulleted-list;
+  margin: 0;
 }

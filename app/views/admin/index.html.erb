@@ -1,6 +1,6 @@
 <% if @church %>
 
-  <section class="panel">
+  <section class="wrapper__section">
 
     <h2><%= @church.church_name %></h2>
     
@@ -33,7 +33,7 @@
 
   </section>
 
-  <section>
+  <section class="wrapper__section guideOverview">
     <h2>Guides</h2>
 
     <% if @guides.present? %>

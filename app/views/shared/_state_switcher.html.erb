@@ -4,9 +4,13 @@ else
   status = record.status
 end %>
 
-<div class="state_switcher">
-  Status: <%= status %>
-  <%= status_change_button('Unpublish', record, :draft) if status != "draft" %>
-  <%= status_change_button('Publish', record, :published) if status != "published" %>
-  <%= status_change_button('Delete', record, :deleted) if status != "deleted" %>
+<% klass = "#{klass} stateSwitcher js-stateSwitcher"%>
+
+<div class="<%= klass %>">
+  <button class="stateSwitcher__current"><%= status %></button>
+  <div class="stateSwitcher__actions">
+    <%= status_change_button('Unpublish', record, :draft, class: "") if status != "draft" %>
+    <%= status_change_button('Publish', record, :published, class: "") if status != "published" %>
+    <%= status_change_button('Delete', record, :deleted, class: "") if status != "deleted" %>
+  </div>
 </div>

@@ -1,35 +1,63 @@
+<section class="wrapper__section">
+  <% if @guide.graphic %>
+    <div class="wrapper__section__leadGraphic">
+      <%= image_tag @guide.graphic.try(:graphic_640).try(:remote_url) %>
+    </div>
+  <% end %>
 
-<% if @guide.graphic %>
-  <%= image_tag @guide.graphic.try(:graphic_640).try(:remote_url) %>
-<% end %>
-<h1><%= @guide.guide_name %></h1>
+  <header class="wrapper__section__header">
+    <div class="wrapper__section__header__content">
+      <h2><%= @guide.guide_name %></h2>
+    </div>
 
-<%= render partial: "shared/state_switcher", locals: { record: @guide } %>
+    <div class="wrapper__section__header__action">
+      <%= render partial: "shared/state_switcher", locals: { record: @guide } %>
+    </div>
+  </header>
 
-<p><%= @guide.teaser %>
 
-<p>This is a guide produced by <%= @guide.churches.first.church_name %></p>
+  <p><%= @guide.teaser %>
 
-<%= link_to("Edit " + @guide.guide_name, edit_guide_path(@guide), class: 'btn') %>
+  <p>This is a guide produced by <%= @guide.churches.first.church_name %></p>
+
+  <%= link_to("Edit " + @guide.guide_name, edit_guide_path(@guide), class: 'btn') %>
+
+</section>
 
 <% if @studies.present? %>
+<section class="wrapper__section">
+  <header class="wrapper__section__header">
+    <div class="wrapper__section__header__content">
+      <h2>Studies</h2>
+    </div>
+
+    <div class="wrapper__section__header__action">
+      <%= link_to('Add new study', new_guide_study_path(@guide), class: 'btn btn--primary')%>
+    </div>
+  </header>
+
   <ul class="sortableList js-sortable" data-push="<%= guide_path(@guide) %>/reorder">
     <% for study in @studies do %>
-      <li class="sortable js-reorderable__item" data-id="<%=study.id%>">
+      <li class="sortable js-reorderable__item<% if @guide.sorting == 'ordered' %> sortable--active<% end %>" data-id="<%=study.id%>">
+        
         <% if @guide.sorting == 'ordered' %>
-          <span class="sortable__handle">||| </span> 
+          <div class="sortable__handle">|||</div> 
         <% end %>
-        <%= link_to(study.study_name, edit_guide_study_path(@guide, study)) %>
+
+        <div class="sortable__img">
+          img
+        </div>
+
+        <div class="sortable__desc">
+          <%= link_to(study.study_name, edit_guide_study_path(@guide, study)) %>
+        </div>
         <%#= markdown(study.study_start) %>
-        <%= study.created_at %>
-        <%= render partial: "shared/state_switcher", locals: { record: [@guide, study] } %>
+
+        <%= render partial: "shared/state_switcher", locals: { record: [@guide, study], klass: "sortable__actions" }  %>
       </li>
     <% end %>
   </ul>
-<hr />
+</section>
 <% end %>
 
-<div class="btn-block">
-  <%= link_to('Add new study', new_guide_study_path(@guide), class: 'btn btn--primary')%>
-</div>
 
