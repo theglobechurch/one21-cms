@@ -46,7 +46,7 @@ class GuidesController < ApplicationController
         @orders.each_with_index do |id, index|
           data[id] = { sort_order: index }
         end
-        Study.all.update(data.keys, data.values)
+        Study.unscoped.all.update(data.keys, data.values)
       end
     end
 
