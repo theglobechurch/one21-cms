@@ -37,4 +37,14 @@
       color: #fff;  
     }
   }
+
+  &--textonly {
+    padding: 0;
+    height: auto;
+    box-shadow: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

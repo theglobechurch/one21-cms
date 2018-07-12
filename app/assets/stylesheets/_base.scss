@@ -34,12 +34,16 @@ body, html {
     }
   }
 
-  &__section__header {
+  &__section__header,
+  &__section__body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 20px;
     justify-items: start;
     align-items: center;
+  }
+
+  &__section__header {
     border-bottom: 1px solid #ccc;
 
     h2 {
@@ -48,14 +52,10 @@ body, html {
       color: coreColor(black);
       letter-spacing: 0.74px;
     }
-  }
 
-  &__section__header__content {
-    
-  }
-
-  &__section__header__action {
-    display: inherit;
-    justify-self: right;
+    &__action {
+      display: inherit;
+      justify-self: right;
+    }
   }
 }

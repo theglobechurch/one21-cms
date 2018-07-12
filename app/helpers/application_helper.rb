@@ -19,4 +19,11 @@ module ApplicationHelper
 
     markdown.render(text).html_safe
   end
+
+  def gravatar_url(email, **options)
+    grav = Digest::MD5.hexdigest(email.strip.downcase)
+    URI("https://www.gravatar.com/avatar/" << grav).tap do |uri|
+      uri.query = options.to_query
+    end.to_s
+  end
 end

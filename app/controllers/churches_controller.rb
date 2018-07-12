@@ -26,6 +26,7 @@ class ChurchesController < ApplicationController
   end
 
   def edit
+    @church = church
     # edit form for church
     # church name locked if not super admin
   end
@@ -47,7 +48,11 @@ class ChurchesController < ApplicationController
   end
 
   def update
-    # update database
+    church.attributes = church_params
+    if church.save
+      flash[:notice] = 'Church updated'
+      redirect_to root_path()
+    end
   end
 
 private

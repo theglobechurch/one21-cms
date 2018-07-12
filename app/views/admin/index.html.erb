@@ -2,35 +2,45 @@
 
   <section class="wrapper__section">
 
-    <h2><%= @church.church_name %></h2>
-    
-    <% if !@church.verified %>
-      <div class="message message--alert">
-        <p class="message__headline"><%= t('gateway.unverified_msg.headline', church_name: @church.church_name) %></p>
-        <p><%= t('gateway.unverified_msg.description') %></p>
-      </div>
-    <% end %>
+    <div class="wrapper__section__body">
 
-    <ul>
-      <% if @church.email.present? %>
-        <li>Email: <%= @church.email %></li>
-      <% end %>
+      <section class="churchPrimer">
 
-      <% if @church.url.present? %>
-        <li>URL: <%= @church.url %></li>
-      <% end %>
-      
-      <% if @church.phone.present? %>
-        <li>Phone: <%= @church.phone %></li>
-      <% end %>
+        <div class="churchPrimer__img">
 
-      <% if @church.city.present? %>
-        <li>Location: <%= @church.city %></li>
-      <% end %>
-    </ul>
+        </div>
 
-    <%= link_to('Update church details', edit_church_path(@church)) %>
+        <h2 class="churchPrimer__title"><%= @church.church_name %></h2>
+        <% if @church.city.present? %>
+          <p><%= @church.city %></p>
+        <% end %>
+        
+        <% if !@church.verified %>
+          <div class="message message--alert">
+            <p class="message__headline"><%= t('gateway.unverified_msg.headline', church_name: @church.church_name) %></p>
+            <p><%= t('gateway.unverified_msg.description') %></p>
+          </div>
+        <% end %>
 
+        <ul class="churchPrimer__details">
+          <% if @church.url.present? %>
+            <li><%= @church.url %></li>
+          <% end %>
+
+          <% if @church.email.present? %>
+            <li><%= @church.email %></li>
+          <% end %>
+
+          <% if @church.phone.present? %>
+            <li><%= @church.phone %></li>
+          <% end %>
+
+          
+        </ul>
+
+        <%= link_to('Update church details', edit_church_path(@church), class: "btn btn--textonly") %>
+      </section>
+    </div>
   </section>
 
   <section class="wrapper__section guideOverview">
