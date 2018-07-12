@@ -44,23 +44,43 @@
   </section>
 
   <section class="wrapper__section guideOverview">
-    <h2>Guides</h2>
+
+    <header class="wrapper__section__header">
+      <div class="wrapper__section__header__content">
+        <h2>Guides</h2>
+      </div>
+
+      <div class="wrapper__section__header__action">
+        <%= link_to('Create new guide', new_guide_path, class: 'btn') %>
+      </div>
+    </header>
 
     <% if @guides.present? %>
-      <ul>
-      <% for guide in @guides do %>
-        <li>
-          <%= link_to(guide) do %>
-            <h3><%= guide.guide_name %></h3>
-            <p><%= guide.teaser %></p>
-            <p>Status: <%= guide.status %></p>
+      <div class="guideOverview__grid">
+        <% for guide in @guides do %>
+        
+          <%= link_to(guide, class: "guideOverview__grid__item guideTile") do %>
+            <div class="guideTile__img">
+              <img src="<%=guide.graphic.try(:graphic_thumbnail).try(:remote_url)%>" alt="">
+              <% if guide.status == "draft" %>
+                <span class="guideTile__img__chip chip"><%= guide.status %></span>
+              <% end %>
+            </div>
+
+            <div class="guideTile_info">
+              <h3><%= guide.guide_name %></h3>
+              <p><%= guide.teaser %></p>
+            </div>
+            
+            <div class="guideTile__action">
+              <span class="btn btn--textonly">View</span>
+            </div>
           <% end %>
-        </li>
-      <% end %>
-      </ul>
+
+        <% end %>
+      </div>
     <% end %>
     <p>
-      <%= link_to('Create new guide', new_guide_path, class: 'btn') %>
     </p>
   </section>
 

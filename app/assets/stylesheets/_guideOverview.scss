@@ -1,3 +1,65 @@
 .guideOverview {
   background-color: #ECE6E4;
 }
+
+.guideOverview__grid {
+  display: grid;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+
+  @include bpMinSmall() {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.guideOverview__grid__item {
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.7px;
+  text-decoration: none;
+
+  &:hover {
+    color: coreColor(black);
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.93px;
+  }
+}
+
+
+.guideTile {
+  display: flex;
+  flex-direction: column;
+}
+
+.guideTile__img {
+  background: #e0e0e0;
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+  width: 100%;
+  
+  img {
+    display: block;
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &__chip {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+}
+
+.guideTile_info {
+  flex-grow: 1;
+}

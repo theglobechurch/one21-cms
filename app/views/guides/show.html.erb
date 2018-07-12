@@ -1,7 +1,7 @@
 <section class="wrapper__section">
   <% if @guide.graphic %>
     <div class="wrapper__section__leadGraphic">
-      <%= image_tag @guide.graphic.try(:graphic_640).try(:remote_url) %>
+      <%= image_tag @guide.graphic.try(:graphic_960).try(:remote_url) %>
     </div>
   <% end %>
 

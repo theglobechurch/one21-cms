@@ -1,0 +1,13 @@
+.chip {
+  border: 1px solid #ccc;
+  border-radius: 12.5px;
+  background-color: coreColor(white);
+  font-weight: 400;
+  font-size: 10px;
+  color: coreColor(black);
+  letter-spacing: .46px;
+  text-align: center;
+  display: inline-block;
+  padding: 4px 10px;
+  min-width: 55px;
+}
