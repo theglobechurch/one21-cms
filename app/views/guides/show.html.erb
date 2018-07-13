@@ -63,7 +63,7 @@
             <% end %>
 
             <% if @guide.sorting != 'ordered' && study.published_at %>
-              <p><%= study.state.humanize %>: <%= study.published_at %></p>
+              <p><%= study.state.humanize %>: <%= l study.published_at %></p>
             <% end %>
 
           <% end %>

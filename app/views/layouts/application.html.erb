@@ -45,6 +45,13 @@
       <%= yield %>
     </main>
 
+    <footer class="footer">
+      <div class="footer__text">
+        <p>&copy; Copyright <%= Time.now.year %></p>
+        <p>One21 is a project by <a href="https://www.globe.church">The Globe Church</a>. If it is helpful, you can <a href="https://www.give.net/20181404">donate</a> to keep it running.</p>
+      </div>
+    </footer>
+
     <% if notice || alert %>
     <div class="toast toast--bottom">
       <p><%= notice if notice %><%= alert if alert %></p>
