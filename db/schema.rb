@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 2018_07_10_091645) do
 
   create_table "studies", force: :cascade do |t|
     t.bigint "guides_id"
-    t.datetime "published_dt", precision: 6
     t.integer "status"
     t.string "study_name", default: "", null: false
     t.string "slug", default: "", null: false
@@ -89,6 +88,7 @@ ActiveRecord::Schema.define(version: 2018_07_10_091645) do
     t.bigint "graphics_id"
     t.string "study_start"
     t.string "study_end"
+    t.datetime "published_at"
     t.index ["graphics_id"], name: "index_studies_on_graphics_id"
     t.index ["guides_id"], name: "index_studies_on_guides_id"
   end

@@ -17,6 +17,8 @@ class Study < ApplicationRecord
 
   default_scope { where status: 'published' }
 
+  before_save :set_publish_date
+
   def to_param
     slug
   end
@@ -52,10 +54,28 @@ class Study < ApplicationRecord
     refString
   end
 
+  def state
+    if self.status == "published" && self.published_at && self.published_at.future?
+      "scheduled"
+    else
+      self.status
+    end
+  end
+
 private
 
   def set_default_status
     self.status ||= :draft
+  end
+
+  def set_publish_date
+    if self.status == 'published' && self.published_at == nil
+      self.published_at = DateTime.current
+    end
+
+    if self.status == 'draft'
+      self.published_at = nil
+    end
   end
 
 end

@@ -37,6 +37,29 @@
   border: 1px solid #ccc;
 }
 
+.sortable__desc {
+  a {
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+      color: darken(coreColor(orange), 10);
+    }
+  }
+
+  h3 {
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1.83px;
+  }
+  p {
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.75px;
+    margin: 0;
+  }
+}
+
 .sortable__actions {
   justify-self: right;
 }

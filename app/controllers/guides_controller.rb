@@ -33,8 +33,12 @@ class GuidesController < ApplicationController
   def update
     guide.attributes = guide_params
     if guide.save
-      flash[:notice] = 'Guide updated'
-      redirect_to guide_path(guide)
+      if request.headers['TriggeredBy']
+        render json: { new_status: @guide.status }
+      else
+        flash[:notice] = 'Guide updated'
+        redirect_to guide_path(guide)
+      end
     end
   end
 
@@ -73,9 +77,9 @@ private
     else
       @studies = guide.studies.unscoped.where(status: [:draft, :published])
       if @guide.sorting == "date_desc"
-        @studies.order(created_at: :desc)
+        @studies.order('published_at DESC NULLS FIRST')
       elsif @guide.sorting == "date_asc"
-        @studies.order(created_at: :asc)
+        @studies.order('published_at ASC NULLS FIRST')
       else
         @studies.order(sort_order: :asc)
       end

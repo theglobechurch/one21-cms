@@ -7,7 +7,7 @@ body, html {
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
   max-width: 780px;
   min-height: calc(100vh - 50px);
-  margin: 0 auto;
+  margin: 0 auto 1em;
 
   @media (min-width: 1080px) {
     margin: 0 auto 0 150px;

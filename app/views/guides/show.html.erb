@@ -11,7 +11,14 @@
     </div>
 
     <div class="wrapper__section__header__action">
-      <%= render partial: "shared/state_switcher", locals: { record: @guide } %>
+      <div
+        class="js-stateSwitcher"
+        data-model="guide"
+        data-post-url="<%=guide_path(@guide) %>"
+        data-current-state="<%= @guide.status %>">
+        <%= @guide.status.humanize %>
+      </div>
+      <%#= render partial: "shared/state_switcher", locals: { record: @guide } %>
     </div>
   </header>
 
@@ -49,11 +56,28 @@
         </div>
 
         <div class="sortable__desc">
-          <%= link_to(study.study_name, edit_guide_study_path(@guide, study)) %>
+          <%= link_to(edit_guide_study_path(@guide, study)) do %>
+            <h3><%= study.study_name %></h3>
+            <% if study.passage_ref_json.present? %>
+              <p><%= study.passage_str %></p>
+            <% end %>
+
+            <% if @guide.sorting != 'ordered' && study.published_at %>
+              <p><%= study.state.humanize %>: <%= study.published_at %></p>
+            <% end %>
+
+          <% end %>
         </div>
         <%#= markdown(study.study_start) %>
 
-        <%= render partial: "shared/state_switcher", locals: { record: [@guide, study], klass: "sortable__actions" }  %>
+        <div
+          class="sortable__actions js-stateSwitcher"
+          data-model="study"
+          data-schedulable="true"
+          data-current-state="<%= study.state %>"
+          data-post-url="<%=guide_study_path(@guide, study) %>">
+          <%= study.state.humanize %>
+        </div>
       </li>
     <% end %>
   </ul>

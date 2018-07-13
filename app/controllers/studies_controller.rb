@@ -34,8 +34,13 @@ class StudiesController < ApplicationController
   def update
     @study = study
     @study.update(study_params)
-    flash[:notice] = 'Study updated'
-    redirect_to guide_path(guide)
+
+    if request.headers['TriggeredBy']
+      render json: { new_status: @study.state, published: @study.published_at }
+    else
+      flash[:notice] = 'Study updated'
+      redirect_to guide_path(guide)
+    end
   end
 
 private
@@ -65,6 +70,7 @@ private
                                   :passage_ref_json,
                                   :questions_json,
                                   :status,
+                                  :published_at,
                                   :graphics_id,
                                   :study_start,
                                   :study_end)
