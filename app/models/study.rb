@@ -62,6 +62,20 @@ class Study < ApplicationRecord
     end
   end
 
+  def lead_image
+    if graphic
+      graphic.graphic_urls
+    end
+  end
+
+  def lead_image_thumbnails
+    if graphic
+      graphic.graphic_thumbnail_urls
+    elsif guide.graphic
+      guide.graphic.graphic_thumbnail_urls
+    end
+  end
+
 private
 
   def set_default_status

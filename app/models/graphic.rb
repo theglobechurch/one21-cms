@@ -18,4 +18,8 @@ class Graphic < ApplicationRecord
     responsive_image_size_urls(:graphic)
   end
 
+  def graphic_thumbnail_urls
+    responsive_thumbnails(:graphic)
+  end
+
 end

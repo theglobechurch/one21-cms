@@ -52,7 +52,11 @@
         <% end %>
 
         <div class="sortable__img">
-          img
+          <%= responsive_thumbnail_tag(
+            study.lead_image_thumbnails,
+            sizes: ['75px'],
+            alt: ""
+          ) %>
         </div>
 
         <div class="sortable__desc">

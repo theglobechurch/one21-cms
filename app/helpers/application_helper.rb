@@ -26,4 +26,29 @@ module ApplicationHelper
       uri.query = options.to_query
     end.to_s
   end
+
+  def responsive_image_tag(graphic, html_options = {})
+    srcset = graphic.map { |(k, v)| "#{URI.escape(v)} #{k}w" }
+    kwargs = html_options.deep_merge(sizes:
+      html_options.fetch(:sizes, []).join(', '))
+    fallback = graphic.try(:[], :"960")
+    fallback = graphic.values[0] if fallback.nil?
+    image_tag URI.escape(fallback),
+              srcset: srcset.join(', '),
+              **kwargs
+  end
+
+  def responsive_thumbnail_tag(graphic, html_options = {})
+    srcset = [
+      "#{URI.escape(graphic[:thumbnail])} 200w",
+      "#{URI.escape(graphic[:thumbnail_2x])} 400x",
+    ]
+    kwargs = html_options.deep_merge(sizes:
+      html_options.fetch(:sizes, []).join(', '))
+    fallback = graphic.try(:[], :"thumbnail")
+    fallback = graphic.values[0] if fallback.nil?
+    image_tag URI.escape(fallback),
+              srcset: srcset.join(', '),
+              **kwargs
+  end
 end
