@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
+import SVGInline from 'react-svg-inline';
+import TextareaExpander from '../../textarea_exander';
+import svgRemove from '../../../svg/remove.svg';
 
 export default class SubQuestion extends Component {
 
@@ -10,6 +13,10 @@ export default class SubQuestion extends Component {
     this.state = { subquestion }
   }
 
+  componentDidMount() {
+    TextareaExpander(document.querySelector('.js-autoexpandable'));
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.subquestion !== this.state.subquestion) {
       this.setState({ subquestion: nextProps.subquestion });
@@ -17,6 +24,7 @@ export default class SubQuestion extends Component {
   }
 
   subQuestionChange(ev) {
+    TextareaExpander(ev.target);
     const subQ = ev.target.value;
     this.setState(
       { subquestion: subQ },
@@ -34,18 +42,23 @@ export default class SubQuestion extends Component {
   render() {
     const {subquestion} = this.state;
     return (
-      <div>
-        <input
-          type="text"
-          value={subquestion}
-          onChange={this.subQuestionChange.bind(this)}
-        />
+      <div className="form__field">
+        <div className="form__input">
+          <textarea
+            value={subquestion}
+            onChange={this.subQuestionChange.bind(this)}
+            className="expandableTextArea expandableTextArea--small js-autoexpandable"
+          />
+        </div>
 
-        <button
+        <SVGInline
+          aria-label="Remove subquestion"
+          accessibilityLabel="Remove subquestion"
           onClick={this.subQuestionRemove.bind(this)}
-        >
-          Remove subquestion
-        </button>
+          svg={svgRemove}
+          cleanup={true}
+          className="questionCreator__removeBtn"
+        />
       </div>
     );
   }

@@ -77,7 +77,7 @@ class One21Questions extends Component {
 
   render() {
     return (
-      <div className="one21QuestionForm">
+      <div className="questionCreator">
 
         { this.state.questions.map((q, i) => (
           <Question
@@ -91,6 +91,7 @@ class One21Questions extends Component {
         
 
         <button
+          className="btn questionCreator__btnQuestion"
           onClick={this.createQuestion.bind(this)}
         >
           Add question

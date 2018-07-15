@@ -1,0 +1,46 @@
+.questionCreator {
+
+  & .form__field {
+    position: relative;
+    margin-bottom: 5px;
+  }
+
+  .expandableTextArea{
+    border: none;
+    width: calc(100% + 20px);
+    font-size: 16px;
+    margin: -10px;
+    padding: 10px;
+    display: block;
+    resize: none;
+
+    &--small {
+      height: 56px;
+    }
+  }
+
+}
+
+.questionCreator__removeBtn {
+  cursor: pointer;
+  color: coreColor(orange);
+  width: 15px;
+  height: 15px;
+  display: block;
+  position: absolute;
+  top: 0;
+  transition: color .2s;
+  right: 10px;
+
+  &:hover {
+    color: red;
+  }
+}
+
+.questionCreator__btnQuestion {
+  font-size: 0.825rem;
+  height: 30px;
+  line-height: 30px;
+  margin-left: 20%;
+  margin-bottom: 20px;
+}

@@ -1,10 +1,21 @@
-<%= form_with( model: [@guide, @study], local: true, class: 'form wrapper__section') do |f| %>
+<%= form_with( model: [@guide, @study], local: true, class: 'form') do |f| %>
 
-  <%= render('shared/form_errors', m: @study) %>
+  <div class="wrapper__section">
+    <% if @guide.graphic %>
+      <div class="wrapper__section__leadGraphic">
+        <%= image_tag @guide.graphic.try(:graphic_960).try(:remote_url) %>
+      </div>
+    <% end %>
 
-  <div class="form__body">
-  
-    <section class="form__section">
+    <%= render('shared/form_errors', m: @study) %>
+
+    <header class="wrapper__section__header">
+      <div class="wrapper__section__header__content">
+        <h2>Setup</h2>
+      </div>
+    </header>
+
+    <div class="wrapper__body">
       <div class="form__field">
         <%= f.text_field :study_name, class: 'form__input' %>
         <%= f.label :study_name, class: 'form__label' %>
@@ -34,42 +45,50 @@
         </div>
         <%= f.label :passage_ref, class: 'form__label' %>
       </div>
-
-    </section>
+    </div>
+  </div>
     
-    <section class="form__section">
-      <%= f.hidden_field :questions_json, class: 'form__input' %>
-      <div class="js-one21QuestionForm"
-          data-inputId="study_questions_json"
-          data-questionsJSON='<%= @study.questions_json %>'>
+  <div class="wrapper__section">
+
+    <header class="wrapper__section__header">
+      <div class="wrapper__section__header__content">
+        <h2>Questions</h2>
       </div>
-    </section>
-
-    <section class="form__section form__section--addtional js-toggleable">
-      <%= f.hidden_field :graphics_id %>
-      <div
-        class="js-imageUploader"
-        data-inputId="study_graphics_id"
-        data-fieldLabel="Lead image (optional)"
-        data-churchGraphicEndpoint="/graphics/<%= @current_user.church.slug %>"
-        data-previewURL="<%= @study.graphic.try(:graphic_960).try('remote_url') %>">
-      </div>
-
-      <div class="form__field">
-        <%= f.text_area :study_start, class: 'form__input' %>
-        <%= f.label :study_start, class: 'form__label' %>
-      </div>
-
-      <div class="form__field">
-        <%= f.text_area :study_end, class: 'form__input' %>
-        <%= f.label :study_end, class: 'form__label' %>
-      </div>
-
-    </section>
-
+    </header>
+    <%= f.hidden_field :questions_json, class: 'form__input' %>
+    <div class="js-one21QuestionForm"
+        data-inputId="study_questions_json"
+        data-questionsJSON='<%= @study.questions_json %>'>
+    </div>
   </div>
 
-  <%= f.submit 'Save', class: 'btn btn--primary' %>
+  <div class="form__section wrapper__section">
+    <header class="wrapper__section__header">
+      <div class="wrapper__section__header__content">
+        <h2>Additional options</h2>
+      </div>
+    </header>
+
+    <%= f.hidden_field :graphics_id %>
+    <div
+      class="js-imageUploader"
+      data-inputId="study_graphics_id"
+      data-fieldLabel="Lead image (optional)"
+      data-churchGraphicEndpoint="/graphics/<%= @current_user.church.slug %>"
+      data-previewURL="<%= @study.graphic.try(:graphic_960).try('remote_url') %>">
+    </div>
+
+    <div class="form__field">
+      <%= f.text_area :study_start, class: 'form__input' %>
+      <%= f.label :study_start, class: 'form__label' %>
+    </div>
+
+    <div class="form__field">
+      <%= f.text_area :study_end, class: 'form__input' %>
+      <%= f.label :study_end, class: 'form__label' %>
+    </div>
 
 
+    <%= f.submit 'Save', class: 'btn btn--primary' %>
+  </div>
 <% end %>
