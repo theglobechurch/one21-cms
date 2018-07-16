@@ -1,0 +1,28 @@
+.dateTimePicker {
+  input {
+    margin: 0 7.5px;
+  }
+}
+
+.dateTimePicker__date {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.dateTimePicker__time {
+  display: flex;
+  max-width: 150px;
+}
+
+.dateTimePicker__select {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid coreColor(orange);
+  border-radius: 0;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 150%;
+  min-width: 100px;
+  outline: none;
+}

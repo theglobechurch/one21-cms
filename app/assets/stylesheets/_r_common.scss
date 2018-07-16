@@ -18,6 +18,29 @@
   }
 }
 
+.r_popup__title {
+  font-size: 100%;
+  font-weight: 100;
+  margin-bottom: 25px;
+}
+
+.r_popup__input {
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid coreColor(orange);
+  color: white;
+  font-size: 150%;
+  width: 100%;
+
+  @include bpMinXSmall() {
+    max-width: 350px;
+  }
+
+  &--number {
+    text-align: center;
+  }
+}
+
 .r_popup__btn--close {
   background: none;
   border-radius: 50%;
@@ -28,6 +51,14 @@
   right: 10px;
   top: 10px;
   width: 50px;
+}
+
+.r_popup__actionBtn {
+  margin-top: 50px;
+
+  @include bpMinXSmall() {
+    max-width: 200px;
+  }
 }
 
 

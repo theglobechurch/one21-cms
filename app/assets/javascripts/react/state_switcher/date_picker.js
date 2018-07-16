@@ -41,60 +41,71 @@ export default class DatePicker extends Component {
   render () {
     const dtNow = moment();
     return (
-      <div className="">
-        <input
-          type="number"
-          className="timePicker__input js-tp-day"
-          min="1"
-          max="31"
-          defaultValue={dtNow.format('D')}
-        />
+      <div className="dateTimePicker">
+        <div>
+          <h1 className="r_popup__title">
+            Date and Time
+          </h1>
 
-        <select
-          className="timePicker__select js-tp-month"
-          defaultValue={parseInt(dtNow.format('M'))}
-        >
-          <option value="1">January</option>
-          <option value="2">February</option>
-          <option value="3">March</option>
-          <option value="4">April</option>
-          <option value="5">May</option>
-          <option value="6">June</option>
-          <option value="7">July</option>
-          <option value="8">August</option>
-          <option value="9">September</option>
-          <option value="10">October</option>
-          <option value="11">November</option>
-          <option value="12">December</option>
-        </select>
+          <div className="dateTimePicker__date">
+            <input
+              type="number"
+              className="r_popup__input r_popup__input--number tdateTimePicker__input js-tp-day"
+              min="1"
+              max="31"
+              defaultValue={dtNow.format('D')}
+            />
 
-        <input
-          type="number"
-          className="timePicker__input js-tp-year"
-          min={dtNow.format('YYYY')}
-          max={parseInt(dtNow.format('YYYY'))+5}
-          defaultValue={dtNow.format('YYYY')}
-        />
+            <select
+              className="dateTimePicker__select js-tp-month"
+              defaultValue={parseInt(dtNow.format('M'))}
+            >
+              <option value="1">Jan</option>
+              <option value="2">Feb</option>
+              <option value="3">Mar</option>
+              <option value="4">Apr</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">Aug</option>
+              <option value="9">Sept</option>
+              <option value="10">Oct</option>
+              <option value="11">Nov</option>
+              <option value="12">Dec</option>
+            </select>
 
-        <input
-          type="number"
-          className="timePicker__input js-tp-hour"
-          min="0"
-          max="23"
-          defaultValue={dtNow.format('H')}
-        />
+            <input
+              type="number"
+              className="r_popup__input r_popup__input--number dateTimePicker__input js-tp-year"
+              min={dtNow.format('YYYY')}
+              max={parseInt(dtNow.format('YYYY'))+5}
+              defaultValue={dtNow.format('YYYY')}
+            />
+          </div>
 
-        <input
-          type="number"
-          className="timePicker__input js-tp-minute"
-          min="0"
-          max="59"
-          defaultValue={dtNow.format('m')}
-        />
+          <div className="dateTimePicker__time">
+            <input
+              type="number"
+              className="r_popup__input r_popup__input--number dateTimePicker__input js-tp-hour"
+              min="0"
+              max="23"
+              defaultValue={dtNow.format('H')}
+            />
+            :
+            <input
+              type="number"
+              className="r_popup__input r_popup__input--number dateTimePicker__input js-tp-minute"
+              min="0"
+              max="59"
+              defaultValue={dtNow.format('m')}
+            />
+          </div>
+        
+        </div>
 
         <button
           onClick={this.confirm.bind(this)}
-          className="btn btn--primary"
+          className="btn btn--primary r_popup__actionBtn"
         >
           {this.props.action}
         </button>
