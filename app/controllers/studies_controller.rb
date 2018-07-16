@@ -2,12 +2,8 @@ class StudiesController < ApplicationController
 
   before_action :authenticate_user!
 
-  def index
-    @studies = studies
-  end
-
   def show
-    @study = study
+    redirect_to guide_path(guide)
   end
 
   def new

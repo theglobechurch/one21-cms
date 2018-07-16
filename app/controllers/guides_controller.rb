@@ -2,11 +2,6 @@ class GuidesController < ApplicationController
 
   before_action :authenticate_user!
 
-  def index
-    # List all of the guide by this church
-    @guides = guides
-  end
-
   def show
     @guide = guide
     @studies = studies

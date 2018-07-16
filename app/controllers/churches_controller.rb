@@ -2,22 +2,21 @@ class ChurchesController < ApplicationController
 
   before_action :authenticate_user!
 
-  def index
-    # if super admin list all the church
-    if current_user.superadmin?
-      @churches = churches
-    else
-      if current_user.churches_id
-        redirect_to church_url(current_user.church)
-      else
-        redirect_to new_church_url
-      end
-    end
-  end
+  # def index
+  #   # if super admin list all the church
+  #   if current_user.superadmin?
+  #     @churches = churches
+  #   else
+  #     if current_user.churches_id
+  #       redirect_to church_url(current_user.church)
+  #     else
+  #       redirect_to new_church_url
+  #     end
+  #   end
+  # end
 
   def show
-    # show summary of specific church by slug
-    @church = church
+    redirect_to admin_path()
   end
 
   def new

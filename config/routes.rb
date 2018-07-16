@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  root to: "landing#index"
+  
   devise_for :users,
     path: '',
     path_names: {
@@ -10,9 +11,6 @@ Rails.application.routes.draw do
       registrations: 'registrations'
     }
   
-  
-  root to: "landing#index"
-
   namespace :api do
     scope module: :v2, constraints: ApiVersion.new('v2') do
       resources :churches, only: [:index]
@@ -26,16 +24,24 @@ Rails.application.routes.draw do
   end
   
   resources :admin, only: [:index] 
+
   resources :graphics, only: [:index, :create] do
     member do
       get '(:church_slug)', to: 'graphics#church_graphic'
     end
   end
-  resources :churches
-  resources :guides do
-    resources :studies
+
+  get '/churches', to: redirect('/admin', status: 302)
+  get '/churches/:name', to: redirect('/admin', status: 302)
+  resources :churches, except: [:index]
+
+  get '/guides', to: redirect('/admin', status: 302)
+  get '/guides/(:guide)/studies', to: redirect('/guides/%{guide}', status: 302)
+  resources :guides, except: [:index] do
+    resources :studies, except: [:index]
     member do
       post '/reorder', to: 'guides#reorder'
     end
   end
+  
 end
