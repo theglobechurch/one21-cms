@@ -14,9 +14,7 @@ class Study < ApplicationRecord
 
   enum status: [:draft, :published, :archived, :deleted]
   after_initialize :set_default_status, :if => :new_record?
-
-  default_scope { where status: 'published' }
-
+  
   before_save :set_publish_date
 
   def to_param

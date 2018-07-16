@@ -10,21 +10,32 @@ class Api::V1::GuidesController < ApiController
 
   def show
     @guide = guide
-    json_response(@guide, :ok, FullGuideSerializer)
+    if @guide
+      json_response(@guide, :ok, FullGuideSerializer)
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 
 private
 
   def guides
     @guides ||= Guide.published.
-                      joins(:churches).
+                      includes(:churches).
                       where(churches: {
                         slug: params[:church_slug]
                       })
   end
 
   def guide
-    @guide ||= guides.find_by_slug!(params[:guide_slug])
+    @guide ||= Guide.published.
+                     includes(:churches).
+                     includes(:studies).
+                     where(
+                       churches: { slug: params[:church_slug] },
+                       guides: { slug: params[:guide_slug] },
+                       studies: { status: 'published' }
+                     ).first
   end
 
 end

@@ -55,7 +55,7 @@ class GuidesController < ApplicationController
 private
 
   def guides
-    @guides ||= Guide.joins(:church_guides).
+    @guides ||= Guide.includes(:church_guides).
                       where(church_guides: {
                         church_id: current_user.church.id,
                         owner: true
@@ -70,7 +70,7 @@ private
     if @studies
       @studies
     else
-      @studies = guide.studies.unscoped.where(status: [:draft, :published])
+      @studies = guide.studies.where(status: [:draft, :published])
       if @guide.sorting == "date_desc"
         @studies.order('published_at DESC NULLS FIRST')
       elsif @guide.sorting == "date_asc"
