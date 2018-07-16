@@ -79,15 +79,14 @@
     </div>
 
     <div class="form__field">
-      <%= f.text_area :study_start, class: 'form__input' %>
+      <%= f.text_area :study_start, class: 'form__input js-expandableTextArea' %>
       <%= f.label :study_start, class: 'form__label' %>
     </div>
 
     <div class="form__field">
-      <%= f.text_area :study_end, class: 'form__input' %>
+      <%= f.text_area :study_end, class: 'form__input js-expandableTextArea' %>
       <%= f.label :study_end, class: 'form__label' %>
     </div>
-
 
     <%= f.submit 'Save', class: 'btn btn--primary' %>
   </div>
