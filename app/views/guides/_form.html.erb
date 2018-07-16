@@ -32,8 +32,15 @@
   </div>
 
   <div class="form__field">
-    <span class="form__input">
-      <%= f.collection_radio_buttons :sorting, Guide.sortings.keys.map { |w| [w.humanize, w] }, :second, :first %>
+    <span class="form__input form__input--inlineRadio">
+      <%= f.collection_radio_buttons(:sorting,
+                                     Guide.sortings.keys.map { |w| [w.humanize, w] },
+                                     :second,
+                                     :first) do |b|
+                                       p b.label.inspect
+                                       b.label { b.radio_button + b.label }
+                                     end
+      %>
     </span>
     <%= f.label :sorting, class: 'form__label' %>
   </div>
