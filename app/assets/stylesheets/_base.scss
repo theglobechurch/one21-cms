@@ -36,11 +36,14 @@ body, html {
 
   &__section__header,
   &__section__body {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 20px;
-    justify-items: start;
-    align-items: center;
+    
+    @include bpMinXSmall() {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 20px;
+      justify-items: start;
+      align-items: center;
+    }
   }
 
   &__section__header {

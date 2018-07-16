@@ -7,7 +7,9 @@
       <section class="churchPrimer">
 
         <div class="churchPrimer__img">
-
+          <%= responsive_image_tag(@church.graphic.graphic_urls,
+                                   sizes: ['(max-width: 460px) 100vw', '(max-width: 1080px) 50vw', '365px'],
+                                   alt: @church.graphic.graphic_name) if @church.graphic.present? %>
         </div>
 
         <h2 class="churchPrimer__title"><%= @church.church_name %></h2>

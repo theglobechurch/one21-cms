@@ -4,9 +4,20 @@
 }
 
 .churchPrimer__img {
-  border: 1px solid #ccc;
   height: 200px;
+  overflow: hidden;
+  position: relative;
   width: 100%;
+
+  img {
+    display: block;
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%; 
+  }
 }
 
 .churchPrimer__title {

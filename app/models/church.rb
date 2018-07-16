@@ -5,6 +5,10 @@ class Church < ApplicationRecord
   has_many :guides, through: :church_guides
   has_many :graphics
 
+  belongs_to :graphic,
+             foreign_key: :graphics_id,
+             optional: true
+
   validates :church_name, :email, :url, :city, :slug, presence: true
   validates :email, :slug,  uniqueness: true
   validates :url, :phone, uniqueness: true, allow_blank: true

@@ -28,6 +28,15 @@
     <%= f.label :city, class: 'form__label' %>
   </div>
 
+  <%= f.hidden_field :graphics_id %>
+  <div
+    class="js-imageUploader"
+    data-inputId="church_graphics_id"
+    data-fieldLabel="Lead image"
+    data-churchGraphicEndpoint="/graphics/<%= @current_user.church.slug %>"
+    data-previewURL="<%= @church.graphic.try(:graphic_960).try('remote_url') %>">
+  </div>
+
   <!-- TODO: include city here -->
 
   <%= f.submit 'Save', class: 'btn btn--primary' %>

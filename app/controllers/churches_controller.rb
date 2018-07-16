@@ -70,7 +70,8 @@ private
                                    :url,
                                    :phone,
                                    :city,
-                                   :address)
+                                   :address,
+                                   :graphics_id)
   end
 
 end
