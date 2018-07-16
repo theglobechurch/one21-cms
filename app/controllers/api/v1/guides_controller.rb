@@ -28,14 +28,31 @@ private
   end
 
   def guide
-    @guide ||= Guide.published.
-                     includes(:churches).
-                     includes(:studies).
+    g = guides.find_by_slug!(params[:guide_slug])
+    case g.sorting
+    when 'date_desc'
+      sortStatement = 'studies.published_at DESC NULLS FIRST'
+    when 'date_asc'
+      sortStatement = 'studies.published_at ASC NULLS FIRST'
+    else
+      sortStatement = 'studies.sort_order ASC'
+    end
+
+    @guide = Guide.published.
+                     includes(:churches, :studies).
                      where(
                        churches: { slug: params[:church_slug] },
                        guides: { slug: params[:guide_slug] },
-                       studies: { status: 'published' }
-                     ).first
+                       studies: {
+                         status: 'published'
+                       }
+                     ).
+                     where(
+                       "studies.published_at <= ?", DateTime.now
+                     ).
+                     order(sortStatement).
+                     first
+
   end
 
 end
