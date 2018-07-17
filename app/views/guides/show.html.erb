@@ -26,7 +26,7 @@
 
   <p>This is a guide produced by <%= @guide.churches.first.church_name %></p>
 
-  <%= link_to("Edit " + @guide.guide_name, edit_guide_path(@guide), class: 'btn') %>
+  <%= link_to(t('guides.edit', guide_name: @guide.guide_name), edit_guide_path(@guide), class: 'btn') %>
 
 </section>
 
@@ -37,7 +37,7 @@
     </div>
 
     <div class="wrapper__section__header__action">
-      <%= link_to('Add new study', new_guide_study_path(@guide), class: 'btn btn--primary')%>
+      <%= link_to(t('studies.new'), new_guide_study_path(@guide), class: 'btn')%>
     </div>
   </header>
 
@@ -85,7 +85,10 @@
     <% end %>
   </ul>
   <% else %>
-  <p>You haven't created any studies yet… start now by clicking the 'Add New Study' button.</p>
+  <div class="emptyState emptyState--study">
+    <p><%= t('studies.empty') %></p>
+    <%= link_to(t('studies.new'), new_guide_study_path(@guide), class: 'btn btn--primary')%>
+  </div>
   <% end %>
 </section>
 

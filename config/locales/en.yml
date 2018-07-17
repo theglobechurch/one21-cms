@@ -9,7 +9,12 @@ en:
       description: "Your church will not show up in One21 until is has been approved by an administrator. This process should take no longer that two working days."
   guides:
     new: "Create new guide"
+    edit: "Edit %{guide_name}"
     guide_list: "Guides from %{church_name}:"
+    empty: "You haven't created any guides yet… start now by clicking the 'Create new guide' button."
+  studies:
+    new: "Create new study"
+    empty: "You haven't created any studies yet… start now by clicking the 'Create new study' button."
   helpers:
     label:
       church:
