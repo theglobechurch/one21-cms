@@ -19,6 +19,8 @@ class Guide < ApplicationRecord
 
   after_create :link_church
 
+  scope :not_deleted, -> { where.not(status: 'deleted')}
+
   def to_param
     slug
   end

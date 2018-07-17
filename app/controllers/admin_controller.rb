@@ -9,7 +9,7 @@ class AdminController < ApplicationController
     end
 
     @church = current_user.church
-    @guides = @church.guides
+    @guides = @church.guides.not_deleted
   end
 
 end
