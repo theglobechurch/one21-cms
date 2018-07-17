@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.3.3'
 
 gem 'rails', '~> 5.2.0'
+gem 'sass-rails', '~> 5.0'    # Sass for rails. Obvs
 gem 'pg', '>= 0.18', '< 2.0'  # postgresql
 gem 'puma', '~> 3.11'         # Web server
 gem 'jbuilder', '~> 2.5'      # JSON APIs(https://github.com/rails/jbuilder)

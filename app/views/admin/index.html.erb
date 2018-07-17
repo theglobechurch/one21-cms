@@ -1,16 +1,20 @@
-<% if @church %>
+<div class="wrapper__section">
+  <div class="wrapper__section__leadGraphic">
+    <%= image_tag 'one21-background.jpg', alt: 'One21' %>
+  </div>
 
-  <section class="wrapper__section">
-
+  <% if @church %>
     <div class="wrapper__section__body">
 
       <section class="churchPrimer">
 
-        <div class="churchPrimer__img">
-          <%= responsive_image_tag(@church.graphic.graphic_urls,
-                                   sizes: ['(max-width: 460px) 100vw', '(max-width: 1080px) 50vw', '365px'],
-                                   alt: @church.graphic.graphic_name) if @church.graphic.present? %>
-        </div>
+        <% if @church.graphic %>
+          <div class="churchPrimer__img">
+            <%= responsive_image_tag(@church.graphic.graphic_urls,
+                                    sizes: ['(max-width: 460px) 100vw', '(max-width: 1080px) 50vw', '365px'],
+                                    alt: @church.graphic.graphic_name) if @church.graphic.present? %>
+          </div>
+        <% end %>
 
         <h2 class="churchPrimer__title"><%= @church.church_name %></h2>
         <% if @church.city.present? %>
@@ -43,8 +47,11 @@
         <%= link_to('Update church details', edit_church_path(@church), class: "btn btn--textonly") %>
       </section>
     </div>
-  </section>
+  <% end %>
 
+</div>
+
+<% if @church %>
   <section class="wrapper__section guideOverview">
 
     <header class="wrapper__section__header">
@@ -82,8 +89,6 @@
         <% end %>
       </div>
     <% end %>
-    <p>
-    </p>
   </section>
 
 <% end %>
