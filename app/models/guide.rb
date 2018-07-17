@@ -9,9 +9,13 @@ class Guide < ApplicationRecord
              optional: true
 
   validates :guide_name, :slug, presence: true
-  validates :slug,  uniqueness: true
 
-  acts_as_url :guide_name, sync_url: true, force_downcase: true, url_attribute: :slug, only_when_blank: true
+  acts_as_url :guide_name,
+              sync_url: true,
+              force_downcase: true,
+              url_attribute: :slug,
+              only_when_blank: true,
+              allow_duplicates: true
 
   enum status:  [:draft, :published, :archived, :deleted]
   enum sorting: [:date_desc, :date_asc, :ordered]
@@ -25,8 +29,8 @@ class Guide < ApplicationRecord
     slug
   end
 
-  def self.find_by_slug(s)
-    find_by slug: s
+  def self.find_by_slug(guide_slug)
+    find_by slug: guide_slug
   end
 
 private

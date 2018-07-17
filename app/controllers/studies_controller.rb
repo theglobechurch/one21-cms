@@ -50,7 +50,11 @@ private
   end
 
   def guides
-    @guides ||= Guide.all
+    @guides ||= Guide.includes(:church_guides).
+                      where(church_guides: {
+                        church_id: current_user.church.id,
+                        owner: true
+                      })
   end
 
   def guide
