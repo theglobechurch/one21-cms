@@ -1,51 +1,58 @@
 <%= form_for(@guide, html: { class: "form wrapper__section" }) do |f| %>
 
-  <%= render('shared/form_errors', m: @guide) %>
+  <header class="wrapper__section__header">
+    <div class="wrapper__section__header__content">
+      <h2>Edit Guide</h2>
+    </div>
+  </header>
 
-  <div class="form__field">
-    <%= f.text_field :guide_name, class: 'form__input' %>
-    <%= f.label :guide_name, class: 'form__label' %>
+  <div class="wrapper__body">
+    <%= render('shared/form_errors', m: @guide) %>
+
+    <div class="form__field">
+      <%= f.text_field :guide_name, class: 'form__input' %>
+      <%= f.label :guide_name, class: 'form__label' %>
+    </div>
+
+    <div class="form__field">
+      <%= f.text_area :teaser, class: 'form__input js-expandableTextArea' %>
+      <%= f.label :teaser, class: 'form__label' %>
+    </div>
+
+    <div class="form__field">
+      <%= f.text_area :description, class: 'form__input js-expandableTextArea' %>
+      <%= f.label :description, class: 'form__label' %>
+    </div>
+
+    <div class="form__field">
+      <%= f.text_field :copyright, class: 'form__input' %>
+      <%= f.label :copyright, class: 'form__label' %>
+    </div>
+
+    <%= f.hidden_field :graphics_id %>
+    <div
+      class="js-imageUploader"
+      data-inputId="guide_graphics_id"
+      data-fieldLabel="Lead image"
+      data-churchGraphicEndpoint="/graphics/<%= @current_user.church.slug %>"
+      data-previewURL="<%= @guide.graphic.try(:graphic_960).try('remote_url') %>">
+    </div>
+
+    <div class="form__field">
+      <span class="form__input form__input--inlineRadio">
+        <%= f.collection_radio_buttons(:sorting,
+                                      Guide.sortings.keys.map { |w| [w.humanize, w] },
+                                      :second,
+                                      :first) do |b|
+                                        p b.label.inspect
+                                        b.label { b.radio_button + b.label }
+                                      end
+        %>
+      </span>
+      <%= f.label :sorting, class: 'form__label' %>
+    </div>
+
+    <%= f.submit 'Save', class: 'form__submit btn btn--primary' %>
+    
   </div>
-
-  <div class="form__field">
-    <%= f.text_area :teaser, class: 'form__input js-expandableTextArea' %>
-    <%= f.label :teaser, class: 'form__label' %>
-  </div>
-
-  <div class="form__field">
-    <%= f.text_area :description, class: 'form__input js-expandableTextArea' %>
-    <%= f.label :description, class: 'form__label' %>
-  </div>
-
-  <div class="form__field">
-    <%= f.text_field :copyright, class: 'form__input' %>
-    <%= f.label :copyright, class: 'form__label' %>
-  </div>
-
-  <%= f.hidden_field :graphics_id %>
-  <div
-    class="js-imageUploader"
-    data-inputId="guide_graphics_id"
-    data-fieldLabel="Lead image"
-    data-churchGraphicEndpoint="/graphics/<%= @current_user.church.slug %>"
-    data-previewURL="<%= @guide.graphic.try(:graphic_960).try('remote_url') %>">
-  </div>
-
-  <div class="form__field">
-    <span class="form__input form__input--inlineRadio">
-      <%= f.collection_radio_buttons(:sorting,
-                                     Guide.sortings.keys.map { |w| [w.humanize, w] },
-                                     :second,
-                                     :first) do |b|
-                                       p b.label.inspect
-                                       b.label { b.radio_button + b.label }
-                                     end
-      %>
-    </span>
-    <%= f.label :sorting, class: 'form__label' %>
-  </div>
-
-
-  <%= f.submit 'Save', class: 'form__submit btn btn--primary' %>
-
 <% end %>

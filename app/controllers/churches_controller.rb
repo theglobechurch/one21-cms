@@ -51,6 +51,8 @@ class ChurchesController < ApplicationController
     if church.save
       flash[:notice] = 'Church updated'
       redirect_to root_path()
+    else
+      render 'edit'
     end
   end
 

@@ -1,45 +1,57 @@
 <%= form_for(@church,  html: { class: 'wrapper__section' }) do |f| %>
 
-  <%= render('shared/form_errors', m: @church) %>
+  <header class="wrapper__section__header">
+    <div class="wrapper__section__header__content">
+      <h2>Edit Church</h2>
+      <% if @church.church_name %>
+        <p><%= @church.church_name %></p>
+      <% end %>
+    </div>
+  </header>
 
-  <div class="form__field">
-    <!-- TODO: Add in checking on church name -->
-    <%= f.text_field :church_name, class: 'form__input' %>
-    <%= f.label :church_name, class: 'form__label' %>
+  <div class="wrapper__body">
+
+    <%= render('shared/form_errors', m: @church) %>
+
+    <div class="form__field">
+      <!-- TODO: Add in checking on church name -->
+      <%= f.text_field :church_name, class: 'form__input' %>
+      <%= f.label :church_name, class: 'form__label' %>
+    </div>
+
+    <div class="form__field">
+      <%= f.email_field :email, class: 'form__input' %>
+      <%= f.label :email, class: 'form__label' %>
+    </div>
+
+    <div class="form__field">
+      <%= f.text_field :phone, class: 'form__input' %>
+      <%= f.label :phone, class: 'form__label' %>
+    </div>
+
+    <div class="form__field">
+      <%= f.text_field :url, class: 'form__input' %>
+      <%= f.label :url, class: 'form__label' %>
+    </div>
+
+    <div class="form__field">
+      <%= f.text_field :city, class: 'form__input' %>
+      <%= f.label :city, class: 'form__label' %>
+    </div>
+
+    <%= f.hidden_field :graphics_id %>
+    <div
+      class="js-imageUploader"
+      data-inputId="church_graphics_id"
+      data-fieldLabel="Lead image"
+      data-churchGraphicEndpoint="/graphics/<%= @current_user.church.slug %>"
+      data-previewURL="<%= @church.graphic.try(:graphic_960).try('remote_url') %>">
+    </div>
+
+    <!-- TODO: include city here -->
+
+    <%= f.submit 'Save', class: 'btn btn--primary' %>
+
   </div>
-
-  <div class="form__field">
-    <%= f.email_field :email, class: 'form__input' %>
-    <%= f.label :email, class: 'form__label' %>
-  </div>
-
-  <div class="form__field">
-    <%= f.text_field :phone, class: 'form__input' %>
-    <%= f.label :phone, class: 'form__label' %>
-  </div>
-
-  <div class="form__field">
-    <%= f.text_field :url, class: 'form__input' %>
-    <%= f.label :url, class: 'form__label' %>
-  </div>
-
-  <div class="form__field">
-    <%= f.text_field :city, class: 'form__input' %>
-    <%= f.label :city, class: 'form__label' %>
-  </div>
-
-  <%= f.hidden_field :graphics_id %>
-  <div
-    class="js-imageUploader"
-    data-inputId="church_graphics_id"
-    data-fieldLabel="Lead image"
-    data-churchGraphicEndpoint="/graphics/<%= @current_user.church.slug %>"
-    data-previewURL="<%= @church.graphic.try(:graphic_960).try('remote_url') %>">
-  </div>
-
-  <!-- TODO: include city here -->
-
-  <%= f.submit 'Save', class: 'btn btn--primary' %>
-
 
 <% end %>
