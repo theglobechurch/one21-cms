@@ -30,7 +30,6 @@
 
 </section>
 
-<% if @studies.present? %>
 <section class="wrapper__section">
   <header class="wrapper__section__header">
     <div class="wrapper__section__header__content">
@@ -42,6 +41,7 @@
     </div>
   </header>
 
+  <% if @studies.present? %>
   <ul class="sortableList js-sortable" data-push="<%= guide_path(@guide) %>/reorder">
     <% for study in @studies do %>
       <li class="sortable js-reorderable__item<% if @guide.sorting == 'ordered' %> sortable--active<% end %>" data-id="<%=study.id%>">
@@ -84,7 +84,9 @@
       </li>
     <% end %>
   </ul>
+  <% else %>
+  <p>You haven't created any studies yet… start now by clicking the 'Add New Study' button.</p>
+  <% end %>
 </section>
-<% end %>
 
 
