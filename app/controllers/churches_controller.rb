@@ -2,26 +2,31 @@ class ChurchesController < ApplicationController
 
   before_action :authenticate_user!
 
-  # def index
-  #   # if super admin list all the church
-  #   if current_user.superadmin?
-  #     @churches = churches
-  #   else
-  #     if current_user.churches_id
-  #       redirect_to church_url(current_user.church)
-  #     else
-  #       redirect_to new_church_url
-  #     end
-  #   end
-  # end
+  def index
+    # if super admin list all the church
+    if current_user.superadmin?
+      @churches = churches
+    else
+      if current_user.churches_id
+        redirect_to root_path
+      else
+        redirect_to new_church_url
+      end
+    end
+  end
 
   def show
-    redirect_to admin_path()
+    redirect_to root_path
   end
 
   def new
     # create new church
-    @church = Church.unscoped.new
+    if current_user.churches_id
+      redirect_to edit_church_path(current_user.church)
+      return
+    else
+      @church = Church.unscoped.new
+    end
   end
 
   def edit
@@ -34,12 +39,6 @@ class ChurchesController < ApplicationController
     @church = Church.unscoped.new(church_params)
     if @church.save
       flash[:notice] = "Church saved"
-
-      # TODO: Move this into after_create of Church model
-      # Link user and church
-      current_user.churches_id = @church.id
-      current_user.save
-
       redirect_to @church
     else
       render 'new'

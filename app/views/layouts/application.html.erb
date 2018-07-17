@@ -24,7 +24,11 @@
 
         <% if user_signed_in? %>
         <ul class="header__navigation">
+        
+          <% if @current_user.church %>
           <li class="header__navigation__item"><%= link_to(@current_user.church.church_name, root_path) %></li>
+          <% end %>
+
           <li class="header__navigation__item">
             Account
             <img src="<%= gravatar_url(@current_user.email, s: 30, d: 'mp') %>" alt="" class="header__navigation__avatar" />

@@ -2,9 +2,11 @@
 
   <header class="wrapper__section__header">
     <div class="wrapper__section__header__content">
-      <h2>Edit Church</h2>
-      <% if @church.church_name %>
+      <% if @church.id %>
+        <h2>Edit Church</h2>
         <p><%= @church.church_name %></p>
+      <% else %>
+        <h2>Create Church</h2>
       <% end %>
     </div>
   </header>
@@ -39,14 +41,17 @@
       <%= f.label :city, class: 'form__label' %>
     </div>
 
-    <%= f.hidden_field :graphics_id %>
-    <div
-      class="js-imageUploader"
-      data-inputId="church_graphics_id"
-      data-fieldLabel="Lead image"
-      data-churchGraphicEndpoint="/graphics/<%= @current_user.church.slug %>"
-      data-previewURL="<%= @church.graphic.try(:graphic_960).try('remote_url') %>">
-    </div>
+    <%# Hacky: Can't upload church banner images and link with a church until the church exists %>
+    <% if @current_user.church %>
+      <%= f.hidden_field :graphics_id %>
+      <div
+        class="js-imageUploader"
+        data-inputId="church_graphics_id"
+        data-fieldLabel="Lead image"
+        data-churchGraphicEndpoint="/graphics/<%= @current_user.church.slug %>"
+        data-previewURL="<%= @church.graphic.try(:graphic_960).try('remote_url') %>">
+      </div>
+    <% end %>
 
     <!-- TODO: include city here -->
 

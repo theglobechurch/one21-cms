@@ -31,9 +31,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/churches', to: redirect('/admin', status: 302)
-  get '/churches/:name', to: redirect('/admin', status: 302)
-  resources :churches, except: [:index]
+  resources :churches
 
   get '/guides', to: redirect('/admin', status: 302)
   get '/guides/(:guide)/studies', to: redirect('/guides/%{guide}', status: 302)
