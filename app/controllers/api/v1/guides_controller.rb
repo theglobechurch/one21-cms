@@ -4,12 +4,16 @@ class Api::V1::GuidesController < ApiController
     # ToDo: At some point add pagination into this mix:
     # https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-three
 
-    @guides = guides
-    json_response(@guides)
+    guides
+    if @guides.length > 0
+      json_response(@guides)
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 
   def show
-    @guide = guide
+    guide
     if @guide
       json_response(@guide, :ok, FullGuideSerializer)
     else
@@ -23,7 +27,8 @@ private
     @guides ||= Guide.published.
                       includes(:churches).
                       where(churches: {
-                        slug: params[:church_slug]
+                        slug: params[:church_slug],
+                        verified: true
                       })
   end
 
@@ -41,7 +46,10 @@ private
     @guide = Guide.published.
                      includes(:churches, :studies).
                      where(
-                       churches: { slug: params[:church_slug] },
+                       churches: {
+                         slug: params[:church_slug],
+                         verified: true
+                       },
                        guides: { slug: params[:guide_slug] },
                        studies: {
                          status: 'published'
