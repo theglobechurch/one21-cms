@@ -5,10 +5,13 @@ class Graphic < ApplicationRecord
   default_scope { order(created_at: :desc) }
 
   belongs_to :church,
-             foreign_key: :churches_id
+             foreign_key: :churches_id,
+             inverse_of: :graphic
 
-  has_many :guides
-  has_many :studies
+  has_many :guides,
+           dependent: :nullify
+  has_many :studies,
+           dependent: :nullify
 
   validates :graphic_name, presence: true
 

@@ -1,28 +1,30 @@
 class Study < ApplicationRecord
 
   belongs_to :guide,
-             foreign_key: :guides_id
+             foreign_key: :guides_id,
+             inverse_of: :studies
   belongs_to :graphic,
              foreign_key: :graphics_id,
-             optional: true
+             optional: true,
+             inverse_of: :studies
 
   validates :study_name, :slug, :questions_json, presence: true
   validates :slug, uniqueness: true
-  validates :sort_order, numericality: { only_integer: true }
+  validates :sort_order, numericality: {only_integer: true}
 
-  acts_as_url :study_name, sync_url: true, force_downcase: true, url_attribute: :slug, only_when_blank: true
+  acts_as_url :study_name,
+              sync_url: true,
+              force_downcase: true,
+              url_attribute: :slug,
+              only_when_blank: true
 
-  enum status: [:draft, :published, :archived, :deleted]
-  after_initialize :set_default_status, :if => :new_record?
-  
+  enum status: %i[draft published archived deleted]
+  after_initialize :set_default_status, if: :new_record?
+
   before_save :set_publish_date
 
   def to_param
     slug
-  end
-
-  def self.find_by_slug(s)
-    find_by slug: s
   end
 
   def questions
@@ -44,19 +46,19 @@ class Study < ApplicationRecord
   def passage_str
     return if passage_ref.blank?
 
-    refString = ""
+    ref_string = ""
     passage_ref.each_with_index do |r, key|
-      refString += ", " if key != 0
-      refString += "#{r[:reference_book]} #{r[:reference_book_start_ch]}:#{r[:reference_book_start_v]}–#{r[:reference_book_end_ch]}:#{r[:reference_book_end_v]}"
+      ref_string += ", " if key != 0
+      ref_string += "#{r[:reference_book]} #{r[:reference_book_start_ch]}:#{r[:reference_book_start_v]}–#{r[:reference_book_end_ch]}:#{r[:reference_book_end_v]}"
     end
-    refString
+    ref_string
   end
 
   def state
-    if self.status == "published" && self.published_at && self.published_at.future?
+    if status == "published" && published_at && published_at.future?
       "scheduled"
     else
-      self.status
+      status
     end
   end
 
@@ -81,11 +83,11 @@ private
   end
 
   def set_publish_date
-    if self.status == 'published' && self.published_at == nil
-      self.published_at = DateTime.current
+    if status == 'published' && published_at.nil?
+      self.published_at = Time.current
     end
 
-    if self.status == 'draft'
+    if status == 'draft'
       self.published_at = nil
     end
   end

@@ -1,12 +1,18 @@
 class Guide < ApplicationRecord
 
-  has_many :studies, foreign_key: "guides_id"
-  has_many :church_guides
-  has_many :churches, through: :church_guides
+  has_many :studies,
+           foreign_key: "guides_id",
+           inverse_of: :guide,
+           dependent: :destroy
+  has_many :church_guides,
+           dependent: :nullify
+  has_many :churches,
+           through: :church_guides
 
   belongs_to :graphic,
              foreign_key: :graphics_id,
-             optional: true
+             optional: true,
+             inverse_of: :guides
 
   validates :guide_name, :slug, presence: true
 
@@ -17,13 +23,13 @@ class Guide < ApplicationRecord
               only_when_blank: true,
               allow_duplicates: true
 
-  enum status:  [:draft, :published, :archived, :deleted]
-  enum sorting: [:date_desc, :date_asc, :ordered]
-  after_initialize :set_default_status, :if => :new_record?
+  enum status:  %i[draft published archived deleted]
+  enum sorting: %i[date_desc date_asc ordered]
+  after_initialize :set_default_status, if: :new_record?
 
   after_create :link_church
 
-  scope :not_deleted, -> { where.not(status: 'deleted')}
+  scope :not_deleted, -> { where.not(status: 'deleted') }
 
   def to_param
     slug
@@ -35,13 +41,11 @@ class Guide < ApplicationRecord
 
 private
 
-  def link_church()
-    ChurchGuide.create([{
-      church_id: User.current.church.id,
-      guide_id: self.id,
-      promoted: false,
-      owner: true
-    }])
+  def link_church
+    ChurchGuide.create([{church_id: User.current.church.id,
+                         guide_id: id,
+                         promoted: false,
+                         owner: true}])
   end
 
   def set_default_status

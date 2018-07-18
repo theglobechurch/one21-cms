@@ -1,5 +1,5 @@
 class GraphicSerializer < ActiveModel::Serializer
-  
+
   attributes :id, :name, :images, :image
 
   def name
@@ -15,7 +15,7 @@ class GraphicSerializer < ActiveModel::Serializer
       '960': object.graphic_960.try(:remote_url),
       '1280': object.graphic_1280.try(:remote_url),
       '1920': object.graphic_1920.try(:remote_url),
-      '2560': object.graphic_2560.try(:remote_url),
+      '2560': object.graphic_2560.try(:remote_url)
     }
   end
 

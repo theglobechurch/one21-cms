@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
   root to: "landing#index"
-  
+
   devise_for :users,
-    path: '',
-    path_names: {
-      sign_in: 'signin',
-      sign_out: 'signout'
-    },
-    controllers: {
-      registrations: 'registrations'
-    }
-  
+             path: '',
+             path_names: {
+               sign_in: 'signin',
+               sign_out: 'signout'
+             },
+             controllers: {
+               registrations: 'registrations'
+             }
+
   namespace :api do
     scope module: :v2, constraints: ApiVersion.new('v2') do
       resources :churches, only: [:index]
@@ -22,10 +22,10 @@ Rails.application.routes.draw do
       get 'church/(:church_slug)/guides/(:guide_slug)', to: 'guides#show'
     end
   end
-  
-  resources :admin, only: [:index] 
 
-  resources :graphics, only: [:index, :create] do
+  resources :admin, only: [:index]
+
+  resources :graphics, only: %i[index create] do
     member do
       get '(:church_slug)', to: 'graphics#church_graphic'
     end
@@ -41,5 +41,5 @@ Rails.application.routes.draw do
       post '/reorder', to: 'guides#reorder'
     end
   end
-  
+
 end

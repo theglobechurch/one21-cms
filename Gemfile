@@ -18,6 +18,13 @@ gem 'redcarpet', '~> 3.4.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails'         # For testing
+  gem 'rails-controller-testing'  # Does what it says
+  gem 'rubocop'                   # Enforce styles
+  gem 'timecop'                   # Test time cases
+  gem 'brakeman'                  # security warnings
+  gem 'bundler-audit'             # Beware of outdated gems
+  gem 'simplecov', require: false # Check test coverage
 end
 
 group :development do

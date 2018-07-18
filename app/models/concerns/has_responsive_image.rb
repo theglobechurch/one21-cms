@@ -52,7 +52,7 @@ module HasResponsiveImage
   end
 
   def responsive_thumbnails(key)
-    ["thumbnail", "thumbnail_2x"].
+    %w[thumbnail thumbnail_2x].
       map { |s| [:"#{s}", responsive_image_size_url(key, s)] }.
       to_h.
       delete_if { |_, v| v.blank? }

@@ -1,7 +1,9 @@
 <section class="wrapper__section">
   <% if @guide.graphic %>
     <div class="wrapper__section__leadGraphic">
-      <%= image_tag @guide.graphic.try(:graphic_960).try(:remote_url) %>
+      <%= responsive_image_tag(@guide.graphic.graphic_urls,
+                               sizes: ['(max-width: 780px) 100vw', '780px'],
+                               alt: @guide.guide_name) %>
     </div>
   <% end %>
 

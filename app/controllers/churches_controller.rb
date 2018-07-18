@@ -6,12 +6,14 @@ class ChurchesController < ApplicationController
     # if super admin list all the church
     if current_user.superadmin?
       @churches = churches
+
+    # If has a church there is no need to be here
+    elsif current_user.churches_id
+      redirect_to root_path
+
+    # Argh, no church; go and create one
     else
-      if current_user.churches_id
-        redirect_to root_path
-      else
-        redirect_to new_church_url
-      end
+      redirect_to new_church_url
     end
   end
 
@@ -20,10 +22,8 @@ class ChurchesController < ApplicationController
   end
 
   def new
-    # create new church
     if current_user.churches_id
       redirect_to edit_church_path(current_user.church)
-      return
     else
       @church = Church.unscoped.new
     end
@@ -31,8 +31,7 @@ class ChurchesController < ApplicationController
 
   def edit
     @church = church
-    # edit form for church
-    # church name locked if not super admin
+    # TODO: church name locked if not super admin
   end
 
   def create
@@ -49,7 +48,7 @@ class ChurchesController < ApplicationController
     church.attributes = church_params
     if church.save
       flash[:notice] = 'Church updated'
-      redirect_to root_path()
+      redirect_to root_path
     else
       render 'edit'
     end
@@ -62,7 +61,7 @@ private
   end
 
   def church
-    @church ||= churches.find_by_slug(params[:id])
+    @church ||= churches.find_by!(slug: params[:id])
   end
 
   def church_params

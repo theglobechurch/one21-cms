@@ -1,7 +1,7 @@
 class ApiController < ApplicationController
   before_action :set_headers
   include Response
-  
+
   def index; end
 
 private

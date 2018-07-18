@@ -1,7 +1,7 @@
 class Api::V1::ChurchesController < ApiController
 
   def index
-    # ToDo: At some point add pagination into this mix:
+    # TODO: At some point add pagination into this mix:
     # https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-three
 
     @churches = Church.verified
@@ -20,7 +20,7 @@ private
   end
 
   def church
-    @church ||= churches.find_by_slug(params[:church_slug])
+    @church ||= churches.find_by!(slug: params[:church_slug])
   end
 
 end

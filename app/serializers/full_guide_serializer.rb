@@ -1,9 +1,9 @@
 class FullGuideSerializer < ActiveModel::Serializer
 
-  attributes :guide_name, :slug, :teaser, :description, :license, 
+  attributes :guide_name, :slug, :teaser, :description, :license,
              :show_scripture, :highlight_first
-  attribute :image, if: :has_graphic?
-  attribute :images, if: :has_graphic?
+  attribute :image, if: :graphic?
+  attribute :images, if: :graphic?
 
   has_many :studies
 
@@ -20,21 +20,23 @@ class FullGuideSerializer < ActiveModel::Serializer
     true
   end
 
-  def has_graphic?
+  def graphic?
     true if object.graphic
   end
 
   def images
-    {
-      'thumbnail': object.graphic.graphic_thumbnail.try(:remote_url),
-      'thumbnail_2x': object.graphic.graphic_thumbnail_2x.try(:remote_url),
-      '320': object.graphic.graphic_320.try(:remote_url),
-      '640': object.graphic.graphic_640.try(:remote_url),
-      '960': object.graphic.graphic_960.try(:remote_url),
-      '1280': object.graphic.graphic_1280.try(:remote_url),
-      '1920': object.graphic.graphic_1920.try(:remote_url),
-      '2560': object.graphic.graphic_2560.try(:remote_url),
-    } if object.graphic
+    if object.graphic
+      {
+        'thumbnail': object.graphic.graphic_thumbnail.try(:remote_url),
+        'thumbnail_2x': object.graphic.graphic_thumbnail_2x.try(:remote_url),
+        '320': object.graphic.graphic_320.try(:remote_url),
+        '640': object.graphic.graphic_640.try(:remote_url),
+        '960': object.graphic.graphic_960.try(:remote_url),
+        '1280': object.graphic.graphic_1280.try(:remote_url),
+        '1920': object.graphic.graphic_1920.try(:remote_url),
+        '2560': object.graphic.graphic_2560.try(:remote_url)
+      }
+    end
   end
 
   def image

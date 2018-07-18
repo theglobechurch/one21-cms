@@ -32,7 +32,7 @@ class StudiesController < ApplicationController
     @study.update(study_params)
 
     if request.headers['TriggeredBy']
-      render json: { new_status: @study.state, published: @study.published_at }
+      render json: {new_status: @study.state, published: @study.published_at}
     else
       flash[:notice] = 'Study updated'
       redirect_to guide_path(guide)
@@ -46,19 +46,18 @@ private
   end
 
   def study
-    @study ||= studies.find_by_slug!(params[:id])
+    @study ||= studies.find_by!(slug: params[:id])
   end
 
   def guides
-    @guides ||= Guide.includes(:church_guides).
-                      where(church_guides: {
-                        church_id: current_user.church.id,
-                        owner: true
-                      })
+    @guides ||= Guide.
+                includes(:church_guides).
+                where(church_guides: {church_id: current_user.church.id,
+                                      owner: true})
   end
 
   def guide
-    @guide ||= guides.find_by_slug!(params[:guide_id])
+    @guide ||= guides.find_by!(slug: params[:guide_id])
   end
 
   def study_params

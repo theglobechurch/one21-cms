@@ -124,6 +124,8 @@ $headerBP: 500px;
   width: 30px;
 }
 
-.header + .wrapper {
-  padding-top: 50px;
+@media (min-width: $headerBP) {
+  .header + .wrapper {
+    padding-top: 50px;
+  }
 }

@@ -44,6 +44,10 @@
   background-color: coreColor(lightGrey);
   height: 75px;
   width: 75px;
+
+  img {
+    width: 100%;
+  }
 }
 
 .sortable__desc {

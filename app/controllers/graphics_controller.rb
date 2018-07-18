@@ -3,38 +3,37 @@ class GraphicsController < ApplicationController
 
   def index
     @graphics = graphics
-    render json: @graphics, status: 200
+    render json: @graphics, status: :ok
   end
 
   def church_graphic
     @church_graphics = church_graphics
-    render json: @church_graphics, status: 200
+    render json: @church_graphics, status: :ok
   end
 
   def create
     graphic = Graphic.new(graphic: params[:attachment][:file],
                           graphic_name: params[:attachment][:graphic_name],
-                          church: current_user.church)
+                          churches_id: current_user.church.id)
 
     if graphic.save
-      render json: graphic, status: 200
+      render json: graphic, status: :ok
     else
-      render json: graphic.errors, status: 500
+      render json: graphic.errors, status: :internal_server_error
     end
   end
 
 private
 
   def graphics
-    # Should limit by church
-    @graphics ||= Graphic.all()
+    # TODO: Should limit by church
+    @graphics ||= Graphic.all
   end
 
   def church_graphics
-    @church_graphics ||= graphics.joins(:church).
-                                  where(churches: {
-                                    slug: params[:id]
-                                  })
+    @church_graphics ||= graphics.
+                         joins(:church).
+                         where(churches: {slug: params[:id]})
   end
 
 end

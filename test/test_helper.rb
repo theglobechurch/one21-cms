@@ -1,10 +1,25 @@
+require 'simplecov'
+
+SimpleCov.start 'rails' do
+  coverage_dir 'tmp/coverage'
+  add_filter '/bundle/'
+  add_group 'Decorators', 'app/decorators'
+  add_group 'Serializers', 'app/serializers'
+end
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
 
-class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+FactoryBot::SyntaxRunner.class_eval do
+  include ActionDispatch::TestProcess
+end
 
-  # Add more helper methods to be used by all tests here...
+class ActiveSupport::TestCase
+  fixtures :all
+  include FactoryBot::Syntax::Methods
+end
+
+class ActionController::TestCase
+  include Devise::Test::ControllerHelpers
 end

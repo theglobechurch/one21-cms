@@ -36,7 +36,7 @@ Dragonfly.app.configure do
 
   file_options = {
     root_path: path.to_s,
-    server_root: path.dirname.dirname.to_s,
+    server_root: path.dirname.dirname.to_s
   }
 
   datastore :file, file_options

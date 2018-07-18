@@ -3,7 +3,7 @@ module ApplicationHelper
     options = {
       filter_html:          true,
       hard_wrap:            true,
-      link_attributes:      { rel: 'nofollow', target: "_blank" },
+      link_attributes:      {rel: 'nofollow', target: "_blank"},
       space_after_headers:  true,
       fenced_code_blocks:   true
     }
@@ -17,7 +17,9 @@ module ApplicationHelper
     renderer = Redcarpet::Render::HTML.new(options)
     markdown = Redcarpet::Markdown.new(renderer, extensions)
 
-    markdown.render(text).html_safe
+    # Redcarpet takes care of dealing with html safety, so it's fine
+    # to disable the OutputSafety cop here… just this once
+    markdown.render(text).html_safe # rubocop:disable Rails/OutputSafety
   end
 
   def gravatar_url(email, **options)
@@ -28,26 +30,33 @@ module ApplicationHelper
   end
 
   def responsive_image_tag(graphic, html_options = {})
-    srcset = graphic.map { |(k, v)| "#{URI.escape(v)} #{k}w" }
+    srcset = graphic.map do |(k, v)|
+      i = Addressable::URI.parse(v)
+      "#{i.normalize}  #{k}w"
+    end
     kwargs = html_options.deep_merge(sizes:
       html_options.fetch(:sizes, []).join(', '))
     fallback = graphic.try(:[], :"960")
     fallback = graphic.values[0] if fallback.nil?
-    image_tag URI.escape(fallback),
+    fallback = Addressable::URI.parse(fallback)
+    image_tag fallback.normalize.to_s,
               srcset: srcset.join(', '),
               **kwargs
   end
 
   def responsive_thumbnail_tag(graphic, html_options = {})
+    t200 = Addressable::URI.parse(graphic[:thumbnail])
+    t400 = Addressable::URI.parse(graphic[:thumbnail_2x])
     srcset = [
-      "#{URI.escape(graphic[:thumbnail])} 200w",
-      "#{URI.escape(graphic[:thumbnail_2x])} 400x",
+      "#{t200.normalize} 200w",
+      "#{t400.normalize} 400w"
     ]
     kwargs = html_options.deep_merge(sizes:
       html_options.fetch(:sizes, []).join(', '))
-    fallback = graphic.try(:[], :"thumbnail")
+    fallback = graphic.try(:[], :thumbnail)
     fallback = graphic.values[0] if fallback.nil?
-    image_tag URI.escape(fallback),
+    fallback = Addressable::URI.parse(fallback)
+    image_tag fallback.normalize.to_s,
               srcset: srcset.join(', '),
               **kwargs
   end
