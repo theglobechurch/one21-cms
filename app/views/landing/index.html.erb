@@ -1,36 +1,52 @@
-<h1>One21</h1>
-
-<section id="signup">
-  <h2>Sign in</h2>
-
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="landing">
+  <section class="landing__masthead">
+    <div class="landing__innertube landing__masthead__lead">
+      <%= image_tag('one21-inhand.png') %>
+      <h1><strong>One21</strong> helps your church family disciple one another</h1>
     </div>
+  </section>
 
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
+  <section class="landing__cta">
+    <div class="landing__innertube">
+      <p>Reflect and discuss what you're hearing on Sunday's in one-to-one groups</p>
+      <a href="https://www.globe.church/resources/one21-launch" target="_blank" class="btn">Read the introduction blog post</a>
+    </div>  
+  </section>
+
+  <section class="landing__signin" id="signin">
+    <div class="landing__innertube">
+      <h2><strong>Sign in</strong> to your church account</h2>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.email_field :email, autocomplete: "email", placeholder: "Email Address", class: 'landing__signin__textfield' %>
+
+        <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: 'landing__signin__textfield' %>
+
+        <!--
+        <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end -%>
+        -->
+
+        <div class="actions">
+          <%= f.submit "Sign in", class: "btn" %>
+        </div>
+      <% end %>
+
+      <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <p class="landing__signin__forgotten"><%= link_to "Forgot your password?", new_password_path(resource_name) %></p>
+      <% end %>
+
+      <p>One21 is a new service. Registration isn’t public (yet).</p>
+      <p>You can subscribe to the (infrequent) newsletter to find out when it will be.</p>
     </div>
+  </section>
+</div>
 
-    <% if devise_mapping.rememberable? -%>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end -%>
-
-    <div class="actions">
-      <%= f.submit "Log in" %>
-    </div>
-  <% end %>
-
-  <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-    <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-  <% end %>
-</section>
-
+<!--
 <section id="introduction">
 
   <h2>One21 is a tool to help your church run one-to-ones</h2>
@@ -72,3 +88,4 @@
 <footer>
   All the links
 </footer>
+-->

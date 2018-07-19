@@ -6,7 +6,7 @@
     <% if user_signed_in? %>
       <%= stylesheet_link_tag "/assets/css/main.css" %>
     <% else %>
-      <%#= stylesheet_link_tag "/assets/css/main.css" %>
+      <%= stylesheet_link_tag "/assets/css/landing.css" %>
     <% end%>
 
     <%= csrf_meta_tags %>
@@ -22,29 +22,29 @@
           <%= link_to("One21 Guide Builder", root_path) %>
         </div>
 
-        <% if user_signed_in? %>
         <ul class="header__navigation">
         
-          <% if @current_user.church %>
-          <li class="header__navigation__item"><%= link_to(@current_user.church.church_name, root_path) %></li>
-          <% end %>
+          <% if user_signed_in? %>
+            <% if @current_user.church %>
+            <li class="header__navigation__item"><%= link_to(@current_user.church.church_name, root_path) %></li>
+            <% end %>
 
-          <li class="header__navigation__item">
-            Account
-            <img src="<%= gravatar_url(@current_user.email, s: 30, d: 'mp') %>" alt="" class="header__navigation__avatar" />
-            <ul class="header__navigation__subnav">
-              <li class="header__navigation__subnav__item header__navigation__subnav__item--name">
-                <span><%= @current_user.first_name %></span>
-                <span><%= @current_user.family_name %></span>
-              </li>
-              <li class="header__navigation__subnav__item"><%= link_to('My Account', edit_user_registration_path) %></li>
-              <li class="header__navigation__subnav__item">
-                <%= button_to t('general.sign_out'), destroy_user_session_path, method: :delete, class: "header__signout"%>
-              </li>
-            </ul>
-          </li>
+            <li class="header__navigation__item">
+              Account
+              <img src="<%= gravatar_url(@current_user.email, s: 30, d: 'mp') %>" alt="" class="header__navigation__avatar" />
+              <ul class="header__navigation__subnav">
+                <li class="header__navigation__subnav__item header__navigation__subnav__item--name">
+                  <span><%= @current_user.first_name %></span>
+                  <span><%= @current_user.family_name %></span>
+                </li>
+                <li class="header__navigation__subnav__item"><%= link_to('My Account', edit_user_registration_path) %></li>
+                <li class="header__navigation__subnav__item">
+                  <%= button_to t('general.sign_out'), destroy_user_session_path, method: :delete, class: "header__signout"%>
+                </li>
+              </ul>
+            </li>
+          <% end %>
         </ul>
-        <% end %>
       </div>
     </header>
 

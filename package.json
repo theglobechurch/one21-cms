@@ -3,11 +3,14 @@
   "private": true,
   "scripts": {
     "dev": "watch 'npm run dev:build' app/assets/*",
-    "dev:build": "npm run dev:js && npm run dev:css",
+    "dev:build": "npm run dev:js && npm run dev:adminCSS && npm run dev:landingCSS",
     "dev:js": "webpack --mode development",
-    "dev:css": "node-sass --source-map-embed --follow --output-style expanded app/assets/stylesheets/application.scss | node_modules/.bin/postcss -u autoprefixer -u cssnano -o public/assets/css/main.css --map file",
+    "dev:adminCSS": "node-sass --source-map-embed --follow --output-style expanded app/assets/stylesheets/application.scss | node_modules/.bin/postcss -u autoprefixer -u cssnano -o public/assets/css/main.css --map file",
+    "dev:landingCSS": "node-sass --source-map-embed --follow --output-style expanded app/assets/stylesheets/landing.scss | node_modules/.bin/postcss -u autoprefixer -u cssnano -o public/assets/css/landing.css --map file",
+    "prod": "npm run prod:js && npm run prod:adminCSS && npm run prod:landingCSS",
     "prod:js": "webpack --mode production",
-    "prod:css": "node-sass --follow --output-style expanded app/assets/stylesheets/application.scss | node_modules/.bin/postcss -u autoprefixer -u cssnano -o public/assets/css/main.css"
+    "prod:adminCSS": "node-sass --follow --output-style expanded app/assets/stylesheets/application.scss | node_modules/.bin/postcss -u autoprefixer -u cssnano -o public/assets/css/main.css",
+    "prod:landingCSS": "node-sass --follow --output-style expanded app/assets/stylesheets/landing.scss | node_modules/.bin/postcss -u autoprefixer -u cssnano -o public/assets/css/landing.css"
   },
   "dependencies": {
     "html5sortable": "^0.9.3",
