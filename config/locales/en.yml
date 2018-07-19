@@ -34,3 +34,14 @@ en:
   time:
     formats:
       default: "%A %d %B %Y, %H:%M"
+  activerecord:
+    attributes:
+      study:
+        questions_json: "Study questions"
+    errors:
+      models:
+        study:
+          attributes:
+            questions_json:
+              blank: "are required"
+
