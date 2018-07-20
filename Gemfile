@@ -25,6 +25,7 @@ group :development, :test do
   gem 'brakeman'                  # security warnings
   gem 'bundler-audit'             # Beware of outdated gems
   gem 'simplecov', require: false # Check test coverage
+  gem 'minitest-reporters'        # Improve the look of unit tests  
 end
 
 group :development do

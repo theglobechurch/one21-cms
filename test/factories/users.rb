@@ -9,5 +9,18 @@ FactoryBot.define do
 
     password 'super secure password'
     password_confirmation { password }
+
+    trait :superadmin do
+      role 'superadmin'
+    end
+
+    trait :churchuser do
+      role 'churchuser'
+    end
+
+    trait :churchadmin do
+      church
+      role 'churchadmin'
+    end
   end
 end
