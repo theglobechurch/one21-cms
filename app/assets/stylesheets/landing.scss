@@ -4,8 +4,6 @@
 @import "footer";
 @import "toast";
 
-$headerBP: 500px;
-
 .header {
   background-color: coreColor(black);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
@@ -14,12 +12,6 @@ $headerBP: 500px;
   min-height: 48px;
   padding: 0;
   position: relative;
-
-  @media (min-width: $headerBP) {
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-  }
 
   a {
     text-decoration: none;
@@ -64,28 +56,61 @@ $headerBP: 500px;
 .landing__masthead {
   background: coreColor(darkestGrey) url("/assets/tablecloth.jpg");
   color: coreColor(white);
-  background-position: top center;
   font-size: 48px;
   line-height: 56px;
-  min-height: 500px;
-  background-repeat: repeat-x;
+  display: block;
+  min-height: auto;
   padding-right: 10px;
+  background-position: left center;
+  background-repeat: repeat-y;
+
+  @media (min-width: 700px) {
+    background-position: top center;
+    background-repeat: repeat-x;
+  }
 
   &__lead {
-    display: flex;
-    padding-top: 50px;
-    align-items: flex-end;
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+
+    @media (min-width: 600px) {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    @media (min-width: 700px) {
+      padding-top: 50px;
+      align-items: flex-end;
+    }
   }
 
   img {
     max-height: 500px;
-    margin-right: 10px;
+    margin: 10px 10px 0 0;
+    max-width: 345px;
+    width: 100%;
+    align-self: end;
   }
 
   h1 {
     font-weight: 400;
-    margin-bottom: 120px;
     text-align: right;
+    padding: 50px 0;
+    font-size: 32px;
+    line-height: 38px;
+    align-self: center;
+
+    @media (min-width: 700px) {
+      margin: 150px 0 0 0;
+      padding: 0;
+      font-size: 36px;
+      line-height: 52px;
+    }
+
+    @media (min-width: 930px) {
+      font-size: 48px;
+      line-height: 66px;
+    }
 
     strong {
       font-weight: 500;
