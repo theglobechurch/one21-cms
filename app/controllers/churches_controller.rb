@@ -9,7 +9,7 @@ class ChurchesController < ApplicationController
 
     # If has a church there is no need to be here
     elsif current_user.churches_id
-      redirect_to root_path
+      redirect_to admin_index_path
 
     # Argh, no church; go and create one
     else
@@ -18,7 +18,7 @@ class ChurchesController < ApplicationController
   end
 
   def show
-    redirect_to root_path
+    redirect_to admin_index_path
   end
 
   def new
