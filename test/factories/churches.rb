@@ -6,8 +6,10 @@ FactoryBot.define do
       "admin#{n}@one21.org"
     end
 
-    phone '01234 678901'
-    url 'https://allsaintslondon.church'
+    sequence :url do |n|
+      "https://allsaintslondon#{n}.church"
+    end
+
     city 'London, UK'
 
     trait :verified do

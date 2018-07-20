@@ -18,17 +18,12 @@ class AdminControllerTest < ActionController::TestCase
     assert_equal "You must create your church before proceeding", flash[:notice]
   end
 
-  test 'loads admin overview page' do
-    sign_in create(:user, :churchadmin)
-    get :index
-
-    assert_response(:ok)
-  end
-
   test 'Fresh setup allocated everything correctly' do
     usr = create(:user, :churchadmin)
     sign_in usr
     get :index
+
+    assert_response(:ok)
 
     assert assigns(:church)
     assert assigns(:guides)

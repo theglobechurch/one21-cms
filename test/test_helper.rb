@@ -25,4 +25,8 @@ end
 
 class ActionController::TestCase
   include Devise::Test::ControllerHelpers
+
+  def json_response
+    MultiJson.load(@response.body, symbolize_keys: true)
+  end
 end

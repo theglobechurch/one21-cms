@@ -9,11 +9,11 @@ class StudySerializer < ActiveModel::Serializer
   end
 
   def start
-    object.study_start
+    MarkdownRenderer.new.to_markdown(object.study_start)
   end
 
   def end
-    object.study_end
+    MarkdownRenderer.new.to_markdown(object.study_end)
   end
 
   def passage
