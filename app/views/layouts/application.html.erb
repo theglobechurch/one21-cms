@@ -43,6 +43,10 @@
                 </li>
               </ul>
             </li>
+          <% else %>
+            <li class="header__navigation__item">
+              <%=link_to 'Sign in', new_user_session_path %>
+            </li>
           <% end %>
         </ul>
       </div>

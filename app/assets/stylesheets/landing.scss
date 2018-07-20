@@ -1,9 +1,59 @@
 @import "vars";
 @import "basic-mixins";
 @import "reset";
-@import "header";
 @import "footer";
 @import "toast";
+
+$headerBP: 500px;
+
+.header {
+  background-color: coreColor(black);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  color: coreColor(white);
+  font-size: 18px;
+  min-height: 48px;
+  padding: 0;
+  position: relative;
+
+  @media (min-width: $headerBP) {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      color: coreColor(white);
+    }
+  }
+}
+
+.header__body {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1024px;
+  padding: 0;
+}
+
+.header__title {
+  padding: 10px;
+}
+
+.header__navigation {
+  margin: 0;
+}
+
+.header__navigation__item {
+  display: inline;
+  margin: 0;
+  padding: 10px;
+  position: relative;
+}
 
 .landing__innertube {
   margin: 0 auto;
