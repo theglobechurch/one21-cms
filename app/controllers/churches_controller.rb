@@ -37,8 +37,8 @@ class ChurchesController < ApplicationController
   def create
     @church = Church.unscoped.new(church_params)
     if @church.save
-      flash[:notice] = "Church saved"
-      redirect_to @church
+      flash[:notice] = "Church created"
+      redirect_to admin_index_path
     else
       render 'new'
     end
@@ -48,7 +48,7 @@ class ChurchesController < ApplicationController
     church.attributes = church_params
     if church.save
       flash[:notice] = 'Church updated'
-      redirect_to root_path
+      redirect_to admin_index_path
     else
       render 'edit'
     end

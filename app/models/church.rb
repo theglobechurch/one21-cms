@@ -15,7 +15,7 @@ class Church < ApplicationRecord
              optional: true,
              inverse_of: :church
 
-  after_create :post_setup
+  after_create :post_setup if User.current
 
   validates :church_name, :email, :url, :city, :slug, presence: true
   validates :email, :slug, uniqueness: true

@@ -44,7 +44,6 @@
                                       Guide.sortings.keys.map { |w| [w.humanize, w] },
                                       :second,
                                       :first) do |b|
-                                        p b.label.inspect
                                         b.label { b.radio_button + b.label }
                                       end
         %>
