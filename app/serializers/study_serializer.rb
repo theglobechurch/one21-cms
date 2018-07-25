@@ -27,19 +27,25 @@ class StudySerializer < ActiveModel::Serializer
   def images
     if object.graphic
       {
-        'thumbnail': object.graphic.graphic_thumbnail.try(:remote_url),
-        'thumbnail_2x': object.graphic.graphic_thumbnail_2x.try(:remote_url),
-        '320': object.graphic.graphic_320.try(:remote_url),
-        '640': object.graphic.graphic_640.try(:remote_url),
-        '960': object.graphic.graphic_960.try(:remote_url),
-        '1280': object.graphic.graphic_1280.try(:remote_url),
-        '1920': object.graphic.graphic_1920.try(:remote_url),
-        '2560': object.graphic.graphic_2560.try(:remote_url)
+        'thumbnail': "#{base_url}#{object.graphic.graphic_thumbnail.try(:remote_url)}",
+        'thumbnail_2x': "#{base_url}#{object.graphic.graphic_thumbnail_2x.try(:remote_url)}",
+        '320': "#{base_url}#{object.graphic.graphic_320.try(:remote_url)}",
+        '640': "#{base_url}#{object.graphic.graphic_640.try(:remote_url)}",
+        '960': "#{base_url}#{object.graphic.graphic_960.try(:remote_url)}",
+        '1280': "#{base_url}#{object.graphic.graphic_1280.try(:remote_url)}",
+        '1920': "#{base_url}#{object.graphic.graphic_1920.try(:remote_url)}",
+        '2560': "#{base_url}#{object.graphic.graphic_2560.try(:remote_url)}"
       }
     end
   end
 
   def image
-    object.graphic.try(:graphic_960).try(:remote_url) if object.graphic
+    if object.graphic
+      "#{base_url}#{object.graphic.try(:graphic_960).try(:remote_url)}"
+    end
+  end
+
+  def base_url
+    @instance_options[:params][:base_url] if @instance_options[:params]
   end
 end

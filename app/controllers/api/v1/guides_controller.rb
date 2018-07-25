@@ -15,7 +15,10 @@ class Api::V1::GuidesController < ApiController
   def show
     guide
     if @guide
-      json_response(@guide, :ok, FullGuideSerializer)
+      json_response(@guide,
+                    :ok,
+                    FullGuideSerializer,
+                    base_url: request.base_url)
     else
       raise ActionController::RoutingError, 'Not Found'
     end
