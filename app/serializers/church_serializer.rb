@@ -1,6 +1,10 @@
 class ChurchSerializer < ActiveModel::Serializer
 
   # TODO: include church logo of some form here…
-  attributes :church_name, :slug
+  attributes :name, :slug
+
+  def name
+    object.church_name
+  end
 
 end

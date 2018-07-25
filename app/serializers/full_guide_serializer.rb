@@ -1,11 +1,15 @@
 class FullGuideSerializer < ActiveModel::Serializer
 
-  attributes :guide_name, :slug, :teaser, :description, :license,
+  attributes :name, :slug, :teaser, :description, :license,
              :show_scripture, :highlight_first
   attribute :image, if: :graphic?
   attribute :images, if: :graphic?
 
   has_many :studies
+
+  def name
+    object.guide_name
+  end
 
   def license
     object.copyright
