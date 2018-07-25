@@ -28,6 +28,10 @@ class FullGuideSerializer < ActiveModel::Serializer
     true if object.graphic
   end
 
+  def base_url
+    @instance_options[:params][:base_url] if @instance_options[:params]
+  end
+  
   def images
     if object.graphic
       {
@@ -43,9 +47,6 @@ class FullGuideSerializer < ActiveModel::Serializer
     end
   end
 
-  def base_url
-    @instance_options[:params][:base_url] if @instance_options[:params]
-  end
 
   def image
     if object.graphic

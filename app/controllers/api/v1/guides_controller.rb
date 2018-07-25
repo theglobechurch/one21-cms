@@ -6,7 +6,8 @@ class Api::V1::GuidesController < ApiController
 
     guides
     if @guides.length.positive?
-      json_response(@guides)
+      json_response(@guides,
+                    base_url: request.base_url)
     else
       raise ActionController::RoutingError, 'Not Found'
     end
