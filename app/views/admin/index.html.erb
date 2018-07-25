@@ -60,8 +60,7 @@
     <% if @guides.present? %>
       <div class="guideOverview__grid">
         <% for guide in @guides do %>
-        
-          <%= link_to(guide, class: "guideOverview__grid__item guideTile") do %>
+          <%= link_to(guide_path(guide), class: "guideOverview__grid__item guideTile") do %>
             <div class="guideTile__img">
               <img src="<%=guide.graphic.try(:graphic_thumbnail).try(:remote_url)%>" alt="">
               <% if guide.status == "draft" %>
