@@ -51,6 +51,18 @@
       <%= f.label :sorting, class: 'form__label' %>
     </div>
 
+    <% if @guide.slug != 'sermons' %>
+      <div class="form__field">
+        <span class="form__input form__input--inlineRadio">
+          <label>
+          <%= f.check_box(:highlight_first) %>
+            Promote on the homepage
+          </label>
+        </span>
+        <%= f.label :highlight_first, class: 'form__label' %>
+      </div>
+    <% end %>
+
     <%= f.submit 'Save', class: 'form__submit btn btn--primary' %>
     
   </div>

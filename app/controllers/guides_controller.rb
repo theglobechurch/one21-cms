@@ -88,7 +88,8 @@ private
                                   :copyright,
                                   :status,
                                   :graphics_id,
-                                  :sorting)
+                                  :sorting,
+                                  :highlight_first)
   end
 
 end
