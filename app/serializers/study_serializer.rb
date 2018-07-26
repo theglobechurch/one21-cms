@@ -1,6 +1,6 @@
 class StudySerializer < ActiveModel::Serializer
   attributes :name, :slug, :description, :recording_url, :website_url,
-             :passage_ref, :passage, :questions, :start, :end
+             :passage_ref, :passage, :questions, :start, :end, :date
   attribute :image, if: :graphic?
   attribute :images, if: :graphic?
 
@@ -18,6 +18,10 @@ class StudySerializer < ActiveModel::Serializer
 
   def passage
     object.passage_str
+  end
+
+  def date
+    object.published_at
   end
 
   def graphic?
