@@ -1,8 +1,9 @@
 class StudySerializer < ActiveModel::Serializer
   attributes :name, :slug, :description, :recording_url, :website_url,
-             :passage_ref, :passage, :questions, :start, :end, :date
+             :passage_ref, :passage, :questions, :start, :end
   attribute :image, if: :graphic?
   attribute :images, if: :graphic?
+  attribute :date, if: :return_date?
 
   def name
     object.study_name
@@ -22,6 +23,10 @@ class StudySerializer < ActiveModel::Serializer
 
   def date
     object.published_at
+  end
+
+  def return_date?
+    object.guide.sorting != 'ordered'
   end
 
   def graphic?
