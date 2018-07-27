@@ -6,8 +6,7 @@ class Api::V1::GuidesController < ApiController
 
     guides
     if @guides.length.positive?
-      json_response(@guides,
-                    base_url: request.base_url)
+      json_response(@guides)
     else
       raise ActionController::RoutingError, 'Not Found'
     end
@@ -18,8 +17,7 @@ class Api::V1::GuidesController < ApiController
     if @guide
       json_response(@guide,
                     :ok,
-                    FullGuideSerializer,
-                    base_url: request.base_url)
+                    FullGuideSerializer)
     else
       raise ActionController::RoutingError, 'Not Found'
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_16_122609) do
+ActiveRecord::Schema.define(version: 2018_07_26_124650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(version: 2018_07_16_122609) do
     t.datetime "updated_at", null: false
     t.boolean "verified", default: false, null: false
     t.bigint "graphics_id"
+    t.string "church_logo_uid"
+    t.string "church_logo_600_uid"
+    t.string "church_logo_sq_uid"
+    t.string "church_logo_sq_500_uid"
+    t.string "church_logo_sq_250_uid"
     t.index ["email"], name: "index_churches_on_email", unique: true
     t.index ["graphics_id"], name: "index_churches_on_graphics_id"
     t.index ["slug"], name: "index_churches_on_slug", unique: true

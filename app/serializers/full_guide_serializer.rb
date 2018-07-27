@@ -47,7 +47,6 @@ class FullGuideSerializer < ActiveModel::Serializer
     end
   end
 
-
   def image
     if object.graphic
       "#{base_url}#{object.graphic.try(:graphic_960).try(:remote_url)}"

@@ -45,8 +45,9 @@ class ChurchesController < ApplicationController
   end
 
   def update
-    church.attributes = church_params
-    if church.save
+    @church = church
+    @church.attributes = church_params
+    if @church.save
       flash[:notice] = 'Church updated'
       redirect_to admin_index_path
     else
@@ -65,13 +66,21 @@ private
   end
 
   def church_params
-    params.require(:church).permit(:church_name,
-                                   :email,
-                                   :url,
-                                   :phone,
-                                   :city,
-                                   :address,
-                                   :graphics_id)
+    pa = params.require(:church).permit(:church_name,
+                                        :email,
+                                        :url,
+                                        :phone,
+                                        :city,
+                                        :address,
+                                        :graphics_id,
+                                        :church_logo,
+                                        :church_logo_sq)
+
+    if !church.church_logo_sq && !pa[:church_logo_sq]
+      pa[:church_logo_sq] = pa[:church_logo]
+    end
+    
+    pa
   end
 
 end
