@@ -6,10 +6,16 @@ It outputs an API ([documentation](api-doc.md)) which the [One21 frontend](https
 
 ## Toolbox
 
-1. Docker
-2. Ruby on Rails
+1.  Docker
+2.  Ruby on Rails
 
 ## Set up
+
+Create `/config/application.yml` with the tokens:
+
+```
+esv_api_token: "{token from https://api.esv.org}"
+```
 
 - `docker-compose build`
 - `docker-compose run web rake db:create`
@@ -19,18 +25,20 @@ It outputs an API ([documentation](api-doc.md)) which the [One21 frontend](https
 Helpful overview of [quickstarting Docker + Rails](https://docs.docker.com/compose/rails/).
 
 Exit with:
+
 - `docker-compose down`
 
 ## Development
 
 SSH into the Docker Container:
+
 - `docker ps` (get the container-id)
 - `docker exec -it {container-id} bash`
 
 When adding new gems:
+
 - add them to the `Gemfile` first, then…
 - `docker-compose build`
 - `docker-compose up`
 
 Run commands in the Docker instance with `docker-compose run web …`. Eg: `docker-compose run web rake db:create`
-

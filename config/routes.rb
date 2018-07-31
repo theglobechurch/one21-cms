@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   resources :admin, only: [:index]
 
+  post '/bible', to: 'bible#index'
+
   resources :graphics, only: %i[index create] do
     member do
       get '(:church_slug)', to: 'graphics#church_graphic'
