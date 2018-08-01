@@ -1,5 +1,4 @@
 .scripturePicker {
-
 }
 
 .scripturePicker__preview {
@@ -11,21 +10,21 @@
 }
 
 .scripturePicker__refSelector {
-  align-items: end;
   display: flex;
-  margin-top: 15px;
-  width: 100%;
-  
-  @include bpMinXSmall() {
-    max-width: 350px;
-  }
+  justify-content: space-between;
+  max-width: 350px;
 
   &__chv {
     display: flex;
+    max-width: 175px;
 
-    &:first-child{
+    input {
+      max-width: 75px;
+    }
+
+    &:first-child {
       &:after {
-        content: ' → ';
+        content: " → ";
       }
     }
   }
