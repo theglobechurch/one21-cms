@@ -30,6 +30,8 @@ class ChurchesController < ApplicationController
   end
 
   def edit
+    check_church_owner(params[:id])
+
     @church = church
     # TODO: church name locked if not super admin
   end
