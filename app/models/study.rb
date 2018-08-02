@@ -37,10 +37,24 @@ class Study < ApplicationRecord
 
   def passage_ref
     @passage_ref ||= if passage_ref_json.present?
-                       MultiJson.load(passage_ref_json, symbolize_keys: true)
+                       p = MultiJson.load(passage_ref_json, symbolize_keys: true)
+                       p = p.each do |n|
+                        n.delete(:passage)
+                       end
                      else
                        []
                      end
+  end
+
+  def scripture
+    @scripture ||= if passage_ref_json.present?
+                     p = MultiJson.load(passage_ref_json, symbolize_keys: true)
+                     p = p.map do |n|
+                      n[:passage][:esv] if n[:passage]
+                     end
+                   else
+                     []
+                   end
   end
 
   def passage_str

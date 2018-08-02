@@ -58,9 +58,32 @@ export default class Picker extends Component {
     }`;
 
     // Look up passage from API…
+    const data = new FormData();
+    const token = document.querySelector("meta[name='csrf-token']").content;
 
-    // Send it back
-    this.props.onConfirm(refText, refJson);
+    data.append("passages[]", refText);
+
+    const passageLookup = fetch("/bible", {
+      credentials: "include",
+      headers: {
+        "X-CSRF-Token": token,
+        TriggeredBy: "scripturePicker"
+      },
+      method: "POST",
+      body: data,
+      cache: "no-store"
+    });
+
+    passageLookup
+      .then(res => {
+        return res.json();
+      })
+      .then(json => {
+        refJson.passage = {};
+        refJson.passage.esv = json[0];
+
+        this.props.onConfirm(refText, refJson);
+      });
   }
 
   onBookLookup(event) {

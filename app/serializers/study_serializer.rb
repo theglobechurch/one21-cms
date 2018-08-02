@@ -1,6 +1,6 @@
 class StudySerializer < ActiveModel::Serializer
   attributes :name, :slug, :description, :recording_url, :website_url,
-             :passage_ref, :passage, :questions, :start, :end
+             :passage_ref, :passage, :scripture, :questions, :start, :end
   attribute :image, if: :graphic?
   attribute :images, if: :graphic?
   attribute :date, if: :return_date?
