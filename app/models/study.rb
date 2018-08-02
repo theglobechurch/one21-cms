@@ -50,7 +50,7 @@ class Study < ApplicationRecord
     @scripture ||= if passage_ref_json.present?
                      p = MultiJson.load(passage_ref_json, symbolize_keys: true)
                      p = p.map do |n|
-                      n[:passage][:esv] if n[:passage]
+                      n[:passage][:esv] if n[:passage] && n[:passage][:esv]
                      end
                    else
                      []

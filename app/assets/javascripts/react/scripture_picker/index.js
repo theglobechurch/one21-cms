@@ -45,6 +45,16 @@ class ScripturePicker extends Component {
     this.onTogglePopup();
   }
 
+  onRemovePassage(key) {
+    const { refText, refJson } = this.state;
+
+    refText.splice(key, 1);
+    refJson.splice(key, 1);
+
+    this.props.onConfirm(refJson);
+    this.setState({ refText, refJson });
+  }
+
   render() {
     return (
       <div className="scripturePicker">
@@ -66,7 +76,17 @@ class ScripturePicker extends Component {
 
               {this.state.refText.length > 0 && (
                 <ul>
-                  {this.state.refText.map((ref, i) => <li key={i}>{ref}</li>)}
+                  {this.state.refText.map((ref, i) => (
+                    <li key={i}>
+                      {ref}{" "}
+                      <a
+                        className="scripturePicker__passageRemove"
+                        onClick={this.onRemovePassage.bind(this, i)}
+                      >
+                        remove
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               )}
 

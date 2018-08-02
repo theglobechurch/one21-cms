@@ -1,9 +1,10 @@
 class StudySerializer < ActiveModel::Serializer
   attributes :name, :slug, :description, :recording_url, :website_url,
-             :passage_ref, :passage, :scripture, :questions, :start, :end
+             :passage_ref, :passage, :questions, :start, :end
   attribute :image, if: :graphic?
   attribute :images, if: :graphic?
   attribute :date, if: :return_date?
+  attribute :scripture, if: :scripture?
 
   def name
     object.study_name
@@ -19,6 +20,10 @@ class StudySerializer < ActiveModel::Serializer
 
   def passage
     object.passage_str
+  end
+
+  def scripture?
+    object.scripture != [nil]
   end
 
   def date
