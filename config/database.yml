@@ -19,7 +19,7 @@ default: &default
   encoding: unicode
   host: db
   username: postgres
-  password:
+  ? password
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
@@ -33,5 +33,4 @@ test:
 production:
   <<: *default
   database: one21-cms_production
-  username: one21-cms
-  password: <%= ENV['ONE21-CMS_DATABASE_PASSWORD'] %>
+  host: localhost
