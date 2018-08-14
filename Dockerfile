@@ -1,4 +1,4 @@
-FROM ruby:2.3.3
+FROM ruby:2.5.1
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 RUN mkdir /one21-cms
 WORKDIR /one21-cms
