@@ -8,7 +8,7 @@ class GuidesController < ApplicationController
   end
 
   def new
-    @guide = Guide.unscoped.new
+    @guide = Guide.unscoped.build
   end
 
   def create

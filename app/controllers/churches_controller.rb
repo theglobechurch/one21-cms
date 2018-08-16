@@ -64,7 +64,7 @@ private
   end
 
   def church
-    @church ||= churches.find_by!(slug: params[:id])
+    @church ||= churches.find_by(slug: params[:id])
   end
 
   def church_params
@@ -78,10 +78,10 @@ private
                                         :church_logo,
                                         :church_logo_sq)
 
-    if !church.church_logo_sq && !pa[:church_logo_sq]
+    if (church && !church.church_logo_sq) && !pa[:church_logo_sq]
       pa[:church_logo_sq] = pa[:church_logo]
     end
-    
+
     pa
   end
 

@@ -10,13 +10,13 @@ class Church < ApplicationRecord
            through: :church_guides
   has_many :graphics,
            dependent: :nullify
-           
+
   belongs_to :graphic,
              foreign_key: :graphics_id,
              optional: true,
              inverse_of: :church
-           
-  after_create :post_setup if User.current
+
+  after_commit :post_create, on: :create
 
   validates :church_name, :email, :url, :city, :slug, presence: true
   validates :email, :slug, uniqueness: true
@@ -29,10 +29,10 @@ class Church < ApplicationRecord
               force_downcase: true,
               url_attribute: :slug,
               only_when_blank: true
-              
+
   dragonfly_accessor :church_logo_600
   dragonfly_accessor :church_logo do
-    copy_to(:church_logo_sq) if !defined?(:church_logo_sq)
+    copy_to(:church_logo_sq) unless defined?(:church_logo_sq)
 
     copy_to(:church_logo_600) do |a|
       a.encode('png', '-quality 70 -interlace plane -resize 600x')
@@ -65,19 +65,16 @@ class Church < ApplicationRecord
 
 private
 
-  def post_setup
-    # Link with current user
-    u = User.current
-    u.churches_id = id
-    u.save
+  def post_create
 
-    # Create guide
-    Guide.
-      unscoped.
-      create(guide_name: 'Sermons',
-             teaser: "Sermons from #{church_name}",
-             highlight_first: true,
-             sorting: 'date_desc')
+    u = User.current
+    u.update(churches_id: self.id)
+
+    Guide.create(
+      guide_name: 'Sermons',
+      teaser: "Sermons from #{church_name}",
+      highlight_first: true,
+      sorting: 'date_desc')
   end
 
 end
