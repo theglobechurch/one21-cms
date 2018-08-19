@@ -15,6 +15,7 @@ Create `/config/application.yml` with the tokens:
 
 ```
 esv_api_token: "{token from https://api.esv.org}"
+devise_secret_key: "{token from `bundle exec rake secret`}"
 ```
 
 - `docker-compose build`
