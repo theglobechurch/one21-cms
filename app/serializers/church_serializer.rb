@@ -2,14 +2,14 @@ class ChurchSerializer < ActiveModel::Serializer
 
   # TODO: include church logo of some form here…
   attributes :name, :slug
-  attribute :logo, if: :has_logo?
-  attribute :logo_sq, if: :has_logo?
+  attribute :logo, if: :logo?
+  attribute :logo_sq, if: :logo?
 
   def name
     object.church_name
   end
 
-  def has_logo?
+  def logo?
     true if object.church_logo_sq
   end
 

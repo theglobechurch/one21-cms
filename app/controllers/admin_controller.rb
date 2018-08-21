@@ -15,6 +15,7 @@ class AdminController < ApplicationController
   end
 
 private
+
   def church
     @church ||= Church.find(current_user.churches_id)
   end

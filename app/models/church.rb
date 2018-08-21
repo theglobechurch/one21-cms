@@ -66,15 +66,15 @@ class Church < ApplicationRecord
 private
 
   def post_create
-
     u = User.current
-    u.update(churches_id: self.id)
+    u.update(churches_id: id)
 
     Guide.create(
       guide_name: 'Sermons',
       teaser: "Sermons from #{church_name}",
       highlight_first: true,
-      sorting: 'date_desc')
+      sorting: 'date_desc'
+    )
   end
 
 end

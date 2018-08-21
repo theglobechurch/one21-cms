@@ -3,12 +3,14 @@ module Response
     default_params = {
       base_url: base_url
     }
-    
+
     render json: object,
            status: status,
            serializer: serializer,
            params: default_params.merge(params)
   end
+
+private
 
   def base_url
     request.base_url

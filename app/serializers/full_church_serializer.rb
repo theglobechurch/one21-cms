@@ -2,9 +2,9 @@ class FullChurchSerializer < ActiveModel::Serializer
 
   # TODO: include church logo of some form here…
   attributes :name, :slug, :email, :url
-  attribute :logo, if: :has_logo?
-  attribute :logo_sq, if: :has_logo?
-  attribute :logo_sq_large, if: :has_logo?
+  attribute :logo, if: :logo?
+  attribute :logo_sq, if: :logo?
+  attribute :logo_sq_large, if: :logo?
   attribute :lead_image, if: :graphic?
   attribute :lead_images, if: :graphic?
 
@@ -12,7 +12,7 @@ class FullChurchSerializer < ActiveModel::Serializer
     object.church_name
   end
 
-  def has_logo?
+  def logo?
     true if object.church_logo_sq
   end
 
@@ -34,15 +34,19 @@ class FullChurchSerializer < ActiveModel::Serializer
 
   def lead_images
     if object.graphic
+
+      bs = base_url
+      og = object.graphic
+
       {
-        'thumbnail': "#{base_url}#{object.graphic.graphic_thumbnail.try(:remote_url)}",
-        'thumbnail_2x': "#{base_url}#{object.graphic.graphic_thumbnail_2x.try(:remote_url)}",
-        '320': "#{base_url}#{object.graphic.graphic_320.try(:remote_url)}",
-        '640': "#{base_url}#{object.graphic.graphic_640.try(:remote_url)}",
-        '960': "#{base_url}#{object.graphic.graphic_960.try(:remote_url)}",
-        '1280': "#{base_url}#{object.graphic.graphic_1280.try(:remote_url)}",
-        '1920': "#{base_url}#{object.graphic.graphic_1920.try(:remote_url)}",
-        '2560': "#{base_url}#{object.graphic.graphic_2560.try(:remote_url)}"
+        'thumbnail': "#{bs}#{og.graphic_thumbnail.try(:remote_url)}",
+        'thumbnail_2x': "#{bs}#{og.graphic_thumbnail_2x.try(:remote_url)}",
+        '320': "#{bs}#{og.graphic_320.try(:remote_url)}",
+        '640': "#{bs}#{og.graphic_640.try(:remote_url)}",
+        '960': "#{bs}#{og.graphic_960.try(:remote_url)}",
+        '1280': "#{bs}#{og.graphic_1280.try(:remote_url)}",
+        '1920': "#{bs}#{og.graphic_1920.try(:remote_url)}",
+        '2560': "#{bs}#{og.graphic_2560.try(:remote_url)}"
       }
     end
   end

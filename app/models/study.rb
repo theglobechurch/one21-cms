@@ -29,7 +29,10 @@ class Study < ApplicationRecord
 
   def questions
     @questions ||= if questions_json.present?
-                     MultiJson.load(questions_json, symbolize_keys: true)
+                     MultiJson.load(
+                       questions_json,
+                       symbolize_keys: true
+                     )
                    else
                      []
                    end
@@ -37,9 +40,12 @@ class Study < ApplicationRecord
 
   def passage_ref
     @passage_ref ||= if passage_ref_json.present?
-                       p = MultiJson.load(passage_ref_json, symbolize_keys: true)
-                       p = p.each do |n|
-                        n.delete(:passage)
+                       p = MultiJson.load(
+                         passage_ref_json,
+                         symbolize_keys: true
+                       )
+                       p.each do |n|
+                         n.delete(:passage)
                        end
                      else
                        []
@@ -48,9 +54,12 @@ class Study < ApplicationRecord
 
   def scripture
     @scripture ||= if passage_ref_json.present?
-                     p = MultiJson.load(passage_ref_json, symbolize_keys: true)
-                     p = p.map do |n|
-                      n[:passage][:esv] if n[:passage] && n[:passage][:esv]
+                     p = MultiJson.load(
+                       passage_ref_json,
+                       symbolize_keys: true
+                     )
+                     p.map do |n|
+                       n[:passage][:esv] if n[:passage] && n[:passage][:esv]
                      end
                    else
                      []
