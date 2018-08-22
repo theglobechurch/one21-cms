@@ -6,6 +6,10 @@
   @include bpMinLarge {
     max-width: 1600px;
   }
+
+  a:hover {
+    color: coreColor(black);
+  }
 }
 
 @include bpMinLarge {
