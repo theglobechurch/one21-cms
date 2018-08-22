@@ -153,14 +153,14 @@
   color: coreColor(white);
   font-size: 18px;
   line-height: 28px;
-  text-align: center;
   padding: 50px;
+  text-align: center;
 
   h2 {
     font-size: 36px;
     font-weight: 400;
-    margin-bottom: 20px;
     line-height: 40px;
+    margin-bottom: 20px;
 
     strong {
       font-weight: 500;
@@ -168,34 +168,37 @@
   }
 
   form {
-    border: 1px solid coreColor(white);
+    align-items: stretch;
     border-radius: 2px;
+    border: 1px solid coreColor(white);
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+    justify-items: stretch;
     margin-bottom: 10px;
-    display: flex;
-    padding: 15px 0;
-    justify-content: space-between;
 
     @media (max-width: 699px) {
-      flex-direction: column;
-      align-items: center;
-      padding: 15px;
+      grid-template-columns: 100%;
+      padding: 7.5px 0;
     }
   }
 
   input {
+    background-color: coreColor(white);
+    border-radius: 2px;
+    border: 1px solid coreColor(white);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     font-size: 24px;
-    padding: 15px;
-    background-color: coreColor(white);
-    border: 1px solid coreColor(white);
-    border-radius: 2px;
     letter-spacing: 1.05px;
-    margin: 0 15px;
-    width: 100%;
+    margin: 15px 15px 15px 0;
+    padding: 15px;
     transition: border 0.2s;
 
     @media (max-width: 699px) {
-      margin: 15px 0;
+      margin: 7.5px 15px;
+    }
+
+    &[type="email"] {
+      margin-left: 15px;
     }
   }
 
@@ -207,13 +210,12 @@
     background-color: coreColor(black);
     border: 1px solid coreColor(black);
     color: coreColor(white);
-    width: 150px;
-    font-weight: 500;
     cursor: pointer;
+    font-weight: 500;
 
     &:hover {
-      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
       border-color: coreColor(white);
+      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
     }
   }
 

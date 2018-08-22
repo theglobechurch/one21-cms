@@ -31,9 +31,7 @@
         <% end -%>
         -->
 
-        <div class="actions">
-          <%= f.submit "Sign in", class: "btn" %>
-        </div>
+        <%= f.submit "Sign in", class: "btn" %>
       <% end %>
 
       <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
