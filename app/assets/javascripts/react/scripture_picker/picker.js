@@ -19,7 +19,8 @@ export default class Picker extends Component {
     this.state = {
       selectedBookData: null,
       suggestedBooks: [],
-      refJson: ref
+      refJson: ref,
+      lookup: false
     };
   }
 
@@ -35,6 +36,8 @@ export default class Picker extends Component {
     if (!bkName.value) {
       return;
     }
+
+    this.setState({ lookup: true });
 
     const refJson = {
       reference_book: bkName.value,
@@ -76,6 +79,7 @@ export default class Picker extends Component {
 
     passageLookup
       .then(res => {
+        this.setState({ lookup: false });
         return res.json();
       })
       .then(json => {
@@ -220,6 +224,8 @@ export default class Picker extends Component {
         >
           Lookup
         </button>
+
+        {this.state.lookup && <p>Looking up passage…</p>}
       </div>
     );
   }
