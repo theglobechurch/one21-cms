@@ -2,7 +2,7 @@ $headerBP: 500px;
 
 .header {
   background-color: coreColor(black);
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   color: coreColor(white);
   font-size: 18px;
   min-height: 48px;
@@ -14,10 +14,10 @@ $headerBP: 500px;
     width: 100%;
     z-index: 1;
   }
-  
+
   a {
     text-decoration: none;
-    
+
     &:hover {
       text-decoration: underline;
       color: coreColor(white);
@@ -38,7 +38,7 @@ $headerBP: 500px;
   }
 
   @media (min-width: 1080px) {
-    margin: 0 auto 0 150px;
+    margin: 0 auto;
   }
 }
 
@@ -70,7 +70,7 @@ $headerBP: 500px;
 
 .header__navigation__subnav {
   background: coreColor(black);
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   display: none;
   max-width: 175px;
   padding: 20px 10px 10px;
@@ -93,13 +93,12 @@ $headerBP: 500px;
     font-size: 28px;
     line-height: 28px;
     margin-bottom: 30px;
-  
+
     span {
       display: block;
     }
   }
 }
-
 
 .header__navigation__item:hover {
   .header__navigation__subnav {
@@ -109,7 +108,7 @@ $headerBP: 500px;
 
 .header__signout {
   @include unstyled-input();
-  color: coreColor(white);;
+  color: coreColor(white);
   cursor: pointer;
 
   &:hover {
