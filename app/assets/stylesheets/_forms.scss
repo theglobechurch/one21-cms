@@ -41,19 +41,19 @@
 }
 
 .form__label {
-  background-color: #A6A6A6;
-  border: 1px solid #A6A6A6;
+  background-color: #a6a6a6;
+  border: 1px solid #a6a6a6;
   color: white;
   display: inline-block;
   font-size: 75%;
   padding: 10px;
   text-align: right;
   width: 20%;
-  transition: border .5s, background-color .5s;
+  transition: border 0.5s, background-color 0.5s;
 }
 
 .form__input {
-  border: 1px solid #A6A6A6;
+  border: 1px solid #a6a6a6;
   display: inline;
   flex: auto;
   font-size: 100%;
@@ -61,16 +61,21 @@
   max-width: 80%;
   overflow: hidden;
   padding: 10px;
-  transition: border .5s;
+  transition: border 0.5s;
 }
 
 .form__input:focus {
   border-color: #c4674f;
 
   & + .form__label {
-    background-color: coreColor(orange);;
+    background-color: coreColor(orange);
     border-color: coreColor(orange);
   }
+}
+
+.form__previewimage {
+  display: block;
+  max-width: 100%;
 }
 
 .form__input--inlineRadio {

@@ -55,7 +55,7 @@
 
     <div class="form__field">
       <span class="form__input">
-        <%= image_tag(@church.church_logo_600.try('remote_url'), class: 'imgCircle') if @church.church_logo_600 %>
+        <%= image_tag(@church.church_logo_600.try('remote_url'), class: 'form__previewimage') if @church.church_logo_600 %>
         <%= f.file_field :church_logo %>
       </span>
       <%= f.label :church_logo, 'Church Logo', class: 'form__label' %>
@@ -63,7 +63,7 @@
 
     <div class="form__field">
       <span class="form__input">
-        <%= image_tag(@church.church_logo_sq_250.try('remote_url'), class: 'imgCircle') if @church.church_logo_sq_250 %>
+        <%= image_tag(@church.church_logo_sq_250.try('remote_url'), class: 'form__previewimage') if @church.church_logo_sq_250 %>
         <%= f.file_field :church_logo_sq %>
       </span>
       <%= f.label :church_logo_sq, 'Square Church Logo (Optional)', class: 'form__label' %>
