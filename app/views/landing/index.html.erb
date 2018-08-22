@@ -2,20 +2,20 @@
   <section class="landing__masthead">
     <div class="landing__innertube landing__masthead__lead">
       <%= image_tag('one21-inhand.png') %>
-      <h1><strong>One21</strong> helps your church<br/>family disciple one another</h1>
+      <h1><strong>One21</strong> helps <span class="nobr">your church</span><br/>family disciple <span class="nobr">one another</span></h1>
     </div>
   </section>
 
   <section class="landing__cta">
     <div class="landing__innertube">
-      <p>Reflect and discuss what you're hearing on Sundays in one-to-one groups</p>
-      <a href="https://www.globe.church/resources/one21-launch" target="_blank" class="btn" rel="noopener">Read the introduction blog post</a>
+      <p>Reflect and discuss what you're hearing on Sundays in <span class="nobr">one-to-one groups</span></p>
+      <a href="https://www.globe.church/resources/one21-launch" target="_blank" class="btn" rel="noopener">Read the introduction <span class="nobr">blog post</span></a>
     </div>  
   </section>
 
   <section class="landing__signin" id="signin">
     <div class="landing__innertube">
-      <h2><strong>Sign in</strong> to your church account</h2>
+      <h2><strong>Sign in</strong> to your <span class="nobr">church account</span></h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= f.email_field :email, autocomplete: "email", placeholder: "Email Address", class: 'landing__signin__textfield' %>
@@ -38,8 +38,8 @@
         <p class="landing__signin__forgotten"><%= link_to "Forgot your password?", new_password_path(resource_name) %></p>
       <% end %>
 
-      <p>One21 is a new service. Registration isn’t public (yet).</p>
-      <p>You can subscribe to the (infrequent) newsletter to find out when it will be: <a href="https://church.us14.list-manage.com/subscribe?u=3c53cfffa413d69cfa32538ca&id=6ebad6ef68" target="_blank" rel="noopener">Sign up</a></p>
+      <p>One21 is a new service. Registration isn’t <span class="nobr">public (yet).</span></p>
+      <p>You can subscribe to the (infrequent) newsletter to find out when it <span class="nobr">will be:</span> <a href="https://church.us14.list-manage.com/subscribe?u=3c53cfffa413d69cfa32538ca&id=6ebad6ef68" target="_blank" rel="noopener" class="nobr">Sign up</a></p>
     </div>
   </section>
 </div>

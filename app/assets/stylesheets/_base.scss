@@ -1,10 +1,11 @@
-body, html {
+body,
+html {
   background-color: #f2f2f2;
 }
 
 .wrapper {
   background-color: coreColor(white);
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   max-width: 780px;
   min-height: calc(100vh - 50px);
   margin: 0 auto 1em;
@@ -36,7 +37,6 @@ body, html {
 
   &__section__header,
   &__section__body {
-    
     @include bpMinXSmall() {
       display: grid;
       grid-template-columns: 1fr 1fr;
