@@ -141,6 +141,8 @@ body {
 *:before,
 *:after {
   box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
 }
 
 body {
@@ -150,7 +152,6 @@ body {
   font-size: 20px;
   line-height: 1.7;
   margin-bottom: 1px;
-  font-smoothing: antialiased;
 }
 
 img,
