@@ -17,21 +17,18 @@ class GuideSerializer < ActiveModel::Serializer
   end
 
   def images
-    if object.graphic
-      bs = base_url
-      og = object.graphic
-
-      {
-        'thumbnail': "#{bs}#{og.graphic_thumbnail.try(:remote_url)}",
-        'thumbnail_2x': "#{bs}#{og.graphic_thumbnail_2x.try(:remote_url)}",
-        '320': "#{bs}#{og.graphic_320.try(:remote_url)}",
-        '640': "#{bs}#{og.graphic_640.try(:remote_url)}",
-        '960': "#{bs}#{og.graphic_960.try(:remote_url)}",
-        '1280': "#{bs}#{og.graphic_1280.try(:remote_url)}",
-        '1920': "#{bs}#{og.graphic_1920.try(:remote_url)}",
-        '2560': "#{bs}#{og.graphic_2560.try(:remote_url)}"
-      }
-    end
+    bs = base_url
+    og = object.graphic
+    {
+      'thumbnail': "#{bs}#{og.graphic_thumbnail.try(:remote_url)}",
+      'thumbnail_2x': "#{bs}#{og.graphic_thumbnail_2x.try(:remote_url)}",
+      '320': "#{bs}#{og.graphic_320.try(:remote_url)}",
+      '640': "#{bs}#{og.graphic_640.try(:remote_url)}",
+      '960': "#{bs}#{og.graphic_960.try(:remote_url)}",
+      '1280': "#{bs}#{og.graphic_1280.try(:remote_url)}",
+      '1920': "#{bs}#{og.graphic_1920.try(:remote_url)}",
+      '2560': "#{bs}#{og.graphic_2560.try(:remote_url)}"
+    }
   end
 
   def image

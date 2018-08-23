@@ -35,32 +35,28 @@ class StudySerializer < ActiveModel::Serializer
   end
 
   def graphic?
-    true if object.graphic
+    true if object.lead_image
   end
 
   def images
-    if object.graphic
+    bs = base_url
+    og = object.lead_image
+    ot = object.lead_image_thumbnails
 
-      bs = base_url
-      og = object.graphic
-
-      {
-        'thumbnail': "#{bs}#{og.graphic_thumbnail.try(:remote_url)}",
-        'thumbnail_2x': "#{bs}#{og.graphic_thumbnail_2x.try(:remote_url)}",
-        '320': "#{bs}#{og.graphic_320.try(:remote_url)}",
-        '640': "#{bs}#{og.graphic_640.try(:remote_url)}",
-        '960': "#{bs}#{og.graphic_960.try(:remote_url)}",
-        '1280': "#{bs}#{og.graphic_1280.try(:remote_url)}",
-        '1920': "#{bs}#{og.graphic_1920.try(:remote_url)}",
-        '2560': "#{bs}#{og.graphic_2560.try(:remote_url)}"
-      }
-    end
+    {
+      'thumbnail': "#{bs}#{ot[:thumbnail]}",
+      'thumbnail_2x': "#{bs}#{ot[:thumbnail_2x]}",
+      '320': "#{bs}#{og[:"320"]}",
+      '640': "#{bs}#{og[:"640"]}",
+      '960': "#{bs}#{og[:"960"]}",
+      '1280': "#{bs}#{og[:"1280"]}",
+      '1920': "#{bs}#{og[:"1920"]}",
+      '2560': "#{bs}#{og[:"2560"]}"
+    }
   end
 
   def image
-    if object.graphic
-      "#{base_url}#{object.graphic.try(:graphic_960).try(:remote_url)}"
-    end
+    "#{base_url}#{object.lead_image[:"960"]}"
   end
 
   def base_url

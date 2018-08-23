@@ -88,6 +88,8 @@ class Study < ApplicationRecord
   def lead_image
     if graphic
       graphic.graphic_urls
+    elsif guide.graphic
+      guide.graphic.graphic_urls
     end
   end
 
