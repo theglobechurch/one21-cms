@@ -72,7 +72,6 @@ private
     Guide.create(
       guide_name: 'Sermons',
       teaser: "Sermons from #{church_name}",
-      highlight_first: true,
       sorting: 'date_desc'
     )
   end
