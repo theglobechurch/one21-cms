@@ -1,6 +1,5 @@
 class LandingController < ApplicationController
   before_action :login_check
-
   helper_method :resource_name, :resource, :devise_mapping
 
   def index; end
