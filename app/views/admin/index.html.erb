@@ -43,6 +43,19 @@
 
 </div>
 
+<% if @current_user.churchadmin? %>
+<section class="wrapper__section churchPrimer">
+  <h2 class="churchPrimer__title">Church users</h2>
+  <ul class="churchPrimer__details">
+  <% for u in @church.users %>
+    <li class="<%= 'admin' if u.role == 'churchadmin' %>">
+      <%= u.first_name%> <%= u.family_name%> (<%= u.email%>)
+    </li>
+  <% end %>
+  </ul>
+</section>
+<% end %>
+
 <% if @church %>
   <section class="wrapper__section guideOverview">
 

@@ -3,7 +3,8 @@ class Church < ApplicationRecord
 
   has_many :users,
            inverse_of: :church,
-           dependent: :nullify
+           dependent: :nullify,
+           foreign_key: :churches_id
   has_many :church_guides,
            dependent: :nullify
   has_many :guides,
