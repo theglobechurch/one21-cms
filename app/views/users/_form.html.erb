@@ -1,0 +1,65 @@
+<%= form_for(@user,  html: { class: 'wrapper__section' }) do |f| %>
+
+  <header class="wrapper__section__header">
+    <div class="wrapper__section__header__content">
+      <% if @user.id %>
+        <h2>Edit User</h2>
+      <% else %>
+        <h2>Create User</h2>
+      <% end %>
+    </div>
+  </header>
+
+  <div class="wrapper__body">
+
+    <%= render('shared/form_errors', m: @user) %>
+
+    <div class="form__field">
+      <%= f.text_field :first_name, class: 'form__input' %>
+      <%= f.label :first_name, class: 'form__label' %>
+    </div>
+
+    <div class="form__field">
+      <%= f.text_field :family_name, class: 'form__input' %>
+      <%= f.label :family_name, class: 'form__label' %>
+    </div>
+
+    <div class="form__field">
+      <%= f.text_field :email, class: 'form__input' %>
+      <%= f.label :email, class: 'form__label' %>
+    </div>
+
+    <% if @user.id %>
+
+      <div class="form__field">
+        <ul class="form__input form__input--radio">
+          <li>
+            <%= f.radio_button(:role, "churchuser") %>
+            <%= label(:role, "User", for: 'user_role_churchuser') %>
+          </li>
+          <li>
+            <%= f.radio_button(:role, "churchadmin") %>
+            <%= label(:role, "Admin", for: 'user_role_churchadmin') %>
+          </li>
+        </ul>
+
+        <%= f.label :role, class: 'form__label' %>
+      </div>
+
+      <%= f.submit t('general.update'), class: 'btn btn--primary' %>
+    <% else %>
+    <%= f.hidden_field :role, value: 'churchuser' %>
+      <%= f.submit t('general.create'), class: 'btn btn--primary' %>
+    <% end %>
+
+  </div>
+
+<% end %>
+
+<% if @user.id %>
+<div class="wrapper__section">
+  <hr />
+  <p>Warning: this action cannot be undone:</p>
+  <%= button_to t('general.delete', name: @user.full_name), @user, method: :delete, class: 'btn btn--danger btn--mini' %>
+</div>
+<% end %>

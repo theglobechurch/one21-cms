@@ -1,6 +1,7 @@
 <div class="landing">
   <section class="landing__signin" id="signin">
     <div class="landing__innertube">
+      <img src="<%= asset_path('one21logo.svg') %>" alt="One21 Logo" class="logo-img" />
       <h2><strong>Sign in</strong> to your church account</h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -22,7 +23,7 @@
         <% end -%>
         -->
 
-        <%= f.submit "Log in", class: "btn" %>
+        <%= f.submit "Sign in", class: "btn" %>
       <% end %>
 
     </div>

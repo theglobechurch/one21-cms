@@ -4,6 +4,10 @@
 @import "footer";
 @import "toast";
 
+body {
+  background-color: #3a3838;
+}
+
 .header {
   background-color: coreColor(black);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
@@ -156,6 +160,11 @@
   padding: 50px;
   text-align: center;
 
+  .logo-img {
+    width: 250px;
+    margin-bottom: 15px;
+  }
+
   h2 {
     font-size: 36px;
     font-weight: 400;
@@ -172,7 +181,9 @@
     border-radius: 2px;
     border: 1px solid coreColor(white);
     display: grid;
-    grid-template-columns: 40% 40% 20%;
+    grid-template-columns: 40% 40% calc(20% - 30px);
+    padding: 15px;
+    grid-column-gap: 15px;
     justify-items: stretch;
     margin-bottom: 10px;
 
@@ -189,7 +200,6 @@
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     font-size: 24px;
     letter-spacing: 1.05px;
-    margin: 15px 15px 15px 0;
     padding: 15px;
     transition: border 0.2s;
 
@@ -197,9 +207,6 @@
       margin: 7.5px 15px;
     }
 
-    &[type="email"] {
-      margin-left: 15px;
-    }
   }
 
   &__textfield:focus {

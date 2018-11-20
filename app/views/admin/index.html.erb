@@ -43,16 +43,22 @@
 
 </div>
 
-<% if @current_user.churchadmin? %>
+<% if @current_user.churchadmin? || @current_user.superadmin? %>
 <section class="wrapper__section churchPrimer">
   <h2 class="churchPrimer__title">Church users</h2>
   <ul class="churchPrimer__details">
   <% for u in @church.users %>
     <li class="<%= 'admin' if u.role == 'churchadmin' %>">
-      <%= u.first_name%> <%= u.family_name%> (<%= u.email%>)
+      <% if u.id == current_user.id %>
+        <%= link_to("#{u.full_name}", edit_user_registration_path) %>
+      <% else %>
+        <%= link_to("#{u.full_name}", edit_user_path(u)) %>
+      <% end %>
     </li>
   <% end %>
   </ul>
+
+  <%= link_to('Add new user', new_user_path, class: "btn btn--textonly") %>
 </section>
 <% end %>
 

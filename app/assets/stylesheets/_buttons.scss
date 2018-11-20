@@ -38,6 +38,23 @@
     }
   }
 
+  &--danger {
+    background-color: #8f2828;
+    color: #fff;
+
+    &:hover {
+      background-color: #ac3e3e;
+      color: #fff;
+    }
+  }
+
+  &--mini {
+    font-size: .825rem;
+    padding: 0 0.825rem;
+    line-height: 1rem;
+    height: 1.825rem;
+  }
+
   &--textonly {
     background-color: transparent;
     box-shadow: none;

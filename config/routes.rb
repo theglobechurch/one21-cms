@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :admin, only: [:index]
+  resources :users, except: [:show]
 
   post '/bible', to: 'bible#index'
 

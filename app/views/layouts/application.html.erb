@@ -63,9 +63,15 @@
       </div>
     </footer>
 
-    <% if notice || alert %>
+    <% if notice %>
     <div class="toast toast--bottom">
-      <p><%= notice if notice %><%= alert if alert %></p>
+      <p><%= notice if notice %></p>
+    </div>
+    <% end %>
+
+    <% if alert %>
+    <div class="toast toast--bottom toast--error">
+      <p><%= alert if alert %></p>
     </div>
     <% end %>
   

@@ -16,6 +16,10 @@
     text-align: center;
   }
 
+  &--error {
+    background-color: #8f2828;
+  }
+
   &--bottom {
     animation: toast-bottom 10s;
     align-items: center;
