@@ -20,7 +20,8 @@ gem 'multi_json'
 gem 'faraday'
 gem 'faraday_middleware'
 gem 'faraday_middleware-multi_json'
-gem "figaro"
+gem "figaro"                  # For config values
+gem 'mailgun_rails'           # Send emails
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -39,7 +40,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem "letter_opener"
+  gem "letter_opener"             # Save email to /tmp rather than sending
 end
 
 group :test do

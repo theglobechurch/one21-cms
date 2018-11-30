@@ -47,9 +47,19 @@ Rails.application.configure do
   # Email handler
   config.action_mailer.default_url_options = {host: 'localhost', port: 3010}
 
+  # Host for assets (make sure images paths are right)
+  config.action_mailer.asset_host = 'http://localhost:3010'
+
   # Email via letteropener
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+
+  # Email via mailgun
+  # config.action_mailer.delivery_method = :mailgun
+  # config.action_mailer.mailgun_settings = {
+  #     api_key: ENV['mailgun_api_token'],
+  #     domain: 'mg.one21.org'
+  # }
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
