@@ -17,7 +17,10 @@ class UsersController < ApplicationController
     u = User.find_by(email: user_params['email'])
     if !u
       u = User.new(user_params)
-      u.churches_id = @church.id
+
+      if !current_user.superadmin? || !u.churches_id
+        u.churches_id = @church.id
+      end
     
       if u.invite!
         redirect_to admin_index_path, notice: "#{u.full_name} created" and return
@@ -98,7 +101,8 @@ private
     params.require(:user).permit(:first_name,
                                  :family_name,
                                  :email,
-                                 :role)
+                                 :role,
+                                 :churches_id)
   end
 
 end

@@ -82,6 +82,23 @@
       margin-right: 10px;
     }
   }
+
+  &--select {
+    padding: 0;
+    display: flex;
+
+    select {
+      background: transparent;
+      border: none;
+      font-size: 100%;
+      margin: 0 10px 0 0;
+      outline: none;
+      overflow: hidden;
+      padding: 20px;
+      transition: border .5s;
+      width: 100%;
+    }
+  }
 }
 
 

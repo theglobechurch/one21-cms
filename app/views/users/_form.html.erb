@@ -29,6 +29,15 @@
       <%= f.label :email, class: 'form__label' %>
     </div>
 
+    <% if current_user.superadmin? %>
+    <div class="form__field">
+      <div class="form__input form__input--select">
+        <%= f.collection_select :churches_id, Church.all, :id, :church_name %>
+      </div>
+      <%= f.label :church, class: 'form__label' %>
+    </div>
+    <% end %>
+
     <% if @user.id %>
 
       <div class="form__field">
