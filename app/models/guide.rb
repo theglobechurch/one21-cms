@@ -27,7 +27,7 @@ class Guide < ApplicationRecord
   enum sorting: %i[date_desc date_asc ordered]
   after_initialize :set_default_status, if: :new_record?
 
-  after_create :link_church
+  accepts_nested_attributes_for :church_guides
 
   scope :not_deleted, -> { where.not(status: 'deleted') }
 
@@ -40,13 +40,6 @@ class Guide < ApplicationRecord
   end
 
 private
-
-  def link_church
-    ChurchGuide.create([{church_id: User.current.church.id,
-                         guide_id: id,
-                         promoted: false,
-                         owner: true}])
-  end
 
   def set_default_status
     self.status ||= :draft

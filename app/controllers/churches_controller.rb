@@ -22,7 +22,7 @@ class ChurchesController < ApplicationController
   end
 
   def new
-    if current_user.churches_id
+    if !current_user.superadmin? && current_user.churches_id
       redirect_to edit_church_path(current_user.church)
     else
       @church = Church.unscoped.new

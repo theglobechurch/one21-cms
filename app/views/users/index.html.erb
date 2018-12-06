@@ -1,6 +1,9 @@
 <section class="wrapper__section">
   <% for c in @churches%>
-    <h1><%= c.church_name %></h1>
+    <h1>
+      <%= c.church_name %>
+      <% if !c.verified? %> (Unverified)<% end %>
+    </h1>
     <ul>
       <% for u in c.users %>
         <li class="<%= 'admin' if u.role == 'churchadmin' %>">
@@ -14,5 +17,7 @@
       <% end %>
     </ul>
   <% end %>
+
+  <%= link_to('New church', new_church_path) %>
 
 </section>
