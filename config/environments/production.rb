@@ -66,10 +66,12 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "one21-cms_#{Rails.env}"
 
+  config.action_mailer.default_url_options = {host: 'builder.one21.org'}
+
   config.action_mailer.perform_caching = false
 
   # Host for assets (make sure images paths are right)
-  config.action_mailer.asset_host = 'https://admin.one21.org'
+  config.action_mailer.asset_host = 'https://builder.one21.org'
 
   # Sent email by MailGun
   config.action_mailer.delivery_method = :mailgun
