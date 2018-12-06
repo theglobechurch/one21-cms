@@ -9,6 +9,11 @@
   <div class="wrapper__body">
     <%= render('shared/form_errors', m: @guide) %>
 
+    <%= f.fields_for :church_guides do |cg| %>
+      <%= cg.hidden_field :church_id, value: current_user.churches_id %>
+      <%= cg.hidden_field :owner, value: true %>
+    <% end %>
+
     <div class="form__field">
       <%= f.text_field :guide_name, class: 'form__input' %>
       <%= f.label :guide_name, class: 'form__label' %>

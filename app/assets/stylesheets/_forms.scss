@@ -66,7 +66,41 @@
   overflow: hidden;
   padding: 10px;
   transition: border 0.5s;
+  
+  &--radio {
+    li {
+      display: flex;
+      align-items: center;
+      margin: 0 0 10px;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  
+    input {
+      margin-right: 10px;
+    }
+  }
+
+  &--select {
+    padding: 0;
+    display: flex;
+
+    select {
+      background: transparent;
+      border: none;
+      font-size: 100%;
+      margin: 0 10px 0 0;
+      outline: none;
+      overflow: hidden;
+      padding: 20px;
+      transition: border .5s;
+      width: 100%;
+    }
+  }
 }
+
 
 .form__input:focus {
   border-color: #c4674f;

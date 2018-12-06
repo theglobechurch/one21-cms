@@ -1,0 +1,32 @@
+<div class="landing">
+  <section class="landing__signin" id="signin">
+    <div class="landing__innertube">
+
+      <img src="<%= asset_path('one21logo.svg') %>" alt="One21 Logo" class="logo-img" />
+
+      <h2><strong>Welcome <%= resource.first_name %></strong>; set your password:</h2>
+
+      <%= form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put } do |f| %>
+
+        <%= devise_error_messages! %>
+        <%= f.hidden_field :invitation_token, readonly: true %>
+
+        <% if f.object.class.require_password_on_accepting %>
+
+            <%= f.password_field :password,
+                                 autocomplete: "off",
+                                 placeholder: "Password" %>
+
+            <%= f.password_field :password_confirmation,
+                                 autocomplete: "off",
+                                 placeholder: "Confirm Password" %>
+     
+        <% end %>
+
+        <%= f.submit "Sign in", class: "btn" %>
+        </div>
+      <% end %>
+
+    </div>
+  </section>
+</div>

@@ -68,6 +68,16 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # Host for assets (make sure images paths are right)
+  config.action_mailer.asset_host = 'https://admin.one21.org'
+
+  # Sent email by MailGun
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+      api_key: ENV['mailgun_api_token'],
+      domain: 'mg.one21.org'
+  }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false

@@ -25,6 +25,10 @@
         <ul class="header__navigation">
         
           <% if user_signed_in? %>
+            <% if @current_user.superadmin? %>
+              <li class="header__navigation__item"><%= link_to('All Churches', users_path)%></li>
+            <% end %>
+
             <% if @current_user.church %>
             <li class="header__navigation__item"><%= link_to(@current_user.church.church_name, root_path) %></li>
             <% end %>
@@ -63,9 +67,15 @@
       </div>
     </footer>
 
-    <% if notice || alert %>
+    <% if notice %>
     <div class="toast toast--bottom">
-      <p><%= notice if notice %><%= alert if alert %></p>
+      <p><%= notice if notice %></p>
+    </div>
+    <% end %>
+
+    <% if alert %>
+    <div class="toast toast--bottom toast--error">
+      <p><%= alert if alert %></p>
     </div>
     <% end %>
   

@@ -2,11 +2,16 @@ en:
   general:
     sign_out: "Sign out"
     sign_in: "Sign in"
+    create: "Create"
+    update: "Update"
+    delete: "Delete %{name}"
   gateway:
     welcome: "Hello %{first_name}"
     unverified_msg:
       headline: "%{church_name} has not be verified yet"
       description: "Your church will not show up in One21 until is has been approved by an administrator. This process should take no longer that two working days."
+  users:
+    new: "Add new user"
   guides:
     new: "Create new guide"
     edit: "Edit %{guide_name}"

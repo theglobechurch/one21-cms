@@ -68,12 +68,20 @@ private
 
   def post_create
     u = User.current
-    u.update(churches_id: id)
+
+    if !u.superadmin?
+      u.update(churches_id: id)
+    end
 
     Guide.create(
       guide_name: 'Sermons',
       teaser: "Sermons from #{church_name}",
-      sorting: 'date_desc'
+      sorting: 'date_desc',
+      church_guides_attributes: [{
+        church_id: id,
+        promoted: false,
+        owner: true
+      }]
     )
   end
 

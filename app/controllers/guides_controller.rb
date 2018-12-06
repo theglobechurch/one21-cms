@@ -8,7 +8,8 @@ class GuidesController < ApplicationController
   end
 
   def new
-    @guide = Guide.unscoped.build
+    @guide = Guide.unscoped.new
+    @guide.church_guides.build(church_id: current_user.churches_id)
   end
 
   def create
@@ -89,7 +90,8 @@ private
                                   :status,
                                   :graphics_id,
                                   :sorting,
-                                  :highlight_first)
+                                  :highlight_first,
+                                  church_guides_attributes: [:church_id, :owner])
   end
 
 end

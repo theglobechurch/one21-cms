@@ -1,0 +1,24 @@
+<section class="wrapper__section">
+  <% for c in @churches%>
+    <h1>
+      <%= c.church_name %>
+      <% if !c.verified? %> (Unverified)<% end %>
+    </h1>
+    <ul>
+      <% for u in c.users %>
+        <li class="<%= 'admin' if u.role == 'churchadmin' %>">
+          <%= u.first_name%> <%= u.family_name%> (<%= u.email%>)
+          <% if u.id == current_user.id %>
+            <%= link_to('My Account', edit_user_registration_path) %>
+          <% else %>
+            <%= link_to('Update user', edit_user_path(u)) %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= link_to('New church', new_church_path) %>
+  <%= link_to('New user', new_user_path) %>
+
+</section>

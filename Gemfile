@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.5'      # JSON APIs(https://github.com/rails/jbuilder)
 gem 'dragonfly', '~> 1.1.5'   # File uploads
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
+gem 'devise_invitable'
 gem 'stringex', '~> 2.8', '>= 2.8.4'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'draper', '~> 3.0.1'
@@ -19,7 +20,8 @@ gem 'multi_json'
 gem 'faraday'
 gem 'faraday_middleware'
 gem 'faraday_middleware-multi_json'
-gem "figaro"
+gem "figaro"                  # For config values
+gem 'mailgun_rails'           # Send emails
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -38,6 +40,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "letter_opener"             # Save email to /tmp rather than sending
 end
 
 group :test do
