@@ -45,7 +45,7 @@
   {"id": "Acts", "fullName": "Acts", "verseCount": 1007, "chapters": [26, 47, 26, 37, 42, 15, 60, 40, 43, 48, 30, 25, 52, 28, 41, 40, 34, 28, 41, 38, 40, 30, 35, 27, 27, 32, 44, 31]},
   {"id": "Rom", "fullName": "Romans", "verseCount": 433, "chapters": [32, 29, 31, 25, 21, 23, 25, 39, 33, 21, 36, 21, 14, 23, 33, 27]},
   {"id": "1Cor", "fullName": "1 Corinthians", "verseCount": 437, "chapters": [31, 16, 23, 21, 13, 20, 40, 13, 27, 33, 34, 31, 13, 40, 58, 24]},
-  {"id": "2Cor", "fullName": "2 Corinthans", "verseCount": 257, "chapters": [24, 17, 18, 18, 21, 18, 16, 24, 15, 18, 33, 21, 14]},
+  {"id": "2Cor", "fullName": "2 Corinthians", "verseCount": 257, "chapters": [24, 17, 18, 18, 21, 18, 16, 24, 15, 18, 33, 21, 14]},
   {"id": "Gal", "fullName": "Galatians", "verseCount": 149, "chapters": [24, 21, 29, 31, 26, 18]},
   {"id": "Eph", "fullName": "Ephesians", "verseCount": 155, "chapters": [23, 22, 21, 32, 33, 24]},
   {"id": "Phil", "fullName": "Philippians", "verseCount": 104, "chapters": [30, 30, 21, 23]},
