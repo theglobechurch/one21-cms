@@ -8,7 +8,7 @@ gem 'sass-rails', '~> 5.0'    # Sass for rails. Obvs
 gem 'pg', '>= 0.18', '< 2.0'  # postgresql
 gem 'puma', '~> 3.11'         # Web server
 gem 'jbuilder', '~> 2.5'      # JSON APIs(https://github.com/rails/jbuilder)
-gem 'dragonfly', '~> 1.1.5'   # File uploads
+gem 'dragonfly', '~> 1.4.0'   # File uploads
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'devise_invitable'
