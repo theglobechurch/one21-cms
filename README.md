@@ -18,12 +18,15 @@ esv_api_token: "{token from https://api.esv.org}"
 devise_secret_key: "{token from `bundle exec rake secret`}"
 ```
 
+- `nvm use`
+- `npm install`
 - `docker-compose build`
 - `docker-compose run web rake db:create`
 - `docker-compose up`
+- `npm run dev`
 - Visit http://localhost:3010
 
-Helpful overview of [quickstarting Docker + Rails](https://docs.docker.com/compose/rails/).
+Helpful overview of [quickstarting Docker + Rails](https://web.archive.org/web/20220603165341/https://docs.docker.com/samples/rails/).
 
 Exit with:
 

@@ -25,6 +25,7 @@ default: &default
 development:
   <<: *default
   database: one21-cms_development
+  password: password
 
 test:
   <<: *default
