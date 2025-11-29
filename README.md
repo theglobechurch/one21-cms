@@ -46,3 +46,22 @@ When adding new gems:
 - `docker-compose up`
 
 Run commands in the Docker instance with `docker-compose run web …`. Eg: `docker-compose run web rake db:create`
+
+## Running outside of Docker, etc?
+
+- Use rbenv to set your Ruby enviroment
+- get psql running and the details in the database.yml file
+
+```zsh
+bundle install
+rake db:create
+rake db:migrate
+bundle exec rails s
+```
+
+```zsh
+# In a seperate terminal - assets as compiled outside of the asset pipeline
+nvm use
+npm install
+npm run dev
+```

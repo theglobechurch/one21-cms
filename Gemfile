@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.7'
+ruby '2.7.8'
 
 gem 'rails', '~> 5.2.0'
 gem 'sass-rails', '~> 5.0'    # Sass for rails. Obvs
@@ -32,7 +32,7 @@ group :development, :test do
   gem 'brakeman'                  # security warnings
   gem 'bundler-audit'             # Beware of outdated gems
   gem 'simplecov', require: false # Check test coverage
-  gem 'minitest-reporters'        # Improve the look of unit tests  
+  gem 'minitest-reporters'        # Improve the look of unit tests
 end
 
 group :development do
