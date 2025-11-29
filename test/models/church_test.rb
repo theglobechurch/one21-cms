@@ -34,7 +34,7 @@ class ChurchTest < ActiveSupport::TestCase
       city: 'test city'
     )
     assert_not c.valid?
-    assert_equal %i[email], c.errors.keys
+    assert_equal %i[email], c.errors.attribute_names
   end
 
   test "ensure unique URL" do
@@ -46,6 +46,6 @@ class ChurchTest < ActiveSupport::TestCase
       city: 'test city'
     )
     assert_not c.valid?
-    assert_equal %i[url], c.errors.keys
+    assert_equal %i[url], c.errors.attribute_names
   end
 end

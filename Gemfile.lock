@@ -397,7 +397,7 @@ DEPENDENCIES
   mailgun_rails
   minitest-reporters
   multi_json
-  pg (>= 0.18, < 2.0)
+  pg (~> 1.5)
   puma (~> 3.11)
   rails (~> 6.1.0)
   rails-controller-testing

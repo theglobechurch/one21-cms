@@ -5,7 +5,7 @@ ruby '3.2.5'
 
 gem 'rails', '~> 6.1.0'
 gem 'sass-rails', '~> 5.0'    # Sass for rails. Obvs
-gem 'pg', '>= 0.18', '< 2.0'  # postgresql
+gem 'pg', '~> 1.5'
 gem 'puma', '~> 3.11'         # Web server
 gem 'jbuilder', '~> 2.5'      # JSON APIs(https://github.com/rails/jbuilder)
 gem 'dragonfly', '~> 1.1.5'   # File uploads
