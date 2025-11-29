@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.8'
+ruby '3.2.5'
 
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.1.0'
 gem 'sass-rails', '~> 5.0'    # Sass for rails. Obvs
 gem 'pg', '>= 0.18', '< 2.0'  # postgresql
 gem 'puma', '~> 3.11'         # Web server
@@ -14,7 +14,7 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'stringex', '~> 2.8', '>= 2.8.4'
 gem 'active_model_serializers', '~> 0.10.0'
-gem 'draper', '~> 3.0.1'
+gem 'draper', '~> 4.0'
 gem 'redcarpet', '~> 3.4.0'
 gem 'multi_json'
 gem 'faraday'
