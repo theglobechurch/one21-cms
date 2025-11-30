@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import PropTypes from "prop-types";
 import Picker from "./picker";
 
@@ -65,49 +65,50 @@ class ScripturePicker extends Component {
           {this.state.refText.join(", ")}
         </div>
 
-        <ReactCSSTransitionGroup
-          transitionName="r_popupFade"
-          transitionEnterTimeout={250}
-          transitionLeaveTimeout={250}
-        >
+        <TransitionGroup>
           {this.state.popupOpen && (
-            <div className="r_popup">
-              <Picker onConfirm={this.onPassageSelect.bind(this)} />
+            <CSSTransition
+              classNames="r_popupFade"
+              timeout={250}
+            >
+              <div className="r_popup">
+                <Picker onConfirm={this.onPassageSelect.bind(this)} />
 
-              {this.state.refText.length > 0 && (
-                <ul>
-                  {this.state.refText.map((ref, i) => (
-                    <li key={i}>
-                      {ref}{" "}
-                      <a
-                        className="scripturePicker__passageRemove"
-                        onClick={this.onRemovePassage.bind(this, i)}
-                      >
-                        remove
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                {this.state.refText.length > 0 && (
+                  <ul>
+                    {this.state.refText.map((ref, i) => (
+                      <li key={i}>
+                        {ref}{" "}
+                        <a
+                          className="scripturePicker__passageRemove"
+                          onClick={this.onRemovePassage.bind(this, i)}
+                        >
+                          remove
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
-              {this.state.refText.length > 0 && (
+                {this.state.refText.length > 0 && (
+                  <button
+                    onClick={this.onConfirm.bind(this)}
+                    className="btn btn--primary r_popup__actionBtn"
+                  >
+                    Confirm
+                  </button>
+                )}
+
                 <button
-                  onClick={this.onConfirm.bind(this)}
-                  className="btn btn--primary r_popup__actionBtn"
+                  className="r_popup__btn--close"
+                  onClick={this.onTogglePopup.bind(this)}
                 >
-                  Confirm
+                  Cancel
                 </button>
-              )}
-
-              <button
-                className="r_popup__btn--close"
-                onClick={this.onTogglePopup.bind(this)}
-              >
-                Cancel
-              </button>
-            </div>
+              </div>
+            </CSSTransition>
           )}
-        </ReactCSSTransitionGroup>
+        </TransitionGroup>
       </div>
     );
   }

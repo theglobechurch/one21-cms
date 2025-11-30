@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types'
 import DatePicker from './date_picker';
 
@@ -130,27 +130,29 @@ class StateSwitcher extends Component {
           )}
 
         </div>
-        
-        <ReactCSSTransitionGroup
-          transitionName="r_popupFade"
-          transitionEnterTimeout={250}
-          transitionLeaveTimeout={250}>
-          { this.state.popup && (
-            <div className="r_popup">
-              <DatePicker
-                action="Schedule"
-                callback={this.confirmSchedule.bind(this)}
-              />
 
-              <button
-                className="r_popup__btn--close"
-                onClick={this.onClosePopup.bind(this)}
-              >
-                Cancel
-              </button>
-            </div>
+        <TransitionGroup>
+          { this.state.popup && (
+            <CSSTransition
+              classNames="r_popupFade"
+              timeout={250}
+            >
+              <div className="r_popup">
+                <DatePicker
+                  action="Schedule"
+                  callback={this.confirmSchedule.bind(this)}
+                />
+
+                <button
+                  className="r_popup__btn--close"
+                  onClick={this.onClosePopup.bind(this)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </CSSTransition>
           )}
-        </ReactCSSTransitionGroup>
+        </TransitionGroup>
       </div>
     )
   }

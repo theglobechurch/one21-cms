@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import PropTypes from "prop-types";
 import ImagePreview from "./image_preview";
 import Gallery from "./gallery";
@@ -213,37 +213,38 @@ class ImageUploader extends Component {
   render() {
     return (
       <div className="imageUpload">
-        <ReactCSSTransitionGroup
-          transitionName="r_popupFade"
-          transitionEnterTimeout={250}
-          transitionLeaveTimeout={250}
-        >
+        <TransitionGroup>
           {this.state.popup && (
-            <div className="r_popup">
-              {this.state.popup === "upload" && (
-                <ImagePreview
-                  onConfirm={this.confirmUpload.bind(this)}
-                  image={this.uploadingImage}
-                  uploadProgress={this.state.uploadProgress}
-                />
-              )}
+            <CSSTransition
+              classNames="r_popupFade"
+              timeout={250}
+            >
+              <div className="r_popup">
+                {this.state.popup === "upload" && (
+                  <ImagePreview
+                    onConfirm={this.confirmUpload.bind(this)}
+                    image={this.uploadingImage}
+                    uploadProgress={this.state.uploadProgress}
+                  />
+                )}
 
-              {this.state.popup === "gallery" && (
-                <Gallery
-                  onConfirm={this.confirmGallerySelection.bind(this)}
-                  apiEndpoint={this.props.churchGraphicEndpoint}
-                />
-              )}
+                {this.state.popup === "gallery" && (
+                  <Gallery
+                    onConfirm={this.confirmGallerySelection.bind(this)}
+                    apiEndpoint={this.props.churchGraphicEndpoint}
+                  />
+                )}
 
-              <button
-                className="r_popup__btn--close"
-                onClick={this.onClosePopup.bind(this)}
-              >
-                Cancel
-              </button>
-            </div>
+                <button
+                  className="r_popup__btn--close"
+                  onClick={this.onClosePopup.bind(this)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </CSSTransition>
           )}
-        </ReactCSSTransitionGroup>
+        </TransitionGroup>
 
         <div className="form__field">
           <div
