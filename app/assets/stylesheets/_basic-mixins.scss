@@ -1,3 +1,5 @@
+@use 'vars';
+
 @mixin visuallyHidden() {
   border: none;
   clip: rect(0 0 0 0);
@@ -10,59 +12,59 @@
 }
 
 @mixin bpMinXSmall {
-  @media (min-width: breakpoint(x-small)) {
+  @media (min-width: vars.breakpoint(x-small)) {
     @content;
   }
 }
 
 @mixin bpMinSmall {
-  @media (min-width: breakpoint(small)) {
+  @media (min-width: vars.breakpoint(small)) {
     @content;
   }
 }
 
 @mixin bpMinMedium {
-  @media (min-width: breakpoint(medium)) {
+  @media (min-width: vars.breakpoint(medium)) {
     @content;
   }
 }
 
 @mixin bpMinLarge {
-  @media (min-width: breakpoint(large)) {
+  @media (min-width: vars.breakpoint(large)) {
     @content;
   }
 }
 
 @mixin bpMaxXSmall {
-  @media (max-width: breakpoint(x-small)) {
+  @media (max-width: vars.breakpoint(x-small)) {
     @content;
   }
 }
 
 @mixin bpMaxSmall {
-  @media (max-width: breakpoint(small)) {
+  @media (max-width: vars.breakpoint(small)) {
     @content;
   }
 }
 
 @mixin bpMaxMedium {
-  @media (max-width: breakpoint(medium)) {
+  @media (max-width: vars.breakpoint(medium)) {
     @content;
   }
 }
 
 @mixin bpMaxLarge {
-  @media (max-width: breakpoint(large)) {
+  @media (max-width: vars.breakpoint(large)) {
     @content;
   }
 }
 
-@mixin unbulleted-list() { 
+@mixin unbulleted-list() {
   padding: 0;
   list-style-type: none;
 }
 
-@mixin unstyled-input() { 
+@mixin unstyled-input() {
   margin: 0;
   padding: 0;
   border: none;
@@ -71,7 +73,7 @@
   font: inherit;
 }
 
-@mixin unstyled-list() { 
+@mixin unstyled-list() {
   @include unbulleted-list;
   margin: 0;
 }

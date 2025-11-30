@@ -1,9 +1,12 @@
+@use 'vars';
+@use 'basic-mixins';
+
 $headerBP: 500px;
 
 .header {
-  background-color: coreColor(black);
+  background-color: vars.coreColor(black);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-  color: coreColor(white);
+  color: vars.coreColor(white);
   font-size: 18px;
   min-height: 48px;
   padding: 0;
@@ -20,7 +23,7 @@ $headerBP: 500px;
 
     &:hover {
       text-decoration: underline;
-      color: coreColor(white);
+      color: vars.coreColor(white);
     }
   }
 }
@@ -69,7 +72,7 @@ $headerBP: 500px;
 }
 
 .header__navigation__subnav {
-  background: coreColor(black);
+  background: vars.coreColor(black);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   display: none;
   max-width: 175px;
@@ -107,8 +110,8 @@ $headerBP: 500px;
 }
 
 .header__signout {
-  @include unstyled-input();
-  color: coreColor(white);
+  @include basic-mixins.unstyled-input();
+  color: vars.coreColor(white);
   cursor: pointer;
 
   &:hover {

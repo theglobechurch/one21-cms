@@ -1,3 +1,6 @@
+@use 'vars';
+@use 'basic-mixins';
+
 .scripturePicker {
 }
 
@@ -31,8 +34,8 @@
 }
 
 .scripturePicker__autocomplete {
-  background: coreColor(white);
-  color: coreColor(darkestGrey);
+  background: vars.coreColor(white);
+  color: vars.coreColor(darkestGrey);
   list-style-type: none;
   margin: 0;
   padding: 10px;
@@ -40,7 +43,7 @@
   width: 100%;
   z-index: 1;
 
-  @include bpMinXSmall() {
+  @include basic-mixins.bpMinXSmall() {
     max-width: 350px;
   }
 
@@ -54,7 +57,7 @@
 }
 
 .scripturePicker__passageRemove {
-  color: coreColor(dangerRed);
+  color: vars.coreColor(dangerRed);
   cursor: pointer;
   font-size: 0.825em;
   letter-spacing: 0.1em;
@@ -63,6 +66,6 @@
   transition: color 0.2s;
 
   &:hover {
-    color: coreColor(white);
+    color: vars.coreColor(white);
   }
 }

@@ -1,17 +1,17 @@
-@import "vars";
-@import "basic-mixins";
-@import "reset";
-@import "footer";
-@import "toast";
+@use 'vars';
+@use 'basic-mixins';
+@use 'reset';
+@use 'footer';
+@use 'toast';
 
 body {
   background-color: #3a3838;
 }
 
 .header {
-  background-color: coreColor(black);
+  background-color: vars.coreColor(black);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-  color: coreColor(white);
+  color: vars.coreColor(white);
   font-size: 18px;
   min-height: 48px;
   padding: 0;
@@ -22,7 +22,7 @@ body {
 
     &:hover {
       text-decoration: underline;
-      color: coreColor(white);
+      color: vars.coreColor(white);
     }
   }
 }
@@ -58,8 +58,8 @@ body {
 }
 
 .landing__masthead {
-  background: coreColor(darkestGrey) url("/img/tablecloth.jpg");
-  color: coreColor(white);
+  background: vars.coreColor(darkestGrey) url("/img/tablecloth.jpg");
+  color: vars.coreColor(white);
   font-size: 48px;
   line-height: 56px;
   display: block;
@@ -118,14 +118,14 @@ body {
 
     strong {
       font-weight: 500;
-      color: coreColor(primaryBlue);
+      color: vars.coreColor(primaryBlue);
     }
   }
 }
 
 .landing__cta {
-  background-color: coreColor(lighterGrey);
-  color: coreColor(black);
+  background-color: vars.coreColor(lighterGrey);
+  color: vars.coreColor(black);
   text-align: center;
   font-size: 32px;
   line-height: 48px;
@@ -136,10 +136,10 @@ body {
   }
 
   .btn {
-    background-color: coreColor(white);
+    background-color: vars.coreColor(white);
     border-radius: 2px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-    color: coreColor(primaryBlue);
+    color: vars.coreColor(primaryBlue);
     display: inline-block;
     text-decoration: none;
     transition: box-shadow 0.2s;
@@ -153,8 +153,8 @@ body {
 }
 
 .landing__signin {
-  background-color: coreColor(primaryBlue);
-  color: coreColor(white);
+  background-color: vars.coreColor(primaryBlue);
+  color: vars.coreColor(white);
   font-size: 18px;
   line-height: 28px;
   padding: 50px;
@@ -179,7 +179,7 @@ body {
   form {
     align-items: stretch;
     border-radius: 2px;
-    border: 1px solid coreColor(white);
+    border: 1px solid vars.coreColor(white);
     display: grid;
     grid-template-columns: 40% 40% calc(20% - 30px);
     padding: 15px;
@@ -194,9 +194,9 @@ body {
   }
 
   input {
-    background-color: coreColor(white);
+    background-color: vars.coreColor(white);
     border-radius: 2px;
-    border: 1px solid coreColor(white);
+    border: 1px solid vars.coreColor(white);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     font-size: 24px;
     letter-spacing: 1.05px;
@@ -210,18 +210,18 @@ body {
   }
 
   &__textfield:focus {
-    border: 1px solid coreColor(black);
+    border: 1px solid vars.coreColor(black);
   }
 
   .btn {
-    background-color: coreColor(black);
-    border: 1px solid coreColor(black);
-    color: coreColor(white);
+    background-color: vars.coreColor(black);
+    border: 1px solid vars.coreColor(black);
+    color: vars.coreColor(white);
     cursor: pointer;
     font-weight: 500;
 
     &:hover {
-      border-color: coreColor(white);
+      border-color: vars.coreColor(white);
       box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
     }
   }
@@ -231,6 +231,6 @@ body {
   }
 
   a:hover {
-    color: coreColor(black);
+    color: vars.coreColor(black);
   }
 }
