@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment-es6';
+import dayjs from 'dayjs';
 import Toast from '../toast';
 
 export default class DatePicker extends Component {
@@ -27,8 +27,8 @@ export default class DatePicker extends Component {
     };
 
     // Turn into a date
-    const dtParsed = moment(`${dtIn.ye}-${dtIn.mo}-${dtIn.da} ${dtIn.ho}:${dtIn.mi}`, "YYYY-MM-DD H:m")
-    
+    const dtParsed = dayjs(`${dtIn.ye}-${dtIn.mo}-${dtIn.da} ${dtIn.ho}:${dtIn.mi}`, "YYYY-MM-DD H:m")
+
     // Validate it
     if (dtParsed.isValid()) {
       // Send it
@@ -39,7 +39,7 @@ export default class DatePicker extends Component {
   }
 
   render () {
-    const dtNow = moment();
+    const dtNow = dayjs();
     return (
       <div className="dateTimePicker">
         <div>
@@ -100,7 +100,7 @@ export default class DatePicker extends Component {
               defaultValue={dtNow.format('m')}
             />
           </div>
-        
+
         </div>
 
         <button

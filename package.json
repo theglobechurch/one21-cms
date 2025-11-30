@@ -13,10 +13,9 @@
     "prod:landingCSS": "sass --no-source-map --style=compressed app/assets/stylesheets/landing.scss:public/assets/css/landing.css"
   },
   "dependencies": {
-    "html5sortable": "^0.9.3",
-    "moment-es6": "^1.0.0",
+    "dayjs": "^1.11.19",
+    "html5sortable": "^0.14.0",
     "prop-types": "^15.6.1",
-    "raw-loader": "^0.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-reorder": "^3.0.0-alpha.6",
@@ -29,7 +28,7 @@
     "@babel/preset-env": "^7.28.5",
     "@babel/preset-react": "^7.28.5",
     "babel-loader": "^8.4.1",
-    "watch": "^0.17.1",
+    "watch": "^1.0.2",
     "webpack": "^5.103.0",
     "webpack-cli": "^4.10.0"
   }

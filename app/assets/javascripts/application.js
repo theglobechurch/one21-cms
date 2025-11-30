@@ -15,7 +15,7 @@ const expandableTA = document.querySelectorAll('.js-expandableTextArea');
 if (expandableTA.length >= 1) {
   for (let i = 0; i < expandableTA.length; i++) {
     if (expandableTA[i].tagName.toLowerCase() !== 'textarea') { continue; }
-    
+
     textareaExpander(expandableTA[i]);
 
     expandableTA[i].addEventListener(
