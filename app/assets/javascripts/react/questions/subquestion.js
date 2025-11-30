@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import SVGInline from 'react-svg-inline';
+import { ReactSVG } from 'react-svg';
 import TextareaExpander from '../../textarea_exander';
 import svgRemove from '../../../svg/remove.svg';
 
@@ -51,12 +51,10 @@ export default class SubQuestion extends Component {
           />
         </div>
 
-        <SVGInline
+        <ReactSVG
           aria-label="Remove subquestion"
-          accessibilityLabel="Remove subquestion"
           onClick={this.subQuestionRemove.bind(this)}
-          svg={svgRemove}
-          cleanup={true}
+          src={ svgRemove }
           className="questionCreator__removeBtn"
         />
       </div>

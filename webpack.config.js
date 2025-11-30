@@ -15,7 +15,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'raw-loader'
+        type: 'asset/resource'
       }
     ]
   }
