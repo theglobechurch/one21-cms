@@ -17,15 +17,15 @@ class StateSwitcher extends Component {
     }
   }
 
-  componentWillMount() {
-    document.addEventListener('mousedown', this.handleClick.bind(this), false);
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClick, false);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClick.bind(this), false);
+    document.removeEventListener('mousedown', this.handleClick, false);
   }
 
-  handleClick(e) {
+  handleClick = (e) => {
     if (this.node.contains(e.target)) {
       return;
     }

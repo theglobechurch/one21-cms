@@ -18,13 +18,6 @@ export default class Question extends Component {
     TextareaExpander(document.querySelector('.js-autoexpandable'));
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { lead, followup } = nextProps.question;
-    if (lead !== this.state.lead || followup !== this.state.followup) {
-      this.setState({ lead, followup });
-    }
-  }
-
   questionChange(ev) {
     TextareaExpander(ev.target);
     const q = ev.target.value;

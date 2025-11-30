@@ -17,12 +17,6 @@ export default class SubQuestion extends Component {
     TextareaExpander(document.querySelector('.js-autoexpandable'));
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.subquestion !== this.state.subquestion) {
-      this.setState({ subquestion: nextProps.subquestion });
-    }
-  }
-
   subQuestionChange(ev) {
     TextareaExpander(ev.target);
     const subQ = ev.target.value;
