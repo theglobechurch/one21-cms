@@ -1,65 +1,61 @@
-import React, { Component } from 'react'
+import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { ReactSVG } from 'react-svg';
 import TextareaExpander from '../../textarea_exander';
 import svgRemove from '../../../svg/remove.svg';
 
-export default class SubQuestion extends Component {
+export default function SubQuestion({
+  subquestion: initialSubquestion,
+  id,
+  removeSubQuestion,
+  saveSubQuestion
+}) {
+  const [subquestion, setSubquestion] = useState(initialSubquestion);
+  const textareaRef = useRef(null);
 
-  constructor(props) {
-    super(props);
-
-    const { subquestion } = this.props;
-    this.state = { subquestion }
-  }
-
-  componentDidMount() {
-    TextareaExpander(document.querySelector('.js-autoexpandable'));
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.subquestion !== this.props.subquestion) {
-      this.setState({ subquestion: this.props.subquestion });
+  useEffect(() => {
+    if (textareaRef.current) {
+      TextareaExpander(textareaRef.current);
     }
-  }
+  }, []);
 
-  subQuestionChange(ev) {
+  useEffect(() => {
+    if (initialSubquestion !== subquestion) {
+      setSubquestion(initialSubquestion);
+    }
+  }, [initialSubquestion]);
+
+  const subQuestionChange = (ev) => {
     TextareaExpander(ev.target);
     const subQ = ev.target.value;
-    this.setState(
-      { subquestion: subQ },
-      () => {
-        this.props.saveSubQuestion(this.props.id, this.state.subquestion);
-      }
-    );
-  }
+    setSubquestion(subQ);
+    saveSubQuestion(id, subQ);
+  };
 
-  subQuestionRemove(ev) {
+  const subQuestionRemove = (ev) => {
     ev.preventDefault();
-    this.props.removeSubQuestion(this.props.id);
-  }
+    removeSubQuestion(id);
+  };
 
-  render() {
-    const {subquestion} = this.state;
-    return (
-      <div className="form__field">
-        <div className="form__input">
-          <textarea
-            value={subquestion}
-            onChange={this.subQuestionChange.bind(this)}
-            className="expandableTextArea expandableTextArea--small js-autoexpandable"
-          />
-        </div>
-
-        <ReactSVG
-          aria-label="Remove subquestion"
-          onClick={this.subQuestionRemove.bind(this)}
-          src={ svgRemove }
-          className="questionCreator__removeBtn"
+  return (
+    <div className="form__field">
+      <div className="form__input">
+        <textarea
+          ref={textareaRef}
+          value={subquestion}
+          onChange={subQuestionChange}
+          className="expandableTextArea expandableTextArea--small js-autoexpandable"
         />
       </div>
-    );
-  }
+
+      <ReactSVG
+        aria-label="Remove subquestion"
+        onClick={subQuestionRemove}
+        src={svgRemove}
+        className="questionCreator__removeBtn"
+      />
+    </div>
+  );
 }
 
 SubQuestion.propTypes = {
