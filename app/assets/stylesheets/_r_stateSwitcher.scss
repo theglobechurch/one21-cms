@@ -1,3 +1,5 @@
+@use 'vars';
+
 .stateSwitcher {
   position: relative;
 }
@@ -31,7 +33,7 @@
       height: 0;
       border-left: 5px solid transparent;
       border-right: 5px solid transparent;
-      border-top: 5px solid coreColor(orange);
+      border-top: 5px solid vars.coreColor(orange);
       position: absolute;
       right: 6px;
       top: 15px;

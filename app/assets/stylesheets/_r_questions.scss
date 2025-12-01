@@ -1,3 +1,5 @@
+@use 'vars';
+
 .questionCreator {
 
   & .form__field {
@@ -23,7 +25,7 @@
 
 .questionCreator__removeBtn {
   cursor: pointer;
-  color: coreColor(orange);
+  color: vars.coreColor(orange);
   width: 15px;
   height: 15px;
   display: block;

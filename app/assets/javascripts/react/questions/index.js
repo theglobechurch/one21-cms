@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import PropTypes from 'prop-types';
 import Question from './question';
 
@@ -61,7 +61,7 @@ class One21Questions extends Component {
 
   store() {
     const { questions } = this.state;
-    
+
     questions.forEach((q, i) => {
       q.followup.forEach((fu, i) => {
         if (!fu) { q.followup.splice(i, 1); }
@@ -88,7 +88,7 @@ class One21Questions extends Component {
             saveQuestion={this.saveQuestion.bind(this)}
           />
         ))}
-        
+
 
         <button
           className="btn questionCreator__btnQuestion"
@@ -111,6 +111,8 @@ export default function(selector) {
   const container = document.querySelector(selector);
   if (!container) { return; }
 
+  const root = createRoot(container);
+
   function callback(questionJSON) {
     const field = document.getElementById(container.dataset.inputid);
     field.value = JSON.stringify(questionJSON);
@@ -120,12 +122,12 @@ export default function(selector) {
   try         { questionJSON = JSON.parse(questionJSON); }
   catch (err) { questionJSON = []; }
 
-  ReactDOM.render(
+  root.render(
     <One21Questions
       questionJSON={questionJSON}
       onConfirm={callback}
     />
-  , container);
+  );
 
 
 }

@@ -1,3 +1,5 @@
+@use 'basic-mixins';
+
 .churchPrimer {
   font-size: 16px;
   width: 100%;
@@ -16,7 +18,7 @@
     object-fit: cover;
     position: absolute;
     top: 0;
-    width: 100%; 
+    width: 100%;
   }
 }
 
@@ -26,7 +28,7 @@
 }
 
 .churchPrimer__details {
-  @include unstyled-list();
+  @include basic-mixins.unstyled-list();
 
   li {
     margin: 0;

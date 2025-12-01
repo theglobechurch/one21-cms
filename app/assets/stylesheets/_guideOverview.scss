@@ -1,3 +1,6 @@
+@use 'vars';
+@use 'basic-mixins';
+
 .guideOverview {
   background-color: #ECE6E4;
 }
@@ -8,7 +11,7 @@
   grid-row-gap: 20px;
   grid-template-columns: 1fr 1fr;
 
-  @include bpMinSmall() {
+  @include basic-mixins.bpMinSmall() {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
@@ -20,7 +23,7 @@
   text-decoration: none;
 
   &:hover {
-    color: coreColor(black);
+    color: vars.coreColor(black);
   }
 
   h3 {
@@ -42,7 +45,7 @@
   padding-bottom: 100%;
   position: relative;
   width: 100%;
-  
+
   img {
     display: block;
     height: 100%;

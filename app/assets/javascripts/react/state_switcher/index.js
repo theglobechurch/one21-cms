@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { createRoot } from 'react-dom/client';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types'
 import DatePicker from './date_picker';
-
 
 class StateSwitcher extends Component {
 
@@ -14,18 +13,20 @@ class StateSwitcher extends Component {
       status: props.currentState,
       popup: false,
       open: false
-    }
+    };
+
+    this.nodeRef = React.createRef();
   }
 
-  componentWillMount() {
-    document.addEventListener('mousedown', this.handleClick.bind(this), false);
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClick, false);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClick.bind(this), false);
+    document.removeEventListener('mousedown', this.handleClick, false);
   }
 
-  handleClick(e) {
+  handleClick = (e) => {
     if (this.node.contains(e.target)) {
       return;
     }
@@ -130,27 +131,30 @@ class StateSwitcher extends Component {
           )}
 
         </div>
-        
-        <ReactCSSTransitionGroup
-          transitionName="r_popupFade"
-          transitionEnterTimeout={250}
-          transitionLeaveTimeout={250}>
-          { this.state.popup && (
-            <div className="r_popup">
-              <DatePicker
-                action="Schedule"
-                callback={this.confirmSchedule.bind(this)}
-              />
 
-              <button
-                className="r_popup__btn--close"
-                onClick={this.onClosePopup.bind(this)}
-              >
-                Cancel
-              </button>
-            </div>
+        <TransitionGroup>
+          { this.state.popup && (
+            <CSSTransition
+              classNames="r_popupFade"
+              timeout={250}
+              nodeRef={this.nodeRef}
+            >
+              <div className="r_popup" ref={this.nodeRef}>
+                <DatePicker
+                  action="Schedule"
+                  callback={this.confirmSchedule.bind(this)}
+                />
+
+                <button
+                  className="r_popup__btn--close"
+                  onClick={this.onClosePopup.bind(this)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </CSSTransition>
           )}
-        </ReactCSSTransitionGroup>
+        </TransitionGroup>
       </div>
     )
   }
@@ -172,11 +176,12 @@ export default function (selector) {
   if (containers.length <= 0) { return; }
 
   for (let i = 0; i < containers.length; i++) {
-    ReactDOM.render(
+    let root = root = createRoot(containers[i]);
+    root.render(
       <StateSwitcher
         {...containers[i].dataset}
         schedulable={(containers[i].dataset.schedulable == 'true')}
       />
-    , containers[i]);
+    );
   }
 }

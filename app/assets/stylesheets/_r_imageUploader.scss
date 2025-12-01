@@ -1,9 +1,12 @@
+@use 'vars';
+@use 'basic-mixins';
+
 .imageUpload {
 }
 
 .imageUpload__dropzone {
-  background: coreColor(white);
-  border: 1px solid coreColor(lightGrey);
+  background: vars.coreColor(white);
+  border: 1px solid vars.coreColor(lightGrey);
   min-height: 250px;
   padding: 10px;
   position: relative;
@@ -11,8 +14,8 @@
   width: 100%;
 
   &.is-hovering {
-    background-color: coreColor(orange);
-    border-color: coreColor(orange);
+    background-color: vars.coreColor(orange);
+    border-color: vars.coreColor(orange);
 
     &:after {
       color: white;
@@ -48,7 +51,7 @@
 }
 
 .imageUpload__uploadField {
-  @include visuallyHidden();
+  @include basic-mixins.visuallyHidden();
 }
 
 // In the popup
@@ -56,9 +59,9 @@
 }
 
 .imageUpload__preview__image {
-  background: coreColor(middleGrey) no-repeat center center;
+  background: vars.coreColor(middleGrey) no-repeat center center;
   background-size: contain;
-  border: 1px solid coreColor(lightGrey);
+  border: 1px solid vars.coreColor(lightGrey);
   height: 300px;
   margin-bottom: 20px;
   width: 100%;
@@ -72,7 +75,7 @@
   &__item {
     align-items: center;
     background-color: transparent;
-    border-bottom: 1px solid coreColor(orange);
+    border-bottom: 1px solid vars.coreColor(orange);
     cursor: pointer;
     display: flex;
     justify-content: flex-start;
@@ -81,7 +84,7 @@
     width: 100%;
 
     &:hover {
-      background-color: coreColor(middleGrey);
+      background-color: vars.coreColor(middleGrey);
     }
 
     &:last-child {

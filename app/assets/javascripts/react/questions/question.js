@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import SubQuestion from './subquestion';
-import SVGInline from 'react-svg-inline';
+import { ReactSVG } from 'react-svg';
 import TextareaExpander from '../../textarea_exander';
 import svgRemove from '../../../svg/remove.svg';
 
@@ -18,9 +18,9 @@ export default class Question extends Component {
     TextareaExpander(document.querySelector('.js-autoexpandable'));
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { lead, followup } = nextProps.question;
-    if (lead !== this.state.lead || followup !== this.state.followup) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.question !== this.props.question) {
+      const { lead, followup } = this.props.question;
       this.setState({ lead, followup });
     }
   }
@@ -43,7 +43,7 @@ export default class Question extends Component {
 
   subQuestionCreate(ev) {
     ev.preventDefault();
-    
+
     const followup = this.state.followup;
     followup.push("");
     this.setState({followup});
@@ -51,7 +51,7 @@ export default class Question extends Component {
 
   subQuestionChange(key, subQ) {
     // Returned from <SubQuestion>
-   
+
     const followup = this.state.followup;
     followup[key] = subQ;
     this.setState(
@@ -61,8 +61,6 @@ export default class Question extends Component {
   }
 
   subQuestionRemove(key) {
-    // Returned from <SubQuestion>
-    
     const followup = this.state.followup;
     followup.splice(key, 1);
     this.setState(
@@ -83,7 +81,7 @@ export default class Question extends Component {
     const {lead, followup} = this.state;
     return (
       <div>
-        
+
         <div className="form__field">
 
           <div className="form__input">
@@ -93,12 +91,10 @@ export default class Question extends Component {
               onChange={ this.questionChange.bind(this) }
             />
 
-            <SVGInline
+            <ReactSVG
               aria-label="Remove question"
-              accessibilityLabel="Remove question"
               onClick={this.questionRemove.bind(this)}
-              svg={svgRemove}
-              cleanup={true}
+              src={ svgRemove }
               className="questionCreator__removeBtn"
             />
           </div>
