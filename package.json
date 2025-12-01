@@ -2,7 +2,7 @@
   "name": "one21-cms",
   "private": true,
   "scripts": {
-    "dev": "watch 'npm run dev:build' app/assets/*",
+    "dev": "chokidar 'app/assets/**/*' -c 'npm run dev:build' --initial --silent",
     "dev:build": "npm run dev:js && npm run dev:adminCSS && npm run dev:landingCSS",
     "dev:js": "webpack --mode development",
     "dev:adminCSS": "sass --embed-source-map app/assets/stylesheets/application.scss:public/assets/css/main.css",
@@ -28,7 +28,7 @@
     "@babel/preset-env": "^7.28.5",
     "@babel/preset-react": "^7.28.5",
     "babel-loader": "^8.4.1",
-    "watch": "^1.0.2",
+    "chokidar-cli": "^3.0.0",
     "webpack": "^5.103.0",
     "webpack-cli": "^4.10.0"
   }
