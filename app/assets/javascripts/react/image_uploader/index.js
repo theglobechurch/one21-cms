@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from 'react-dom/client';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import PropTypes from "prop-types";
 import ImagePreview from "./image_preview";
@@ -20,6 +20,8 @@ class ImageUploader extends Component {
       uploadProgress: null,
       previewURL: p
     };
+
+    this.nodeRef = React.createRef();
   }
 
   handleDragEnter(e) {
@@ -211,15 +213,18 @@ class ImageUploader extends Component {
   }
 
   render() {
+
     return (
       <div className="imageUpload">
         <TransitionGroup>
           {this.state.popup && (
             <CSSTransition
+              key="popup"
               classNames="r_popupFade"
               timeout={250}
+              nodeRef={this.nodeRef}
             >
-              <div className="r_popup">
+              <div className="r_popup" ref={this.nodeRef}>
                 {this.state.popup === "upload" && (
                   <ImagePreview
                     onConfirm={this.confirmUpload.bind(this)}
@@ -322,19 +327,19 @@ export default function(selector) {
   if (!container) {
     return;
   }
+  const root = createRoot(container);
 
   function callback(imageRef) {
     const field = document.getElementById(container.dataset.inputid);
     field.value = imageRef;
   }
 
-  ReactDOM.render(
+  root.render(
     <ImageUploader
       previewURL={container.dataset.previewurl}
       fieldLabel={container.dataset.fieldlabel}
       churchGraphicEndpoint={container.dataset.churchgraphicendpoint}
       onConfirm={callback}
     />,
-    container
   );
 }

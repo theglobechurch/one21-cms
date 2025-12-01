@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types'
 import DatePicker from './date_picker';
-
 
 class StateSwitcher extends Component {
 
@@ -14,7 +13,9 @@ class StateSwitcher extends Component {
       status: props.currentState,
       popup: false,
       open: false
-    }
+    };
+
+    this.nodeRef = React.createRef();
   }
 
   componentDidMount() {
@@ -136,8 +137,9 @@ class StateSwitcher extends Component {
             <CSSTransition
               classNames="r_popupFade"
               timeout={250}
+              nodeRef={this.nodeRef}
             >
-              <div className="r_popup">
+              <div className="r_popup" ref={this.nodeRef}>
                 <DatePicker
                   action="Schedule"
                   callback={this.confirmSchedule.bind(this)}
@@ -174,11 +176,12 @@ export default function (selector) {
   if (containers.length <= 0) { return; }
 
   for (let i = 0; i < containers.length; i++) {
-    ReactDOM.render(
+    let root = root = createRoot(containers[i]);
+    root.render(
       <StateSwitcher
         {...containers[i].dataset}
         schedulable={(containers[i].dataset.schedulable == 'true')}
       />
-    , containers[i]);
+    );
   }
 }

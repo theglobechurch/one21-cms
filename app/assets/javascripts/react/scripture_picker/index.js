@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from 'react-dom/client';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import PropTypes from "prop-types";
 import Picker from "./picker";
@@ -18,6 +18,8 @@ class ScripturePicker extends Component {
       refJson: props.refJson,
       refText: t
     };
+
+    this.nodeRef = React.createRef();
   }
 
   onTogglePopup(event) {
@@ -70,8 +72,9 @@ class ScripturePicker extends Component {
             <CSSTransition
               classNames="r_popupFade"
               timeout={250}
+              nodeRef={this.nodeRef}
             >
-              <div className="r_popup">
+              <div className="r_popup" ref={this.nodeRef}>
                 <Picker onConfirm={this.onPassageSelect.bind(this)} />
 
                 {this.state.refText.length > 0 && (
@@ -127,6 +130,8 @@ export default function(selector) {
     return;
   }
 
+  const root = createRoot(container);
+
   function callback(refJSON) {
     // Temp hack… go back to edit to allow multiple passages
     const field = document.getElementById(container.dataset.inputid);
@@ -140,12 +145,11 @@ export default function(selector) {
     refJson = [];
   }
 
-  ReactDOM.render(
+  root.render(
     <ScripturePicker
       refJson={refJson}
       refText={container.dataset.reftext}
       onConfirm={callback}
     />,
-    container
   );
 }
