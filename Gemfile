@@ -6,6 +6,7 @@ ruby '3.2.5'
 gem 'rails', '~> 7.0.0'
 gem 'pg', '~> 1.5'
 gem 'puma', '~> 6.4'
+gem 'httparty'
 gem 'net-smtp', require: false
 gem 'jbuilder', '~> 2.5'      # JSON APIs(https://github.com/rails/jbuilder)
 gem 'dragonfly', '~> 1.1.5'   # File uploads
@@ -15,8 +16,6 @@ gem 'stringex', '~> 2.8', '>= 2.8.4'
 gem 'active_model_serializers', '~> 0.10.14'
 gem 'draper', '~> 4.0'
 gem 'redcarpet', '~> 3.6'
-gem 'multi_json'
-gem 'faraday', '~> 2.0'
 gem 'figaro'                  # For config values
 gem 'mailgun_rails'           # Send emails
 
@@ -42,4 +41,5 @@ group :test do
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver'
   gem 'webdrivers', '~> 5.0'
+  gem 'webmock'
 end
