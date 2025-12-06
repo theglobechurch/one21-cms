@@ -66,10 +66,11 @@ class Church < ApplicationRecord
 
 private
 
+  # After create of a church…
   def post_create
     u = User.current
 
-    if !u.superadmin?
+    if u && !u.superadmin?
       u.update(churches_id: id)
     end
 
