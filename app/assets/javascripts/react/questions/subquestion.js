@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { ReactSVG } from 'react-svg';
 import TextareaExpander from '../../textarea_exander';
-import svgRemove from '../../../svg/remove.svg';
+import svgRemove from '../../remove.svg';
 
 export default function SubQuestion({
   subquestion: initialSubquestion,

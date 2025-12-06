@@ -1,8 +1,8 @@
 <div class="wrapper__section">
   <div class="wrapper__section__leadGraphic">
-    <%= image_tag 'one21-background.jpg', alt: 'One21' %>
+    <img src='/img/one21-background.jpg' alt='one twenty one' />
   </div>
-  
+
   <% if @church %>
     <div class="wrapper__section__body">
 
@@ -20,7 +20,7 @@
         <% if @church.city.present? %>
           <p><%= @church.city %></p>
         <% end %>
-        
+
         <ul class="churchPrimer__details">
           <% if @church.url.present? %>
             <li><%= @church.url %></li>
@@ -90,7 +90,7 @@
               <h3><%= guide.guide_name %></h3>
               <p><%= guide.teaser %></p>
             </div>
-            
+
             <div class="guideTile__action">
               <span class="btn btn--textonly">View</span>
             </div>

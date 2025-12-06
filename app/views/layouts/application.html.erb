@@ -7,7 +7,7 @@
       <%= stylesheet_link_tag "/assets/css/main.css" %>
     <% else %>
       <%= stylesheet_link_tag "/assets/css/landing.css" %>
-    <% end%>
+    <% end %>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -23,7 +23,7 @@
         </div>
 
         <ul class="header__navigation">
-        
+
           <% if user_signed_in? %>
             <% if @current_user.superadmin? %>
               <li class="header__navigation__item"><%= link_to('All Churches', users_path)%></li>
@@ -78,7 +78,7 @@
       <p><%= alert if alert %></p>
     </div>
     <% end %>
-  
+
   <% if user_signed_in? %>
     <%= javascript_include_tag "/assets/js/bundle.js" %>
   <% end %>

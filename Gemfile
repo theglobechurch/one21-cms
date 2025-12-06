@@ -4,23 +4,20 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.5'
 
 gem 'rails', '~> 6.1.0'
-gem 'sass-rails', '~> 5.0'    # Sass for rails. Obvs
 gem 'pg', '~> 1.5'
-gem 'puma', '~> 3.11'         # Web server
+gem 'puma', '~> 6.4'
+gem 'net-smtp', require: false
 gem 'jbuilder', '~> 2.5'      # JSON APIs(https://github.com/rails/jbuilder)
 gem 'dragonfly', '~> 1.1.5'   # File uploads
-gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'devise_invitable'
 gem 'stringex', '~> 2.8', '>= 2.8.4'
-gem 'active_model_serializers', '~> 0.10.0'
+gem 'active_model_serializers', '~> 0.10.14'
 gem 'draper', '~> 4.0'
-gem 'redcarpet', '~> 3.4.0'
+gem 'redcarpet', '~> 3.6'
 gem 'multi_json'
-gem 'faraday'
-gem 'faraday_middleware'
-gem 'faraday_middleware-multi_json'
-gem "figaro"                  # For config values
+gem 'faraday', '~> 2.0'
+gem 'figaro'                  # For config values
 gem 'mailgun_rails'           # Send emails
 
 group :development, :test do
@@ -36,11 +33,9 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem "letter_opener"             # Save email to /tmp rather than sending
+  gem 'web-console', '>= 4.1.0'
+  gem 'listen', '~> 3.8'
+  gem 'letter_opener'             # Save email to /tmp rather than sending
 end
 
 group :test do

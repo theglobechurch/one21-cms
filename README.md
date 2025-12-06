@@ -65,3 +65,11 @@ nvm use
 npm install
 npm run dev
 ```
+
+Nb: we're not using the Rails asset pipeline
+
+## Run the tests
+
+```zsh
+bin/rails test
+```

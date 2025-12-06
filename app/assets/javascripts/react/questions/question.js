@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import SubQuestion from './subquestion';
 import { ReactSVG } from 'react-svg';
 import TextareaExpander from '../../textarea_exander';
-import svgRemove from '../../../svg/remove.svg';
+import svgRemove from '../../remove.svg';
 
 export default class Question extends Component {
 
