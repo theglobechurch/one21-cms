@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_11_29_221616) do
-
+ActiveRecord::Schema[7.0].define(version: 2025_12_06_172244) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,8 +31,8 @@ ActiveRecord::Schema.define(version: 2025_11_29_221616) do
     t.string "phone"
     t.string "url"
     t.string "city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "verified", default: false, null: false
     t.bigint "graphics_id"
     t.string "church_logo_uid"
@@ -59,8 +58,8 @@ ActiveRecord::Schema.define(version: 2025_11_29_221616) do
     t.string "graphic_1280_uid"
     t.string "graphic_1920_uid"
     t.string "graphic_2560_uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["churches_id"], name: "index_graphics_on_churches_id"
   end
 
@@ -72,8 +71,8 @@ ActiveRecord::Schema.define(version: 2025_11_29_221616) do
     t.string "copyright"
     t.boolean "highlight_first", default: false, null: false
     t.integer "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "graphics_id"
     t.integer "sorting", default: 0, null: false
     t.index ["graphics_id"], name: "index_guides_on_graphics_id"
@@ -90,12 +89,12 @@ ActiveRecord::Schema.define(version: 2025_11_29_221616) do
     t.string "website_url"
     t.jsonb "passage_ref_json"
     t.jsonb "questions_json", default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "graphics_id"
     t.string "study_start"
     t.string "study_end"
-    t.datetime "published_at"
+    t.datetime "published_at", precision: nil
     t.index ["graphics_id"], name: "index_studies_on_graphics_id"
     t.index ["guides_id"], name: "index_studies_on_guides_id"
   end
@@ -105,22 +104,22 @@ ActiveRecord::Schema.define(version: 2025_11_29_221616) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.integer "role"
     t.string "first_name"
     t.string "family_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "invitation_token"
-    t.datetime "invitation_created_at"
-    t.datetime "invitation_sent_at"
-    t.datetime "invitation_accepted_at"
+    t.datetime "invitation_created_at", precision: nil
+    t.datetime "invitation_sent_at", precision: nil
+    t.datetime "invitation_accepted_at", precision: nil
     t.integer "invitation_limit"
     t.string "invited_by_type"
     t.bigint "invited_by_id"
