@@ -9,7 +9,7 @@ gem 'puma', '~> 7.1.0'
 gem 'httparty', '~> 0.23.2'
 gem 'net-smtp', require: false
 gem 'jbuilder', '~> 2.5'
-gem 'dragonfly', '~> 1.1.5'
+gem 'dragonfly', '~> 1.4'
 gem 'devise'
 gem 'devise_invitable'
 gem 'stringex', '~> 2.8', '>= 2.8.4'
